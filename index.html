@@ -538,6 +538,206 @@
   .error-msg { color: var(--accent2); margin-bottom: 4px; word-break: break-all; }
   .error-meta { color: var(--muted); font-size: 10px; }
 
+
+  /* ERROR FILTER BAR */
+  .error-toolbar {
+    padding: 12px 20px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    background: var(--surface2);
+  }
+
+  .error-search {
+    flex: 1;
+    min-width: 200px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    color: var(--text);
+    font-family: var(--font-mono);
+    font-size: 12px;
+    padding: 7px 12px;
+    outline: none;
+    transition: border-color 0.2s;
+    letter-spacing: 0.02em;
+  }
+  .error-search::placeholder { color: var(--muted); }
+  .error-search:focus { border-color: var(--accent); }
+
+  .filter-chip {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    padding: 5px 10px;
+    border: 1px solid var(--border);
+    background: var(--surface);
+    color: var(--muted);
+    cursor: pointer;
+    letter-spacing: 0.05em;
+    transition: all 0.15s;
+    white-space: nowrap;
+    user-select: none;
+  }
+  .filter-chip:hover { color: var(--text); border-color: var(--muted); }
+  .filter-chip.active-chip { color: var(--bg); border-color: transparent; }
+  .filter-chip.chip-all.active-chip    { background: var(--muted); }
+  .filter-chip.chip-critical.active-chip { background: var(--accent2); }
+  .filter-chip.chip-script.active-chip  { background: var(--accent4); }
+  .filter-chip.chip-network.active-chip { background: var(--accent); }
+  .filter-chip.chip-ignored.active-chip { background: var(--muted2); }
+  .filter-chip.chip-new.active-chip     { background: var(--accent3); color: var(--bg); }
+
+  .sort-select {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    color: var(--muted);
+    font-family: var(--font-mono);
+    font-size: 10px;
+    padding: 5px 8px;
+    outline: none;
+    cursor: pointer;
+    letter-spacing: 0.04em;
+  }
+  .sort-select:focus { border-color: var(--accent); color: var(--text); }
+
+  /* ERROR CARD */
+  .error-card {
+    border-bottom: 1px solid var(--border);
+    transition: background 0.15s;
+    cursor: pointer;
+  }
+  .error-card:last-child { border-bottom: none; }
+  .error-card:hover { background: var(--surface2); }
+
+  .error-card-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 14px 20px 10px;
+  }
+
+  .error-severity {
+    flex-shrink: 0;
+    width: 6px;
+    align-self: stretch;
+    border-radius: 3px;
+    margin-top: 2px;
+  }
+  .sev-critical { background: var(--accent2); box-shadow: 0 0 6px var(--accent2); }
+  .sev-warning  { background: var(--accent4); }
+  .sev-info     { background: var(--muted2); }
+
+  .error-card-body { flex: 1; min-width: 0; }
+
+  .error-card-msg {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--text);
+    word-break: break-word;
+    line-height: 1.5;
+    margin-bottom: 6px;
+  }
+  .error-card-msg .highlight { background: rgba(0,229,255,0.2); color: var(--accent); padding: 0 2px; }
+
+  .error-card-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 6px;
+  }
+
+  .etag {
+    font-family: var(--font-mono);
+    font-size: 9px;
+    padding: 2px 6px;
+    letter-spacing: 0.04em;
+    border-radius: 2px;
+  }
+  .etag-script  { background: rgba(255,183,0,0.12); color: var(--accent4); border: 1px solid rgba(255,183,0,0.2); }
+  .etag-fps     { background: rgba(255,79,94,0.12); color: var(--accent2); border: 1px solid rgba(255,79,94,0.2); }
+  .etag-ping    { background: rgba(0,229,255,0.12); color: var(--accent); border: 1px solid rgba(0,229,255,0.2); }
+  .etag-platform { background: rgba(127,255,106,0.12); color: var(--accent3); border: 1px solid rgba(127,255,106,0.2); }
+  .etag-count   { background: rgba(255,79,94,0.2); color: var(--accent2); border: 1px solid rgba(255,79,94,0.3); font-weight: 700; }
+  .etag-build   { background: rgba(100,100,150,0.15); color: var(--muted); border: 1px solid rgba(100,100,150,0.2); }
+  .etag-time    { background: transparent; color: var(--muted); border: 1px solid var(--muted2); }
+
+  .error-card-right {
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 6px;
+  }
+
+  .error-impact {
+    font-family: var(--font-mono);
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 1;
+  }
+  .impact-critical { color: var(--accent2); }
+  .impact-warning  { color: var(--accent4); }
+  .impact-info     { color: var(--muted); }
+
+  .error-impact-label {
+    font-family: var(--font-mono);
+    font-size: 9px;
+    color: var(--muted);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  .error-grouped-note {
+    padding: 6px 20px 12px 38px;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--muted);
+    display: none;
+  }
+  .error-card.expanded .error-grouped-note { display: block; }
+
+  .error-count-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 22px;
+    height: 22px;
+    padding: 0 6px;
+    background: rgba(255,79,94,0.15);
+    border: 1px solid rgba(255,79,94,0.3);
+    color: var(--accent2);
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 700;
+    border-radius: 2px;
+  }
+
+  .error-results-info {
+    padding: 10px 20px;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--muted);
+    border-bottom: 1px solid var(--border);
+    background: var(--surface2);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .ignored-toggle {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--muted);
+    background: none;
+    border: 1px solid var(--muted2);
+    padding: 3px 8px;
+    cursor: pointer;
+    letter-spacing: 0.04em;
+    transition: all 0.15s;
+  }
+  .ignored-toggle:hover { color: var(--text); border-color: var(--muted); }
+
   /* RESPONSIVE */
   @media (max-width: 1100px) {
     .stat-grid-4 { grid-template-columns: repeat(2, 1fr); }
@@ -776,29 +976,47 @@
   <div class="tab-panel" id="tab-errors">
     <div class="section-header">
       <div class="section-title">Error Monitoring</div>
-      <div class="section-heading">Client & Server <span>Errors</span></div>
+      <div class="section-heading">Smart Error <span>Filter</span></div>
     </div>
 
-    <div class="stat-grid stat-grid-3">
-      <div class="stat-card red"><div class="stat-label">Client Errors</div><div class="stat-value red" id="er-client">—</div><div class="stat-sub">total logged</div></div>
-      <div class="stat-card yellow"><div class="stat-label">Server Errors</div><div class="stat-value yellow" id="er-server">—</div><div class="stat-sub">total logged</div></div>
-      <div class="stat-card accent"><div class="stat-label">Error-Quit Correlation</div><div class="stat-value accent" id="er-correlation">—</div><div class="stat-sub">% had error before quit</div></div>
-    </div>
-
-    <div class="panel">
-      <div class="panel-header">
-        <div class="panel-title">Recent Client Errors</div>
-        <div class="panel-tag red">CLIENT-SIDE</div>
-      </div>
-      <div id="clientErrorLog"><div class="empty-state">NO CLIENT ERRORS — CLEAN!</div></div>
+    <div class="stat-grid stat-grid-4">
+      <div class="stat-card red"><div class="stat-label">Client Errors</div><div class="stat-value red" id="er-client">—</div><div class="stat-sub">total occurrences</div></div>
+      <div class="stat-card yellow"><div class="stat-label">Server Errors</div><div class="stat-value yellow" id="er-server">—</div><div class="stat-sub">total occurrences</div></div>
+      <div class="stat-card red"><div class="stat-label">Unique Error Types</div><div class="stat-value red" id="er-unique">—</div><div class="stat-sub">distinct messages</div></div>
+      <div class="stat-card accent"><div class="stat-label">Error-Quit Correlation</div><div class="stat-value accent" id="er-correlation">—</div><div class="stat-sub">% sessions had errors</div></div>
     </div>
 
     <div class="panel">
-      <div class="panel-header">
-        <div class="panel-title">Recent Server Errors</div>
-        <div class="panel-tag yellow">SERVER-SIDE</div>
+      <div class="panel-header" style="flex-wrap:wrap;gap:8px;">
+        <div class="panel-title">All Errors — Grouped & Ranked by Impact</div>
+        <div style="display:flex;gap:6px;align-items:center;flex-wrap:wrap">
+          <span class="panel-tag red" id="er-showing">—</span>
+          <button class="ignored-toggle" id="ignoredToggleBtn" onclick="toggleShowIgnored()">SHOW IGNORED</button>
+        </div>
       </div>
-      <div id="serverErrorLog"><div class="empty-state">NO SERVER ERRORS — CLEAN!</div></div>
+
+      <div class="error-toolbar">
+        <input class="error-search" id="errorSearch" type="text" placeholder="Search message, script, player..." oninput="applyErrorFilters()">
+        <div class="filter-chip chip-all active-chip" onclick="setErrType('all',this)">ALL</div>
+        <div class="filter-chip chip-critical" onclick="setErrType('critical',this)">🔴 CRITICAL</div>
+        <div class="filter-chip chip-script" onclick="setErrType('script',this)">🟡 SCRIPT</div>
+        <div class="filter-chip chip-network" onclick="setErrType('network',this)">🔵 NETWORK</div>
+        <div class="filter-chip chip-new" onclick="setErrType('new',this)">🟢 NEW BUILD</div>
+        <div class="filter-chip chip-ignored" onclick="setErrType('ignored',this)">⚫ IGNORED</div>
+        <select class="sort-select" id="errorSort" onchange="applyErrorFilters()">
+          <option value="count">SORT: MOST FREQUENT</option>
+          <option value="recent">SORT: MOST RECENT</option>
+          <option value="impact">SORT: HIGHEST IMPACT</option>
+          <option value="fps">SORT: WORST FPS</option>
+        </select>
+      </div>
+
+      <div class="error-results-info">
+        <span id="errorResultsInfo">—</span>
+        <span style="color:var(--muted2)">CLICK ERROR TO EXPAND · RIGHT-CLICK TO IGNORE</span>
+      </div>
+
+      <div id="errorList"><div class="empty-state">NO ERRORS — CLEAN!</div></div>
     </div>
   </div>
 
@@ -809,6 +1027,7 @@ const DB_URL = "https://smash-city-9d54a-default-rtdb.firebaseio.com/";
 const DB_SECRET = "1LTSDfTLeLBjA1KL41eyq5j5ggBKZjwwsHVgvNW7";
 
 let allData = { sessions: [], snapshots: [], events: [], clientJoins: [], clientErrors: [], serverErrors: [], livePlayers: {}, stats: {} };
+let rawData = { sessions: [], snapshots: [], events: [] }; // unfiltered, used for build dropdown
 
 async function fbGet(path) {
   try {
@@ -875,6 +1094,11 @@ async function loadAll() {
     allData.livePlayers = livePlayers || {};
     allData.stats = stats || {};
 
+    // Save raw unfiltered copies so build dropdown always shows ALL builds
+    rawData.sessions = allData.sessions.slice();
+    rawData.snapshots = allData.snapshots.slice();
+    rawData.events = allData.events.slice();
+
     document.getElementById("lastFetch").textContent = "UPDATED " + new Date().toLocaleTimeString();
     document.getElementById("onlineCount").textContent = (allData.stats.onlineCount || 0) + " ONLINE";
     document.title = "GamePulse — " + g.toUpperCase();
@@ -925,18 +1149,24 @@ function getActiveBuild() {
 function filtered(arr) {
   const b = getActiveBuild();
   if (b === "ALL") return arr;
-  return arr.filter(x => x.build === b);
+  // Records with no build tag = legacy data, treat as LEGACY
+  return arr.filter(x => (x.build || "LEGACY") === b);
 }
 
 function updateBuildDropdown() {
   const builds = new Set();
-  [...allData.snapshots, ...allData.sessions, ...allData.events].forEach(x => { if(x.build) builds.add(x.build); });
+  // Always scan raw (unfiltered) data so ALL builds appear regardless of current filter
+  [...rawData.snapshots, ...rawData.sessions, ...rawData.events].forEach(x => {
+    if (x.build) builds.add(x.build);
+    else builds.add("LEGACY");
+  });
   const sel = document.getElementById("buildFilter");
   const current = sel.value;
   sel.innerHTML = '<option value="ALL">ALL BUILDS</option>';
   [...builds].sort().reverse().forEach(b => {
     const opt = document.createElement("option");
-    opt.value = b; opt.textContent = b;
+    opt.value = b;
+    opt.textContent = b === "LEGACY" ? "⚠ LEGACY (untagged)" : b;
     if (b === current) opt.selected = true;
     sel.appendChild(opt);
   });
@@ -1340,6 +1570,121 @@ function renderLive() {
 }
 
 // ─── ERRORS ─────────────────────────────────────────────
+// ─── ERROR INTELLIGENCE ─────────────────────────────────────────────────────
+
+// Patterns that are useless noise — auto-classify as ignored
+const NOISE_PATTERNS = [
+  /attempt to index nil/i,
+  /players\..+\.character/i,
+  /is not a valid member of players/i,
+  /humanoid.*nil/i,
+  /infinite yield possible/i,
+  /unable to cast value to object/i,
+  /runservice.*heartbeat/i,
+];
+
+// Patterns that are critical — flag immediately
+const CRITICAL_PATTERNS = [
+  /stack overflow/i,
+  /out of memory/i,
+  /datastore/i,
+  /httpservice/i,
+  /remote.*fireserver/i,
+  /leaderstats/i,
+  /saving/i,
+  /load.*data/i,
+  /purchase/i,
+  /game.*service/i,
+];
+
+const NETWORK_PATTERNS = [
+  /http/i, /request/i, /socket/i, /remote/i, /replicated/i
+];
+
+let errorState = {
+  grouped: [],        // all grouped errors (raw, unfiltered)
+  ignored: new Set(JSON.parse(localStorage.getItem('gp_ignored') || '[]')),
+  typeFilter: 'all',
+  showIgnored: false,
+  currentBuild: null,
+};
+
+function saveIgnored() {
+  try { localStorage.setItem('gp_ignored', JSON.stringify([...errorState.ignored])); } catch(e){}
+}
+
+function classifyError(msg) {
+  if (!msg) return 'info';
+  if (CRITICAL_PATTERNS.some(p => p.test(msg))) return 'critical';
+  if (NOISE_PATTERNS.some(p => p.test(msg))) return 'noise';
+  if (NETWORK_PATTERNS.some(p => p.test(msg))) return 'network';
+  return 'script';
+}
+
+function errorKey(msg) {
+  // Normalize message to group similar errors (strip line numbers, memory addresses, player names)
+  return (msg || '')
+    .replace(/line \d+/gi, 'line N')
+    .replace(/\b\d{5,}\b/g, 'ID')
+    .replace(/Players\.[^.]+\./gi, 'Players.PLAYER.')
+    .replace(/\s+/g, ' ')
+    .trim()
+    .slice(0, 120);
+}
+
+function groupErrors(ceArr, seArr) {
+  const groups = {};
+
+  const process = (arr, source) => {
+    arr.forEach(e => {
+      const msg = e.message || 'Unknown error';
+      const key = source + '::' + errorKey(msg);
+      if (!groups[key]) {
+        groups[key] = {
+          key,
+          message: msg,
+          source,
+          script: e.script || '?',
+          classification: classifyError(msg),
+          occurrences: [],
+          builds: new Set(),
+          platforms: new Set(),
+          fpsSamples: [],
+          pingSamples: [],
+          firstSeen: e.time || 0,
+          lastSeen: e.time || 0,
+        };
+      }
+      const g = groups[key];
+      g.occurrences.push(e);
+      if (e.build) g.builds.add(e.build);
+      if (e.platform) g.platforms.add(e.platform);
+      if (e.fps) g.fpsSamples.push(e.fps);
+      if (e.ping) g.pingSamples.push(e.ping);
+      if ((e.time||0) < g.firstSeen) g.firstSeen = e.time||0;
+      if ((e.time||0) > g.lastSeen) g.lastSeen = e.time||0;
+    });
+  };
+
+  process(ceArr, 'client');
+  process(seArr, 'server');
+
+  return Object.values(groups).map(g => {
+    const avgFps = g.fpsSamples.length ? Math.round(g.fpsSamples.reduce((a,b)=>a+b,0)/g.fpsSamples.length) : null;
+    const avgPing = g.pingSamples.length ? Math.round(g.pingSamples.reduce((a,b)=>a+b,0)/g.pingSamples.length) : null;
+    // Impact score: frequency × severity boost
+    const sevBoost = g.classification === 'critical' ? 5 : g.classification === 'network' ? 2 : g.classification === 'noise' ? 0.1 : 1;
+    const fpsPenalty = (avgFps && avgFps < 20) ? 2 : 1;
+    g.impactScore = g.occurrences.length * sevBoost * fpsPenalty;
+    g.avgFps = avgFps;
+    g.avgPing = avgPing;
+    g.count = g.occurrences.length;
+    g.builds = [...g.builds];
+    g.platforms = [...g.platforms];
+    return g;
+  });
+}
+
 function renderErrors() {
   const ce = filtered(allData.clientErrors);
   const se = filtered(allData.serverErrors);
@@ -1348,25 +1693,172 @@ function renderErrors() {
   document.getElementById("er-client").textContent = ce.length;
   document.getElementById("er-server").textContent = se.length;
 
-  // Error-quit: sessions that had a verdict other than normal AND we have client errors
   const errorRate = ce.length > 0 ? Math.min(Math.round((ce.length / Math.max(snap.length,1)) * 100), 100) : 0;
   document.getElementById("er-correlation").textContent = errorRate + "%";
 
-  const recentCE = [...ce].sort((a,b)=>(b.time||0)-(a.time||0)).slice(0,10);
-  document.getElementById("clientErrorLog").innerHTML = recentCE.length ? recentCE.map(e => `
-    <div class="error-row">
-      <div class="error-msg">${e.message||"Unknown error"}</div>
-      <div class="error-meta">Script: ${e.script||"?"} | FPS: ${e.fps||"?"} | Ping: ${e.ping||"?"}ms | Session: ${Math.floor((e.sessionSeconds||0)/60)}min | ${e.name||"?"} | ${e.platform||"?"}</div>
-    </div>
-  `).join("") : '<div class="empty-state">NO CLIENT ERRORS — CLEAN!</div>';
+  // Group and store
+  errorState.grouped = groupErrors(ce, se);
+  errorState.currentBuild = allData.stats.currentBuild || null;
 
-  const recentSE = [...se].sort((a,b)=>(b.time||0)-(a.time||0)).slice(0,10);
-  document.getElementById("serverErrorLog").innerHTML = recentSE.length ? recentSE.map(e => `
-    <div class="error-row">
-      <div class="error-msg">${e.message||"Unknown error"}</div>
-      <div class="error-meta">Script: ${e.script||"?"} | ${new Date((e.time||0)*1000).toLocaleString()}</div>
+  const unique = errorState.grouped.length;
+  document.getElementById("er-unique").textContent = unique;
+
+  applyErrorFilters();
+}
+
+function setErrType(type, el) {
+  errorState.typeFilter = type;
+  document.querySelectorAll('.filter-chip').forEach(c => c.classList.remove('active-chip'));
+  el.classList.add('active-chip');
+  applyErrorFilters();
+}
+
+function toggleShowIgnored() {
+  errorState.showIgnored = !errorState.showIgnored;
+  const btn = document.getElementById('ignoredToggleBtn');
+  btn.textContent = errorState.showIgnored ? 'HIDE IGNORED' : 'SHOW IGNORED';
+  btn.style.color = errorState.showIgnored ? 'var(--accent4)' : '';
+  btn.style.borderColor = errorState.showIgnored ? 'var(--accent4)' : '';
+  applyErrorFilters();
+}
+
+function applyErrorFilters() {
+  const search = (document.getElementById('errorSearch').value || '').toLowerCase();
+  const type = errorState.typeFilter;
+  const sort = document.getElementById('errorSort').value;
+  const showIgnored = errorState.showIgnored;
+
+  let groups = [...errorState.grouped];
+
+  // Apply type filter
+  if (type === 'critical') groups = groups.filter(g => g.classification === 'critical');
+  else if (type === 'script') groups = groups.filter(g => g.classification === 'script');
+  else if (type === 'network') groups = groups.filter(g => g.classification === 'network');
+  else if (type === 'new') groups = groups.filter(g => errorState.currentBuild && g.builds.includes(errorState.currentBuild));
+  else if (type === 'ignored') groups = groups.filter(g => errorState.ignored.has(g.key));
+  else if (type === 'all') {
+    if (!showIgnored) groups = groups.filter(g => !errorState.ignored.has(g.key));
+  }
+
+  // If not in ignored-only view, hide ignored unless showIgnored is on
+  if (type !== 'ignored' && !showIgnored) {
+    groups = groups.filter(g => !errorState.ignored.has(g.key));
+  }
+
+  // Apply search
+  if (search) {
+    groups = groups.filter(g =>
+      g.message.toLowerCase().includes(search) ||
+      g.script.toLowerCase().includes(search) ||
+      g.builds.join(' ').toLowerCase().includes(search) ||
+      g.platforms.join(' ').toLowerCase().includes(search) ||
+      g.occurrences.some(o => (o.name||'').toLowerCase().includes(search))
+    );
+  }
+
+  // Sort
+  if (sort === 'count') groups.sort((a,b) => b.count - a.count);
+  else if (sort === 'recent') groups.sort((a,b) => b.lastSeen - a.lastSeen);
+  else if (sort === 'impact') groups.sort((a,b) => b.impactScore - a.impactScore);
+  else if (sort === 'fps') groups.sort((a,b) => (a.avgFps||999) - (b.avgFps||999));
+
+  document.getElementById('errorResultsInfo').textContent =
+    groups.length + ' error type' + (groups.length !== 1 ? 's' : '') +
+    ' shown · ' + groups.reduce((a,g) => a+g.count, 0) + ' total occurrences';
+
+  document.getElementById('er-showing').textContent = groups.length + ' TYPES';
+
+  if (!groups.length) {
+    document.getElementById('errorList').innerHTML = '<div class="empty-state">NO ERRORS MATCH YOUR FILTER</div>';
+    return;
+  }
+
+  document.getElementById('errorList').innerHTML = groups.map(g => renderErrorCard(g, search)).join('');
+}
+
+function renderErrorCard(g, search='') {
+  const isIgnored = errorState.ignored.has(g.key);
+  const sevClass = g.classification === 'critical' ? 'sev-critical' :
+                   g.classification === 'noise'    ? 'sev-info' : 'sev-warning';
+  const impactClass = g.classification === 'critical' ? 'impact-critical' :
+                      g.classification === 'noise'    ? 'impact-info' : 'impact-warning';
+
+  // Highlight search term in message
+  let displayMsg = escHtml(g.message);
+  if (search) {
+    const re = new RegExp('(' + escRegex(search) + ')', 'gi');
+    displayMsg = displayMsg.replace(re, '<span class="highlight">$1</span>');
+  }
+
+  const timeSince = g.lastSeen ? timeAgo(g.lastSeen) : '?';
+  const isNew = errorState.currentBuild && g.builds.includes(errorState.currentBuild);
+  const fpsTag = g.avgFps !== null ? `<span class="etag etag-fps">FPS ${g.avgFps}</span>` : '';
+  const pingTag = g.avgPing !== null ? `<span class="etag etag-ping">PING ${g.avgPing}ms</span>` : '';
+  const platformTags = g.platforms.map(p => `<span class="etag etag-platform">${p}</span>`).join('');
+  const buildTags = g.builds.map(b => `<span class="etag etag-build">${b}</span>`).join('');
+  const newTag = isNew ? `<span class="etag" style="background:rgba(127,255,106,0.15);color:var(--accent3);border:1px solid rgba(127,255,106,0.3)">NEW BUILD</span>` : '';
+  const ignoredTag = isIgnored ? `<span class="etag" style="background:rgba(100,100,100,0.15);color:var(--muted)">IGNORED</span>` : '';
+  const sourceTag = `<span class="etag ${g.source === 'client' ? 'etag-fps' : 'etag-script'}">${g.source.toUpperCase()}</span>`;
+
+  const scriptShort = g.script.split('.').slice(-2).join('.');
+
+  return `<div class="error-card${isIgnored ? ' opacity-50' : ''}" style="${isIgnored ? 'opacity:0.45' : ''}"
+    onclick="toggleErrorExpand(this)"
+    oncontextmenu="ignoreError(event,'${escAttr(g.key)}')">
+    <div class="error-card-header">
+      <div class="error-severity ${sevClass}"></div>
+      <div class="error-card-body">
+        <div class="error-card-msg">${displayMsg}</div>
+        <div class="error-card-tags">
+          ${sourceTag}
+          <span class="etag etag-script">${escHtml(scriptShort)}</span>
+          ${fpsTag}${pingTag}${platformTags}${buildTags}${newTag}${ignoredTag}
+          <span class="etag etag-time">${timeSince}</span>
+        </div>
+      </div>
+      <div class="error-card-right">
+        <div class="error-impact ${impactClass}">${g.count}</div>
+        <div class="error-impact-label">OCCURRENCES</div>
+        ${g.count > 1 ? `<div class="error-count-badge">×${g.count}</div>` : ''}
+      </div>
     </div>
-  `).join("") : '<div class="empty-state">NO SERVER ERRORS — CLEAN!</div>';
+    <div class="error-grouped-note">
+      ${g.count} occurrences across ${g.builds.length} build(s) · ${g.platforms.join(', ')||'?'} · 
+      First seen: ${g.firstSeen ? new Date(g.firstSeen*1000).toLocaleString() : '?'} · 
+      Last seen: ${g.lastSeen ? new Date(g.lastSeen*1000).toLocaleString() : '?'}
+      ${g.avgFps !== null ? ` · Avg FPS when occurring: ${g.avgFps}` : ''}
+      ${g.avgPing !== null ? ` · Avg Ping: ${g.avgPing}ms` : ''}
+      <br><span style="color:var(--muted2);font-size:9px">RIGHT-CLICK TO IGNORE/UNIGNORE THIS ERROR TYPE</span>
+    </div>
+  </div>`;
+}
+
+function toggleErrorExpand(el) {
+  el.classList.toggle('expanded');
+}
+
+function ignoreError(e, key) {
+  e.preventDefault();
+  if (errorState.ignored.has(key)) {
+    errorState.ignored.delete(key);
+  } else {
+    errorState.ignored.add(key);
+  }
+  saveIgnored();
+  applyErrorFilters();
+}
+
+function escHtml(s) {
+  return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+function escAttr(s) { return String(s).replace(/'/g,"\\'").replace(/"/g,'&quot;'); }
+function escRegex(s) { return s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); }
+function timeAgo(ts) {
+  const d = Math.floor(Date.now()/1000 - ts);
+  if (d < 60) return d + 's ago';
+  if (d < 3600) return Math.floor(d/60) + 'm ago';
+  if (d < 86400) return Math.floor(d/3600) + 'h ago';
+  return Math.floor(d/86400) + 'd ago';
 }
 
 // ─── HELPERS ────────────────────────────────────────────
