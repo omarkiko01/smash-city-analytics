@@ -568,6 +568,9 @@
       <span id="onlineCount">— ONLINE</span>
     </div>
     <div style="font-family:var(--font-mono);font-size:10px;color:var(--muted)" id="lastFetch">—</div>
+    <select id="gameFilter" onchange="onGameChange()" style="background:var(--surface2);border:1px solid var(--border);color:var(--accent4);font-family:var(--font-mono);font-size:11px;padding:5px 10px;cursor:pointer;letter-spacing:0.05em;outline:none;">
+      <option value="">LOADING...</option>
+    </select>
     <select id="buildFilter" onchange="renderAll()" style="background:var(--surface2);border:1px solid var(--border);color:var(--accent);font-family:var(--font-mono);font-size:11px;padding:5px 10px;cursor:pointer;letter-spacing:0.05em;outline:none;">
       <option value="ALL">ALL BUILDS</option>
     </select>
@@ -819,13 +822,48 @@ function objToArr(obj) {
   return Object.values(obj);
 }
 
+async function detectGames() {
+  // Fetch root to find all game namespaces
+  const root = await fbGet("");
+  if (!root) return ["smashcity"];
+  // Keys that are game namespaces have sub-keys like sessions/events
+  const knownPaths = ["sessions","exitSnapshots","events","stats","players","clientJoins","clientErrors","serverErrors"];
+  const games = [];
+  for (const [key, val] of Object.entries(root)) {
+    if (val && typeof val === "object" && Object.keys(val).some(k => knownPaths.includes(k))) {
+      games.push(key);
+    }
+  }
+  return games.length ? games.sort() : ["smashcity"];
+}
+
+function getActiveGame() {
+  return document.getElementById("gameFilter").value || "smashcity";
+}
+
+async function onGameChange() {
+  // Reload data for new game then re-render
+  await loadAll();
+}
+
 async function loadAll() {
   setLoadingText("FETCHING DATA...");
   try {
+    // First detect all games and populate dropdown
+    const games = await detectGames();
+    const gameSel = document.getElementById("gameFilter");
+    const currentGame = gameSel.value;
+    gameSel.innerHTML = games.map(g =>
+      `<option value="${g}" ${g === currentGame ? "selected" : ""}>${g.toUpperCase()}</option>`
+    ).join("");
+    // Default to first game if nothing selected
+    if (!gameSel.value) gameSel.value = games[0];
+
+    const g = getActiveGame();
     const [sessions, snapshots, events, clientJoins, clientErrors, serverErrors, livePlayers, stats] = await Promise.all([
-      fbGet("sessions"), fbGet("exitSnapshots"), fbGet("events"),
-      fbGet("clientJoins"), fbGet("clientErrors"), fbGet("serverErrors"),
-      fbGet("players"), fbGet("stats")
+      fbGet(g+"/sessions"), fbGet(g+"/exitSnapshots"), fbGet(g+"/events"),
+      fbGet(g+"/clientJoins"), fbGet(g+"/clientErrors"), fbGet(g+"/serverErrors"),
+      fbGet(g+"/players"), fbGet(g+"/stats")
     ]);
 
     allData.sessions = objToArr(sessions);
@@ -839,10 +877,12 @@ async function loadAll() {
 
     document.getElementById("lastFetch").textContent = "UPDATED " + new Date().toLocaleTimeString();
     document.getElementById("onlineCount").textContent = (allData.stats.onlineCount || 0) + " ONLINE";
+    document.title = "GamePulse — " + g.toUpperCase();
 
     renderAll();
   } catch(e) {
     setLoadingText("ERROR LOADING DATA");
+    console.error(e);
   }
   hideLoading();
 }
