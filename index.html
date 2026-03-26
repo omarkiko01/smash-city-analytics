@@ -1368,23 +1368,40 @@ function filtered(arr) {
 }
 
 function updateBuildDropdown() {
-  const builds = new Set();
-  // Always scan raw (unfiltered) data so ALL builds appear regardless of current filter
-  [...rawData.snapshots, ...rawData.sessions, ...rawData.events].forEach(x => {
-    if (x.build) builds.add(x.build);
-    else builds.add("LEGACY");
-  });
   const sel = document.getElementById("buildFilter");
-  const current = sel.value;
+  const current = sel.value; // remember what user had selected
+
+  // Build the set — respect studio filter so ghost builds don't appear
+  const builds = new Set();
+  const allRaw = [...rawData.snapshots, ...rawData.sessions, ...rawData.events,
+                  ...(rawData.bhLeaves||[]), ...(rawData.bhDeaths||[])];
+  allRaw.forEach(x => {
+    // Skip studio records if studio is excluded — prevents ghost builds
+    if (excludeStudio && x.isStudio === true) return;
+    if (x.build) builds.add(x.build);
+  });
+
+  const sortedBuilds = [...builds].sort().reverse(); // newest first (alphabetical desc)
+
   sel.innerHTML = '<option value="ALL">ALL BUILDS</option>';
-  [...builds].sort().reverse().forEach(b => {
+  sortedBuilds.forEach(b => {
     const opt = document.createElement("option");
     opt.value = b;
-    opt.textContent = b === "LEGACY" ? "⚠ LEGACY (untagged)" : b;
-    if (b === current) opt.selected = true;
+    opt.textContent = b;
     sel.appendChild(opt);
   });
-  // Show current build from stats
+
+  // Default to latest build on first load (when nothing meaningful is selected)
+  // Otherwise restore the user's previous selection if it still exists
+  const validSelection = sortedBuilds.includes(current);
+  if (validSelection) {
+    sel.value = current;
+  } else if (sortedBuilds.length > 0) {
+    // Auto-select the latest (most recent) build
+    sel.value = sortedBuilds[0];
+  }
+  // else leave on ALL BUILDS if no builds found at all
+
   if (allData.stats.currentBuild) {
     document.title = "GamePulse — " + allData.stats.currentBuild;
   }
