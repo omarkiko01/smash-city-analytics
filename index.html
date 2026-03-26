@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>GamePulse — Smash City Analytics</title>
+<title>GamePulse Analytics</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
 <style>
@@ -760,7 +760,7 @@
 <header>
   <div class="logo">
     <div class="logo-dot"></div>
-    GAMEPULSE — SMASH CITY
+    GAMEPULSE
   </div>
   <div class="header-right">
     <div class="live-badge">
@@ -779,12 +779,14 @@
 </header>
 
 <div class="tabs">
+  <div id="tabBar" style="display:contents">
   <div class="tab active" onclick="switchTab('overview')">Overview</div>
   <div class="tab" onclick="switchTab('retention')">Retention Intel</div>
   <div class="tab" onclick="switchTab('performance')">Performance</div>
   <div class="tab" onclick="switchTab('behavior')">Behavior</div>
   <div class="tab" onclick="switchTab('live')">Live Feed</div>
   <div class="tab" onclick="switchTab('errors')">Errors</div>
+  </div>
 </div>
 
 <main>
@@ -1020,6 +1022,171 @@
     </div>
   </div>
 
+
+  <!-- BLACK HOLE: OVERVIEW -->
+  <div class="tab-panel" id="bh-tab-overview">
+    <div class="section-header">
+      <div class="section-title">Be a Black Hole</div>
+      <div class="section-heading">Game <span>Overview</span></div>
+    </div>
+    <div class="stat-grid stat-grid-4">
+      <div class="stat-card accent"><div class="stat-label">Total Sessions</div><div class="stat-value accent" id="bh-ov-total">—</div><div class="stat-sub">all time</div></div>
+      <div class="stat-card green"><div class="stat-label">Avg Real Game Time</div><div class="stat-value green" id="bh-ov-gametime">—</div><div class="stat-sub">in arena (not lobby)</div></div>
+      <div class="stat-card yellow"><div class="stat-label">Lobby-Only Quits</div><div class="stat-value yellow" id="bh-ov-lobbyonly">—</div><div class="stat-sub">never entered game</div></div>
+      <div class="stat-card red"><div class="stat-label">Perf Quit Rate</div><div class="stat-value red" id="bh-ov-perf">—</div><div class="stat-sub">% left due to lag</div></div>
+    </div>
+    <div class="stat-grid stat-grid-4">
+      <div class="stat-card accent"><div class="stat-label">Avg Score at Leave</div><div class="stat-value accent" id="bh-ov-score">—</div><div class="stat-sub">how far they got</div></div>
+      <div class="stat-card green"><div class="stat-label">Avg Eaten Times</div><div class="stat-value green" id="bh-ov-eaten">—</div><div class="stat-sub">deaths per session</div></div>
+      <div class="stat-card yellow"><div class="stat-label">Rage Quits In-Game</div><div class="stat-value yellow" id="bh-ov-rage">—</div><div class="stat-sub">left while playing</div></div>
+      <div class="stat-card red"><div class="stat-label">Returned After Death</div><div class="stat-value red" id="bh-ov-returned">—</div><div class="stat-sub">entered gate again</div></div>
+    </div>
+    <div class="panel">
+      <div class="panel-header"><div class="panel-title">Leave Type Breakdown</div><div class="panel-tag yellow">WHY THEY LEFT</div></div>
+      <div class="panel-body"><div class="bar-chart" id="bh-leaveTypeChart"></div></div>
+    </div>
+    <div class="panel">
+      <div class="panel-header"><div class="panel-title">Session Length Distribution (Real Game Time)</div><div class="panel-tag accent">ARENA TIME ONLY</div></div>
+      <div class="panel-body"><div class="bar-chart" id="bh-sessionBuckets"></div></div>
+    </div>
+  </div>
+
+  <!-- BLACK HOLE: FUNNEL -->
+  <div class="tab-panel" id="bh-tab-funnel">
+    <div class="section-header">
+      <div class="section-title">Be a Black Hole — Funnel</div>
+      <div class="section-heading">Score Progression <span>Drop-off</span></div>
+    </div>
+    <div class="insight-list" id="bh-funnelInsights"></div>
+    <div class="panel" style="margin-top:24px">
+      <div class="panel-header"><div class="panel-title">Score Bracket Funnel — Where Players Stop Growing</div><div class="panel-tag red">DROP-OFF ANALYSIS</div></div>
+      <div class="panel-body">
+        <div class="bar-chart" id="bh-scoreFunnelChart"></div>
+        <div style="margin-top:16px;font-size:11px;color:var(--muted);font-family:var(--font-mono)">↑ How many players reached each score bracket. Drop = where your progression wall is.</div>
+      </div>
+    </div>
+    <div class="panel">
+      <div class="panel-header"><div class="panel-title">First Death vs Repeat Death Retention</div><div class="panel-tag yellow">FORGIVENESS MECHANIC ANALYSIS</div></div>
+      <div class="panel-body"><div class="cohort-split" id="bh-forgivenessCohort"></div></div>
+    </div>
+  </div>
+
+  <!-- BLACK HOLE: DEATH INTEL -->
+  <div class="tab-panel" id="bh-tab-deaths">
+    <div class="section-header">
+      <div class="section-title">Be a Black Hole — Death Intel</div>
+      <div class="section-heading">When & Why <span>Players Die</span></div>
+    </div>
+    <div class="stat-grid stat-grid-4">
+      <div class="stat-card red"><div class="stat-label">Total Deaths Logged</div><div class="stat-value red" id="bh-d-total">—</div><div class="stat-sub">all bh_deaths events</div></div>
+      <div class="stat-card yellow"><div class="stat-label">Avg Score at Death</div><div class="stat-value yellow" id="bh-d-avgscore">—</div><div class="stat-sub">how big before dying</div></div>
+      <div class="stat-card accent"><div class="stat-label">PvP Deaths</div><div class="stat-value accent" id="bh-d-pvp">—</div><div class="stat-sub">eaten by real player</div></div>
+      <div class="stat-card green"><div class="stat-label">Avg Time In Game at Death</div><div class="stat-value green" id="bh-d-time">—</div><div class="stat-sub">minutes survived</div></div>
+    </div>
+    <div class="panel">
+      <div class="panel-header"><div class="panel-title">Score at Death Distribution</div><div class="panel-tag red">WHERE THE WALL IS</div></div>
+      <div class="panel-body">
+        <div class="bar-chart" id="bh-scoreAtDeathChart"></div>
+        <div style="margin-top:16px;font-size:11px;color:var(--muted);font-family:var(--font-mono)">↑ Score bracket when player died. Spike at low scores = players never got started. Spike at 50k = shield removal wall.</div>
+      </div>
+    </div>
+    <div class="panel">
+      <div class="panel-header"><div class="panel-title">PvP Death — Score Gap Analysis</div><div class="panel-tag yellow">FAIRNESS CHECK</div></div>
+      <div class="panel-body">
+        <div class="insight-list" id="bh-pvpInsights"></div>
+      </div>
+    </div>
+    <div class="panel">
+      <div class="panel-header"><div class="panel-title">Deaths by EatenTimes (Which Death Number Causes Quit)</div><div class="panel-tag accent">QUIT TRIGGER</div></div>
+      <div class="panel-body">
+        <div class="bar-chart" id="bh-eatenTimesChart"></div>
+        <div style="margin-top:16px;font-size:11px;color:var(--muted);font-family:var(--font-mono)">↑ Most quits happen on death N. That's your retention breaking point.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- BLACK HOLE: PERFORMANCE -->
+  <div class="tab-panel" id="bh-tab-perf">
+    <div class="section-header">
+      <div class="section-title">Be a Black Hole — Performance</div>
+      <div class="section-heading">FPS, Ping & <span>Lag Impact</span></div>
+    </div>
+    <div class="stat-grid stat-grid-4">
+      <div class="stat-card red"><div class="stat-label">Sessions w/ Low FPS</div><div class="stat-value red" id="bh-pf-lowfps">—</div><div class="stat-sub">avg FPS &lt; 25</div></div>
+      <div class="stat-card yellow"><div class="stat-label">Sessions w/ High Ping</div><div class="stat-value yellow" id="bh-pf-highping">—</div><div class="stat-sub">ping &gt; 300ms</div></div>
+      <div class="stat-card accent"><div class="stat-label">Avg FPS (all sessions)</div><div class="stat-value accent" id="bh-pf-avgfps">—</div><div class="stat-sub">frames per second</div></div>
+      <div class="stat-card green"><div class="stat-label">Laggers vs Score</div><div class="stat-value green" id="bh-pf-lagdiff">—</div><div class="stat-sub">score diff laggers vs clean</div></div>
+    </div>
+    <div class="panel">
+      <div class="panel-header"><div class="panel-title">Performance vs Score Reached Correlation</div><div class="panel-tag red">LAG = CAN'T GROW</div></div>
+      <div class="panel-body"><div class="insight-list" id="bh-perfInsights"></div></div>
+    </div>
+    <div class="panel">
+      <div class="panel-header"><div class="panel-title">Platform Breakdown</div><div class="panel-tag accent">PC vs MOBILE vs CONSOLE</div></div>
+      <div class="panel-body"><div class="bar-chart" id="bh-platformChart"></div></div>
+    </div>
+  </div>
+
+  <!-- BLACK HOLE: LIVE -->
+  <div class="tab-panel" id="bh-tab-live">
+    <div class="section-header">
+      <div class="section-title">Be a Black Hole — Live</div>
+      <div class="section-heading">Active Players <span>Right Now</span></div>
+    </div>
+    <div class="stat-grid stat-grid-3">
+      <div class="stat-card green"><div class="stat-label">Online Now</div><div class="stat-value green" id="bh-lv-online">—</div><div class="stat-sub">active players</div></div>
+      <div class="stat-card red"><div class="stat-label">Lagging</div><div class="stat-value red" id="bh-lv-lagging">—</div><div class="stat-sub">FPS &lt; 20 or ping &gt; 300</div></div>
+      <div class="stat-card yellow"><div class="stat-label">In Arena</div><div class="stat-value yellow" id="bh-lv-ingame">—</div><div class="stat-sub">actually playing (not lobby)</div></div>
+    </div>
+    <div class="panel">
+      <div class="panel-header"><div class="panel-title">Active Players</div><div class="panel-tag green">LIVE</div></div>
+      <div class="panel-body" id="bh-liveTable"><div class="empty-state">NO ACTIVE PLAYERS</div></div>
+    </div>
+    <div class="panel">
+      <div class="panel-header"><div class="panel-title">Recent Events</div><div class="panel-tag accent">REAL-TIME</div></div>
+      <div class="panel-body" id="bh-recentEvents"><div class="empty-state">NO EVENTS YET</div></div>
+    </div>
+  </div>
+
+  <!-- BLACK HOLE: ERRORS (reuses generic errors tab, just relabeled) -->
+  <div class="tab-panel" id="bh-tab-errors">
+    <div class="section-header">
+      <div class="section-title">Be a Black Hole — Errors</div>
+      <div class="section-heading">Smart Error <span>Filter</span></div>
+    </div>
+    <div class="stat-grid stat-grid-4">
+      <div class="stat-card red"><div class="stat-label">Client Errors</div><div class="stat-value red" id="bh-er-client">—</div><div class="stat-sub">total occurrences</div></div>
+      <div class="stat-card yellow"><div class="stat-label">Server Errors</div><div class="stat-value yellow" id="bh-er-server">—</div><div class="stat-sub">total occurrences</div></div>
+      <div class="stat-card red"><div class="stat-label">Unique Types</div><div class="stat-value red" id="bh-er-unique">—</div><div class="stat-sub">distinct messages</div></div>
+      <div class="stat-card accent"><div class="stat-label">Error-Session Rate</div><div class="stat-value accent" id="bh-er-rate">—</div><div class="stat-sub">% sessions had errors</div></div>
+    </div>
+    <div class="panel">
+      <div class="panel-header" style="flex-wrap:wrap;gap:8px">
+        <div class="panel-title">All Errors — Grouped & Ranked</div>
+        <div style="display:flex;gap:6px;align-items:center;flex-wrap:wrap">
+          <span class="panel-tag red" id="bh-er-showing">—</span>
+          <button class="ignored-toggle" id="bh-ignoredBtn" onclick="bhToggleIgnored()">SHOW IGNORED</button>
+        </div>
+      </div>
+      <div class="error-toolbar">
+        <input class="error-search" id="bh-errorSearch" type="text" placeholder="Search message, script, player..." oninput="bhApplyFilters()">
+        <div class="filter-chip chip-all active-chip" onclick="bhSetType('all',this)">ALL</div>
+        <div class="filter-chip chip-critical" onclick="bhSetType('critical',this)">🔴 CRITICAL</div>
+        <div class="filter-chip chip-script" onclick="bhSetType('script',this)">🟡 SCRIPT</div>
+        <div class="filter-chip chip-network" onclick="bhSetType('network',this)">🔵 NETWORK</div>
+        <div class="filter-chip chip-new" onclick="bhSetType('new',this)">🟢 NEW BUILD</div>
+        <div class="filter-chip chip-ignored" onclick="bhSetType('ignored',this)">⚫ IGNORED</div>
+        <select class="sort-select" id="bh-errorSort" onchange="bhApplyFilters()">
+          <option value="count">SORT: MOST FREQUENT</option>
+          <option value="recent">SORT: MOST RECENT</option>
+          <option value="impact">SORT: HIGHEST IMPACT</option>
+        </select>
+      </div>
+      <div class="error-results-info"><span id="bh-errorInfo">—</span></div>
+      <div id="bh-errorList"><div class="empty-state">NO ERRORS — CLEAN!</div></div>
+    </div>
+  </div>
+
 </main>
 
 <script>
@@ -1079,11 +1246,18 @@ async function loadAll() {
     if (!gameSel.value) gameSel.value = games[0];
 
     const g = getActiveGame();
-    const [sessions, snapshots, events, clientJoins, clientErrors, serverErrors, livePlayers, stats] = await Promise.all([
+    const isBH = g === "blackhole";
+    const fetches = [
       fbGet(g+"/sessions"), fbGet(g+"/exitSnapshots"), fbGet(g+"/events"),
       fbGet(g+"/clientJoins"), fbGet(g+"/clientErrors"), fbGet(g+"/serverErrors"),
-      fbGet(g+"/players"), fbGet(g+"/stats")
-    ]);
+      fbGet(g+"/players"), fbGet(g+"/stats"),
+      isBH ? fbGet(g+"/bh_leaves") : Promise.resolve(null),
+      isBH ? fbGet(g+"/bh_deaths") : Promise.resolve(null),
+      isBH ? fbGet(g+"/bh_pvpDeaths") : Promise.resolve(null),
+      isBH ? fbGet(g+"/bh_gameEnters") : Promise.resolve(null),
+    ];
+    const [sessions, snapshots, events, clientJoins, clientErrors, serverErrors, livePlayers, stats,
+           bhLeaves, bhDeaths, bhPvpDeaths, bhGameEnters] = await Promise.all(fetches);
 
     allData.sessions = objToArr(sessions);
     allData.snapshots = objToArr(snapshots);
@@ -1093,11 +1267,17 @@ async function loadAll() {
     allData.serverErrors = objToArr(serverErrors);
     allData.livePlayers = livePlayers || {};
     allData.stats = stats || {};
+    allData.bhLeaves = objToArr(bhLeaves);
+    allData.bhDeaths = objToArr(bhDeaths);
+    allData.bhPvpDeaths = objToArr(bhPvpDeaths);
+    allData.bhGameEnters = objToArr(bhGameEnters);
 
     // Save raw unfiltered copies so build dropdown always shows ALL builds
     rawData.sessions = allData.sessions.slice();
     rawData.snapshots = allData.snapshots.slice();
     rawData.events = allData.events.slice();
+    rawData.bhLeaves = allData.bhLeaves.slice();
+    rawData.bhDeaths = allData.bhDeaths.slice();
 
     document.getElementById("lastFetch").textContent = "UPDATED " + new Date().toLocaleTimeString();
     document.getElementById("onlineCount").textContent = (allData.stats.onlineCount || 0) + " ONLINE";
@@ -1117,12 +1297,28 @@ function hideLoading() {
 }
 
 function switchTab(id) {
-  document.querySelectorAll(".tab").forEach((t,i) => t.classList.remove("active"));
+  const game = getActiveGame();
+  const isBH = game === "blackhole";
+
+  // Update tab bar for game
+  const tabBar = document.getElementById("tabBar");
+  const bhTabs = ["overview","funnel","deaths","perf","live","errors"];
+  const genericTabs = ["overview","retention","performance","behavior","live","errors"];
+  const labels = isBH
+    ? ["Overview","Score Funnel","Death Intel","Performance","Live Feed","Errors"]
+    : ["Overview","Retention Intel","Performance","Behavior","Live Feed","Errors"];
+  const tabList = isBH ? bhTabs : genericTabs;
+
+  tabBar.innerHTML = tabList.map((t,i) =>
+    `<div class="tab${t===id?' active':''}" onclick="switchTab('${t}')">${labels[i]}</div>`
+  ).join("");
+
   document.querySelectorAll(".tab-panel").forEach(p => p.classList.remove("active"));
-  const tabs = ["overview","retention","performance","behavior","live","errors"];
-  const idx = tabs.indexOf(id);
-  if(idx >= 0) document.querySelectorAll(".tab")[idx].classList.add("active");
-  document.getElementById("tab-" + id).classList.add("active");
+
+  const panelId = isBH ? ("bh-tab-" + id) : ("tab-" + id);
+  const panel = document.getElementById(panelId);
+  if (panel) panel.classList.add("active");
+
   animateBars();
 }
 
@@ -1178,12 +1374,60 @@ function updateBuildDropdown() {
 
 function renderAll() {
   updateBuildDropdown();
-  renderOverview();
-  renderRetention();
-  renderPerformance();
-  renderBehavior();
-  renderLive();
-  renderErrors();
+  const game = getActiveGame();
+  const isBH = game === "blackhole";
+
+  // Re-render tabs for the current game (preserves active tab if valid)
+  const activePanel = document.querySelector(".tab-panel.active");
+  const activePanelId = activePanel ? activePanel.id : null;
+
+  if (isBH) {
+    const bhTabs = ["overview","funnel","deaths","perf","live","errors"];
+    const labels = ["Overview","Score Funnel","Death Intel","Performance","Live Feed","Errors"];
+    document.getElementById("tabBar").innerHTML = bhTabs.map((t,i) =>
+      `<div class="tab" onclick="switchTab('${t}')">${labels[i]}</div>`
+    ).join("");
+    // Activate first BH tab or restore previous
+    let toActivate = "overview";
+    if (activePanelId && activePanelId.startsWith("bh-tab-")) {
+      toActivate = activePanelId.replace("bh-tab-","");
+    }
+    document.querySelectorAll(".tab-panel").forEach(p => p.classList.remove("active"));
+    const p = document.getElementById("bh-tab-" + toActivate);
+    if (p) p.classList.add("active");
+    const tabs = document.querySelectorAll(".tab");
+    const bhTabList = ["overview","funnel","deaths","perf","live","errors"];
+    tabs.forEach((t,i) => { if(bhTabList[i]===toActivate) t.classList.add("active"); });
+
+    renderBH_Overview();
+    renderBH_Funnel();
+    renderBH_Deaths();
+    renderBH_Perf();
+    renderBH_Live();
+    renderBH_Errors();
+  } else {
+    const genericTabs = ["overview","retention","performance","behavior","live","errors"];
+    const labels = ["Overview","Retention Intel","Performance","Behavior","Live Feed","Errors"];
+    document.getElementById("tabBar").innerHTML = genericTabs.map((t,i) =>
+      `<div class="tab" onclick="switchTab('${t}')">${labels[i]}</div>`
+    ).join("");
+    let toActivate = "overview";
+    if (activePanelId && activePanelId.startsWith("tab-")) {
+      toActivate = activePanelId.replace("tab-","");
+    }
+    document.querySelectorAll(".tab-panel").forEach(p => p.classList.remove("active"));
+    const p = document.getElementById("tab-" + toActivate);
+    if (p) p.classList.add("active");
+    const tabs = document.querySelectorAll(".tab");
+    tabs.forEach((t,i) => { if(genericTabs[i]===toActivate) t.classList.add("active"); });
+
+    renderOverview();
+    renderRetention();
+    renderPerformance();
+    renderBehavior();
+    renderLive();
+    renderErrors();
+  }
   setTimeout(animateBars, 100);
 }
 
@@ -1890,6 +2134,403 @@ setInterval(() => {
 }, 15000);
 
 loadAll();
+
+// ════════════════════════════════════════════════════════════════════════
+// BLACK HOLE SPECIFIC RENDER FUNCTIONS
+// ════════════════════════════════════════════════════════════════════════
+
+function bhSnap() { return filtered(allData.snapshots); }
+function bhLeaves() { return filtered(allData.bhLeaves || []); }
+function bhDeaths() { return filtered(allData.bhDeaths || []); }
+function bhPvp() { return filtered(allData.bhPvpDeaths || []); }
+function bhEnters() { return filtered(allData.bhGameEnters || []); }
+
+function renderBH_Overview() {
+  const snap = bhSnap();
+  const leaves = bhLeaves();
+  const total = snap.length || leaves.length;
+  if (!total) { return; }
+
+  // Use leaves for richer BH data, fall back to snapshots
+  const src = leaves.length ? leaves : snap;
+
+  const lobbyOnly = src.filter(s => s.leaveType === "lobby_only" || s.everPlayedGame === false || s.everEnteredGame === false).length;
+  const rageQuit = src.filter(s => s.leaveType === "rage_quit_ingame" || s.wasInGame === true).length;
+
+  // Game time — use gameSeconds if available, otherwise sessionSeconds
+  const gameTimes = src.map(s => s.gameSeconds || s.gameMinutes*60 || s.sessionSeconds || 0).filter(v => v > 0);
+  const avgGameSecs = gameTimes.length ? gameTimes.reduce((a,b)=>a+b,0)/gameTimes.length : 0;
+
+  const avgScore = avg(src.filter(s => s.scoreAtLeave), "scoreAtLeave");
+  const avgEaten = avg(src, "eatenTimes");
+  const perfQuits = snap.filter(s => s.verdict === "perf").length;
+  const returned = src.filter(s => (s.eatenTimes || 0) > 0 && s.everEnteredGame !== false).length;
+
+  document.getElementById("bh-ov-total").textContent = total;
+  document.getElementById("bh-ov-gametime").textContent = fmt(avgGameSecs/60) + "m";
+  document.getElementById("bh-ov-lobbyonly").textContent = pct(lobbyOnly, total);
+  document.getElementById("bh-ov-perf").textContent = pct(perfQuits, snap.length||1);
+  document.getElementById("bh-ov-score").textContent = fmtScore(avgScore);
+  document.getElementById("bh-ov-eaten").textContent = fmt(avgEaten);
+  document.getElementById("bh-ov-rage").textContent = pct(rageQuit, total);
+  document.getElementById("bh-ov-returned").textContent = pct(returned, total);
+
+  // Leave type chart
+  const lt = {lobby_only:0, rage_quit_ingame:0, left_from_lobby_after_play:0};
+  src.forEach(s => {
+    const t = s.leaveType || (s.everPlayedGame===false||s.everEnteredGame===false ? "lobby_only" : s.wasInGame ? "rage_quit_ingame" : "left_from_lobby_after_play");
+    lt[t] = (lt[t]||0)+1;
+  });
+  const maxLT = Math.max(...Object.values(lt),1);
+  const ltLabels = {lobby_only:"Never played",rage_quit_ingame:"Rage quit in-arena",left_from_lobby_after_play:"Left lobby after play"};
+  const ltColors = {lobby_only:"accent",rage_quit_ingame:"red",left_from_lobby_after_play:"yellow"};
+  document.getElementById("bh-leaveTypeChart").innerHTML = Object.entries(lt).map(([k,v]) =>
+    barRow(ltLabels[k], v, maxLT, pct(v,total)+" ("+v+")", ltColors[k])
+  ).join("");
+
+  // Session buckets based on real game time
+  const buckets = {"0-1m":0,"1-2m":0,"2-3m":0,"3-5m":0,"5-8m":0,"8-15m":0,"15-30m":0,"30m+":0};
+  src.forEach(s => {
+    const m = (s.gameSeconds||s.gameMinutes*60||s.sessionSeconds||0)/60;
+    if(m<1) buckets["0-1m"]++;
+    else if(m<2) buckets["1-2m"]++;
+    else if(m<3) buckets["2-3m"]++;
+    else if(m<5) buckets["3-5m"]++;
+    else if(m<8) buckets["5-8m"]++;
+    else if(m<15) buckets["8-15m"]++;
+    else if(m<30) buckets["15-30m"]++;
+    else buckets["30m+"]++;
+  });
+  const maxB = Math.max(...Object.values(buckets),1);
+  document.getElementById("bh-sessionBuckets").innerHTML = Object.entries(buckets).map(([k,v]) => {
+    const col = k==="0-1m"?"red":k.includes("30")?"green":"accent";
+    return barRow(k, v, maxB, v+" sessions", col);
+  }).join("");
+}
+
+function renderBH_Funnel() {
+  const deaths = bhDeaths();
+  const snap = bhSnap();
+  const leaves = bhLeaves();
+  const enters = bhEnters();
+  const src = leaves.length ? leaves : snap;
+
+  const insights = [];
+  const total = src.length;
+  if (!total) {
+    document.getElementById("bh-funnelInsights").innerHTML = '<div class="empty-state">NEED MORE DATA — RUN SOME SESSIONS</div>';
+    return;
+  }
+
+  // Lobby-only rate
+  const lobbyOnly = src.filter(s => s.everPlayedGame===false||s.everEnteredGame===false||s.leaveType==="lobby_only").length;
+  if (lobbyOnly > 0) {
+    insights.push({type:"red",icon:"🚪",
+      headline: pct(lobbyOnly,total) + " of all sessions never entered the arena — lobby-only quits",
+      detail: lobbyOnly+" players joined, saw the lobby, and left without ever pressing Play or touching the gate. Possible causes: confusion about how to start, long wait, bad first impression.",
+      stat: pct(lobbyOnly,total), statType:"red"});
+  }
+
+  // First death forgiveness check
+  const firstDeaths = deaths.filter(d => d.isFirstDeath);
+  const repeatDeaths = deaths.filter(d => !d.isFirstDeath);
+  if (firstDeaths.length && repeatDeaths.length) {
+    const avgFirstTime = avg(firstDeaths, "timeInGameSeconds");
+    const avgRepeatTime = avg(repeatDeaths, "timeInGameSeconds");
+    const diff = avgRepeatTime - avgFirstTime;
+    if (Math.abs(diff) > 30) {
+      insights.push({type: diff > 0 ? "green":"yellow", icon:"🛡",
+        headline: diff > 0
+          ? "First-death forgiveness is working — repeat players survive " + fmt(diff/60) + "min longer"
+          : "Players are surviving LESS on repeat deaths (−" + fmt(Math.abs(diff)/60) + "min) — forgiveness may not be helping",
+        detail: "First death avg survival: "+fmt(avgFirstTime/60)+"min. Repeat death avg: "+fmt(avgRepeatTime/60)+"min. The 100% score retention on first death is designed to hook players — check if it's actually keeping them.",
+        stat: (diff>0?"+":"")+fmt(diff/60)+"m", statType: diff>0?"green":"red"});
+    }
+  }
+
+  // Score funnel milestones
+  const milestones = [1,10,100,500,1000,2000,5000,10000,20000,50000,100000,200000];
+  const labels = ["1","10","100","500","1k","2k","5k","10k","20k","50k","100k","200k"];
+  const reached = milestones.map(m => deaths.filter(d => (d.scoreAtDeath||0) >= m).length);
+  const maxR = Math.max(...reached, 1);
+  document.getElementById("bh-scoreFunnelChart").innerHTML = milestones.map((m,i) => {
+    const v = reached[i];
+    const col = m >= 50000 ? "green" : m >= 5000 ? "accent" : m >= 500 ? "yellow" : "red";
+    const pctVal = i > 0 && reached[0] > 0 ? " (" + pct(v,reached[0]) + " of starters)" : "";
+    return barRow(labels[i]+" score", v, maxR, v+" reached"+pctVal, col);
+  }).join("");
+
+  // 50k shield removal spike check
+  const near50k = deaths.filter(d => (d.scoreAtDeath||0) >= 40000 && (d.scoreAtDeath||0) <= 60000).length;
+  const total10kTo40k = deaths.filter(d => (d.scoreAtDeath||0) >= 10000 && (d.scoreAtDeath||0) < 40000).length;
+  if (near50k > total10kTo40k * 0.3 && near50k > 3) {
+    insights.push({type:"red",icon:"💥",
+      headline: "Shield removal at 50k is causing a death spike — " + near50k + " deaths in the 40k-60k range",
+      detail: "When the shield is removed at 50k score, players suddenly become vulnerable. "+near50k+" deaths occurred in that score range vs "+total10kTo40k+" deaths across 10k-40k. Consider a grace period or warning before shield removal.",
+      stat: near50k+" deaths", statType:"red"});
+  }
+
+  if (!insights.length) insights.push({type:"green",icon:"✅",
+    headline:"Not enough deaths data yet for deep funnel insights",
+    detail:"Play more sessions. The funnel chart above shows progression data from exits.",
+    stat:total+" sessions", statType:"green"});
+
+  document.getElementById("bh-funnelInsights").innerHTML = insights.map(i => `
+    <div class="insight ${i.type}">
+      <div class="insight-icon">${i.icon}</div>
+      <div class="insight-content">
+        <div class="insight-headline">${i.headline}</div>
+        <div class="insight-detail">${i.detail}</div>
+      </div>
+      <div class="insight-stat ${i.statType}">${i.stat}</div>
+    </div>`).join("");
+
+  // Forgiveness cohort
+  const firstDeathSessions = deaths.filter(d => d.isFirstDeath);
+  const repeatDeathSessions = deaths.filter(d => !d.isFirstDeath && (d.eatenTimes||0) >= 2);
+  if (firstDeathSessions.length && repeatDeathSessions.length) {
+    const fn = (label, arr, cls) => `<div class="cohort-box">
+      <div class="cohort-label ${cls}">${label} — ${arr.length} deaths</div>
+      ${cohortRow("Avg score at death", fmtScore(avg(arr,"scoreAtDeath")))}
+      ${cohortRow("Avg time survived", fmt(avg(arr,"timeInGameSeconds")/60)+"min")}
+      ${cohortRow("Avg EatenTimes", fmt(avg(arr,"eatenTimes")))}
+    </div>`;
+    document.getElementById("bh-forgivenessCohort").innerHTML =
+      fn("FIRST DEATH (keep 100% score)", firstDeathSessions, "red") +
+      fn("REPEAT DEATHS (keep 25% score)", repeatDeathSessions, "green");
+  } else {
+    document.getElementById("bh-forgivenessCohort").innerHTML = '<div class="empty-state" style="grid-column:span 2">NEED MORE DEATH DATA</div>';
+  }
+}
+
+function renderBH_Deaths() {
+  const deaths = bhDeaths();
+  const pvp = bhPvp();
+
+  document.getElementById("bh-d-total").textContent = deaths.length;
+  document.getElementById("bh-d-pvp").textContent = pvp.length;
+  document.getElementById("bh-d-avgscore").textContent = deaths.length ? fmtScore(avg(deaths,"scoreAtDeath")) : "—";
+  document.getElementById("bh-d-time").textContent = deaths.length ? fmt(avg(deaths,"timeInGameSeconds")/60)+"m" : "—";
+
+  // Score at death chart
+  const brackets = {"1-9":0,"10-99":0,"100-499":0,"500-999":0,"1k-4.9k":0,"5k-9.9k":0,"10k-19k":0,"20k-49k":0,"50k-99k":0,"100k+":0};
+  deaths.forEach(d => {
+    const s = d.scoreAtDeath || 1;
+    if(s<10) brackets["1-9"]++;
+    else if(s<100) brackets["10-99"]++;
+    else if(s<500) brackets["100-499"]++;
+    else if(s<1000) brackets["500-999"]++;
+    else if(s<5000) brackets["1k-4.9k"]++;
+    else if(s<10000) brackets["5k-9.9k"]++;
+    else if(s<20000) brackets["10k-19k"]++;
+    else if(s<50000) brackets["20k-49k"]++;
+    else if(s<100000) brackets["50k-99k"]++;
+    else brackets["100k+"]++;
+  });
+  const maxD = Math.max(...Object.values(brackets),1);
+  document.getElementById("bh-scoreAtDeathChart").innerHTML = Object.entries(brackets).map(([k,v]) => {
+    const col = k==="1-9"?"red":k.includes("50k")?"yellow":k.includes("100k")?"green":"accent";
+    return barRow(k, v, maxD, v+" deaths ("+pct(v,deaths.length||1)+")", col);
+  }).join("") || '<div class="empty-state">NO DEATH DATA YET</div>';
+
+  // PvP insights
+  const pvpInsights = [];
+  if (pvp.length > 0) {
+    const avgScoreDiff = avg(pvp, "scoreDiff");
+    const onesidedKills = pvp.filter(d => (d.scoreDiff||0) > 50000).length;
+    if (onesidedKills > pvp.length * 0.2) {
+      pvpInsights.push({type:"red",icon:"⚔",
+        headline: pct(onesidedKills,pvp.length)+" of PvP deaths are one-sided stomps (50k+ score gap)",
+        detail: "New players are being eaten by massively bigger players. This is a frustrating death — they had no chance. Consider a protection zone or matchmaking mechanic for small players.",
+        stat: onesidedKills+" stomps", statType:"red"});
+    }
+    pvpInsights.push({type:"blue",icon:"📊",
+      headline: pvp.length + " total PvP deaths tracked with avg score gap of " + fmtScore(avgScoreDiff),
+      detail: "Victim avg score: "+fmtScore(avg(pvp,"victimScore"))+" | Killer avg score: "+fmtScore(avg(pvp,"killerScore"))+" | Score gap: "+fmtScore(avgScoreDiff),
+      stat: fmtScore(avgScoreDiff), statType:"accent"});
+  } else {
+    pvpInsights.push({type:"green",icon:"ℹ",
+      headline:"No PvP death data yet — run a live session",
+      detail:"PvP deaths track who ate who with full score context. Requires players to actually eat each other in a live game.",
+      stat:"—", statType:"green"});
+  }
+  document.getElementById("bh-pvpInsights").innerHTML = pvpInsights.map(i => `
+    <div class="insight ${i.type}">
+      <div class="insight-icon">${i.icon}</div>
+      <div class="insight-content">
+        <div class="insight-headline">${i.headline}</div>
+        <div class="insight-detail">${i.detail}</div>
+      </div>
+      <div class="insight-stat ${i.statType}">${i.stat}</div>
+    </div>`).join("");
+
+  // EatenTimes at quit
+  const et = {};
+  [...(bhLeaves().length ? bhLeaves() : bhSnap())].forEach(s => {
+    const n = Math.min(s.eatenTimes||0, 9);
+    const k = n===9?"9+":String(n);
+    et[k] = (et[k]||0)+1;
+  });
+  const maxET = Math.max(...Object.values(et),1);
+  document.getElementById("bh-eatenTimesChart").innerHTML = Object.entries(et)
+    .sort((a,b)=>parseInt(a[0])-parseInt(b[0]))
+    .map(([k,v]) => barRow("Quit on death #"+k, v, maxET, v+" sessions", k==="0"?"accent":k==="1"?"yellow":"red")).join("")
+    || '<div class="empty-state">NO DATA YET</div>';
+}
+
+function renderBH_Perf() {
+  const snap = bhSnap();
+  if (!snap.length) return;
+  const lowFps = snap.filter(s => s.hadLowFps||s.avgFps<25).length;
+  const highPing = snap.filter(s => s.hadHighPing).length;
+  const avgFpsAll = avg(snap,"avgFps");
+  const laggers = snap.filter(s => s.hadLowFps||s.avgFps<25);
+  const clean = snap.filter(s => !s.hadLowFps&&(s.avgFps||60)>=25);
+  const lagScore = avg(laggers.map(s=>s.scoreAtLeave||1));
+  const cleanScore = avg(clean.map(s=>s.scoreAtLeave||1));
+  const diff = cleanScore - lagScore;
+
+  document.getElementById("bh-pf-lowfps").textContent = pct(lowFps,snap.length);
+  document.getElementById("bh-pf-highping").textContent = pct(highPing,snap.length);
+  document.getElementById("bh-pf-avgfps").textContent = fmt(avgFpsAll);
+  document.getElementById("bh-pf-lagdiff").textContent = fmtScore(diff);
+
+  const perfIns = [];
+  if (laggers.length && clean.length) {
+    perfIns.push({type:diff>1000?"red":"blue",icon:"📉",
+      headline:"Lagging players reach score "+fmtScore(lagScore)+" vs "+fmtScore(cleanScore)+" for smooth players",
+      detail:"FPS lag directly kills score growth. Laggy players can't react fast enough to eat objects or dodge. Fix performance = players grow bigger = they stay longer.",
+      stat:"-"+fmtScore(diff), statType:"red"});
+  }
+  if (!perfIns.length) perfIns.push({type:"green",icon:"✅",headline:"Need more sessions for perf vs score correlation",detail:"Play more sessions with varied hardware.",stat:"—",statType:"green"});
+  document.getElementById("bh-perfInsights").innerHTML = perfIns.map(i => `
+    <div class="insight ${i.type}">
+      <div class="insight-icon">${i.icon}</div>
+      <div class="insight-content">
+        <div class="insight-headline">${i.headline}</div>
+        <div class="insight-detail">${i.detail}</div>
+      </div>
+      <div class="insight-stat ${i.statType}">${i.stat}</div>
+    </div>`).join("");
+
+  // Platform chart
+  const joins = filtered(allData.clientJoins);
+  const plat = {};
+  joins.forEach(j => { plat[j.platform||"Unknown"] = (plat[j.platform||"Unknown"]||0)+1; });
+  const maxP = Math.max(...Object.values(plat),1);
+  const pCol = {PC:"accent",Mobile:"yellow",Console:"green",Unknown:"red"};
+  document.getElementById("bh-platformChart").innerHTML = Object.entries(plat)
+    .sort((a,b)=>b[1]-a[1])
+    .map(([p,n]) => barRow(p, n, maxP, n+" joins ("+pct(n,joins.length)+")", pCol[p]||"accent")).join("")
+    ||'<div class="empty-state">NO JOIN DATA</div>';
+}
+
+function renderBH_Live() {
+  const players = Object.values(allData.livePlayers||{}).filter(p=>p&&p.live).map(p=>p.live);
+  const online = players.length;
+  const lagging = players.filter(p=>p.isLagging).length;
+  const inGame = players.filter(p=>p.inGame).length;
+  document.getElementById("bh-lv-online").textContent = online;
+  document.getElementById("bh-lv-lagging").textContent = lagging;
+  document.getElementById("bh-lv-ingame").textContent = inGame;
+
+  if (!online) {
+    document.getElementById("bh-liveTable").innerHTML = '<div class="empty-state">NO ACTIVE PLAYERS</div>';
+  } else {
+    document.getElementById("bh-liveTable").innerHTML = `<table class="live-table">
+      <thead><tr><th>PLAYER</th><th>PLATFORM</th><th>FPS</th><th>PING</th><th>SESSION</th><th>STATUS</th></tr></thead>
+      <tbody>${players.map(p=>`<tr>
+        <td>${p.name||"—"}</td>
+        <td><span class="badge ${(p.platform||"").toLowerCase()}">${p.platform||"?"}</span></td>
+        <td style="color:${p.fps<20?'var(--accent2)':p.fps<40?'var(--accent4)':'var(--accent3)'}">${p.fps||"—"}</td>
+        <td style="color:${p.ping>300?'var(--accent2)':p.ping>150?'var(--accent4)':'var(--text)'}">${p.ping||"—"}ms</td>
+        <td>${Math.floor((p.sessionSeconds||0)/60)}m ${(p.sessionSeconds||0)%60}s</td>
+        <td><span class="status-dot ${p.isLagging?'bad':'ok'}"></span>${p.isLagging?'LAGGING':'OK'}</td>
+      </tr>`).join("")}</tbody></table>`;
+  }
+
+  const events = [...filtered(allData.events)].sort((a,b)=>(b.time||0)-(a.time||0)).slice(0,20);
+  const typeIcons = {join:"→",leave:"←",death:"💀",zoneChange:"📍"};
+  const typeColors = {join:"green",leave:"red",death:"yellow",zoneChange:"accent"};
+  document.getElementById("bh-recentEvents").innerHTML = events.length ? `<table class="live-table">
+    <thead><tr><th>TIME</th><th>TYPE</th><th>PLAYER</th><th>DETAIL</th></tr></thead>
+    <tbody>${events.map(e => {
+      const col = typeColors[e.type]||"accent";
+      const colVar = col==="green"?"var(--accent3)":col==="red"?"var(--accent2)":col==="yellow"?"var(--accent4)":"var(--accent)";
+      return `<tr>
+        <td style="color:var(--muted)">${new Date((e.time||0)*1000).toLocaleTimeString()}</td>
+        <td style="color:${colVar}">${typeIcons[e.type]||"•"} ${(e.type||"").toUpperCase()}</td>
+        <td>${e.player||"?"}</td>
+        <td style="color:var(--muted);font-size:10px">${e.type==="death"?"Death #"+(e.deathNumber||"?")+" at min "+(e.sessionMinute||0):e.type==="leave"?"Session: "+(e.sessionMinutes||0)+"min":""}</td>
+      </tr>`;
+    }).join("")}</tbody></table>`
+    : '<div class="empty-state">NO EVENTS YET</div>';
+}
+
+// BH errors reuse the same logic as generic errors but with BH-specific IDs
+let bhErrorState = { grouped:[], ignored: new Set(JSON.parse(localStorage.getItem('gp_bh_ignored')||'[]')), typeFilter:'all', showIgnored:false, currentBuild:null };
+function saveBhIgnored() { try { localStorage.setItem('gp_bh_ignored', JSON.stringify([...bhErrorState.ignored])); } catch(e){} }
+
+function renderBH_Errors() {
+  const ce = filtered(allData.clientErrors);
+  const se = filtered(allData.serverErrors);
+  const snap = bhSnap();
+  document.getElementById("bh-er-client").textContent = ce.length;
+  document.getElementById("bh-er-server").textContent = se.length;
+  bhErrorState.grouped = groupErrors(ce, se);
+  bhErrorState.currentBuild = allData.stats.currentBuild || null;
+  document.getElementById("bh-er-unique").textContent = bhErrorState.grouped.length;
+  const rate = ce.length > 0 ? Math.min(Math.round((ce.length/Math.max(snap.length,1))*100),100) : 0;
+  document.getElementById("bh-er-rate").textContent = rate+"%";
+  bhApplyFilters();
+}
+
+function bhSetType(type, el) {
+  bhErrorState.typeFilter = type;
+  document.querySelectorAll('#bh-tab-errors .filter-chip').forEach(c => c.classList.remove('active-chip'));
+  el.classList.add('active-chip');
+  bhApplyFilters();
+}
+
+function bhToggleIgnored() {
+  bhErrorState.showIgnored = !bhErrorState.showIgnored;
+  const btn = document.getElementById('bh-ignoredBtn');
+  btn.textContent = bhErrorState.showIgnored ? 'HIDE IGNORED' : 'SHOW IGNORED';
+  btn.style.color = bhErrorState.showIgnored ? 'var(--accent4)' : '';
+  bhApplyFilters();
+}
+
+function bhApplyFilters() {
+  const search = (document.getElementById('bh-errorSearch').value || '').toLowerCase();
+  const type = bhErrorState.typeFilter;
+  const sort = document.getElementById('bh-errorSort').value;
+  let groups = [...bhErrorState.grouped];
+  if (type === 'critical') groups = groups.filter(g => g.classification==='critical');
+  else if (type === 'script') groups = groups.filter(g => g.classification==='script');
+  else if (type === 'network') groups = groups.filter(g => g.classification==='network');
+  else if (type === 'new') groups = groups.filter(g => bhErrorState.currentBuild && g.builds.includes(bhErrorState.currentBuild));
+  else if (type === 'ignored') groups = groups.filter(g => bhErrorState.ignored.has(g.key));
+  if (type !== 'ignored' && !bhErrorState.showIgnored) groups = groups.filter(g => !bhErrorState.ignored.has(g.key));
+  if (search) groups = groups.filter(g => g.message.toLowerCase().includes(search)||g.script.toLowerCase().includes(search)||g.builds.join(' ').toLowerCase().includes(search));
+  if (sort==='count') groups.sort((a,b)=>b.count-a.count);
+  else if (sort==='recent') groups.sort((a,b)=>b.lastSeen-a.lastSeen);
+  else groups.sort((a,b)=>b.impactScore-a.impactScore);
+  document.getElementById('bh-errorInfo').textContent = groups.length+' types · '+groups.reduce((a,g)=>a+g.count,0)+' occurrences';
+  document.getElementById('bh-er-showing').textContent = groups.length+' TYPES';
+  document.getElementById('bh-errorList').innerHTML = groups.length
+    ? groups.map(g => renderErrorCard(g, search)).join("")
+    : '<div class="empty-state">NO ERRORS MATCH FILTER</div>';
+}
+
+// Helper: format score with K/M suffix
+function fmtScore(n) {
+  if (n === null || n === undefined || isNaN(n)) return "—";
+  n = Math.round(n);
+  if (n >= 1000000) return (n/1000000).toFixed(1)+"M";
+  if (n >= 1000) return (n/1000).toFixed(1)+"k";
+  return String(n);
+}
+
 </script>
 </body>
 </html>
