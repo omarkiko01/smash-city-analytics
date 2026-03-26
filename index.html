@@ -568,6 +568,9 @@
       <span id="onlineCount">— ONLINE</span>
     </div>
     <div style="font-family:var(--font-mono);font-size:10px;color:var(--muted)" id="lastFetch">—</div>
+    <select id="buildFilter" onchange="renderAll()" style="background:var(--surface2);border:1px solid var(--border);color:var(--accent);font-family:var(--font-mono);font-size:11px;padding:5px 10px;cursor:pointer;letter-spacing:0.05em;outline:none;">
+      <option value="ALL">ALL BUILDS</option>
+    </select>
     <button class="refresh-btn" onclick="loadAll()">↺ REFRESH</button>
   </div>
 </header>
@@ -875,7 +878,36 @@ function avg(arr, key) {
   return vals.reduce((a,b) => a+b, 0) / vals.length;
 }
 
+function getActiveBuild() {
+  return document.getElementById("buildFilter").value || "ALL";
+}
+
+function filtered(arr) {
+  const b = getActiveBuild();
+  if (b === "ALL") return arr;
+  return arr.filter(x => x.build === b);
+}
+
+function updateBuildDropdown() {
+  const builds = new Set();
+  [...allData.snapshots, ...allData.sessions, ...allData.events].forEach(x => { if(x.build) builds.add(x.build); });
+  const sel = document.getElementById("buildFilter");
+  const current = sel.value;
+  sel.innerHTML = '<option value="ALL">ALL BUILDS</option>';
+  [...builds].sort().reverse().forEach(b => {
+    const opt = document.createElement("option");
+    opt.value = b; opt.textContent = b;
+    if (b === current) opt.selected = true;
+    sel.appendChild(opt);
+  });
+  // Show current build from stats
+  if (allData.stats.currentBuild) {
+    document.title = "GamePulse — " + allData.stats.currentBuild;
+  }
+}
+
 function renderAll() {
+  updateBuildDropdown();
   renderOverview();
   renderRetention();
   renderPerformance();
@@ -887,9 +919,9 @@ function renderAll() {
 
 // ─── OVERVIEW ───────────────────────────────────────────
 function renderOverview() {
-  const snap = allData.snapshots;
-  const sess = allData.sessions;
-  const joins = allData.clientJoins;
+  const snap = filtered(allData.snapshots);
+  const sess = filtered(allData.sessions);
+  const joins = filtered(allData.clientJoins);
   const total = snap.length;
   if (!total) return;
 
@@ -899,7 +931,7 @@ function renderOverview() {
   const instantQuits = snap.filter(s => s.verdict === "instant_quit").length;
   const longSess = snap.filter(s => s.sessionMinutes >= 15).length;
   const mobile = joins.filter(j => j.platform === "Mobile").length;
-  const errSess = allData.clientErrors.length > 0 ? Math.min(allData.clientErrors.length, total) : 0;
+  const errSess = filtered(allData.clientErrors).length > 0 ? Math.min(filtered(allData.clientErrors).length, total) : 0;
 
   document.getElementById("ov-totalSessions").textContent = total;
   document.getElementById("ov-avgSession").textContent = fmt(avgMin) + "m";
@@ -908,13 +940,13 @@ function renderOverview() {
   document.getElementById("ov-instantQuit").textContent = pct(instantQuits, total);
   document.getElementById("ov-longSessions").textContent = pct(longSess, total);
   document.getElementById("ov-mobile").textContent = pct(mobile, joins.length || 1);
-  document.getElementById("ov-errorSessions").textContent = allData.clientErrors.length;
+  document.getElementById("ov-errorSessions").textContent = filtered(allData.clientErrors).length;
 
   // Session bucket chart from sessions
   const buckets = {};
   const bucketOrder = ["0-1m","1-2m","2-3m","3-5m","5-8m","8-15m","15-30m","30m+"];
   bucketOrder.forEach(b => buckets[b] = 0);
-  allData.sessions.forEach(s => { if(s.bucket) buckets[s.bucket] = (buckets[s.bucket]||0) + 1; });
+  filtered(allData.sessions).forEach(s => { if(s.bucket) buckets[s.bucket] = (buckets[s.bucket]||0) + 1; });
   const maxB = Math.max(...Object.values(buckets), 1);
   document.getElementById("sessionBucketChart").innerHTML = bucketOrder.map(b => {
     const v = buckets[b] || 0;
@@ -935,7 +967,7 @@ function renderOverview() {
 
 // ─── RETENTION ──────────────────────────────────────────
 function renderRetention() {
-  const snap = allData.snapshots;
+  const snap = filtered(allData.snapshots);
   const total = snap.length;
   if (!total) { document.getElementById("retentionInsights").innerHTML = '<div class="empty-state">NOT ENOUGH DATA YET — PLAY A FEW SESSIONS</div>'; return; }
 
@@ -1055,7 +1087,7 @@ function renderRetention() {
 
   // Death timing
   const minuteBuckets = {};
-  allData.events.filter(e => e.type === "death" && e.sessionMinute !== undefined).forEach(e => {
+  filtered(allData.events).filter(e => e.type === "death" && e.sessionMinute !== undefined).forEach(e => {
     const m = Math.min(e.sessionMinute, 9);
     const key = m + "m";
     minuteBuckets[key] = (minuteBuckets[key]||0) + 1;
@@ -1074,7 +1106,7 @@ function cohortRow(label, val, badClass="", goodClass="") {
 
 // ─── PERFORMANCE ────────────────────────────────────────
 function renderPerformance() {
-  const snap = allData.snapshots;
+  const snap = filtered(allData.snapshots);
   if (!snap.length) return;
 
   const lowFps = snap.filter(s => s.hadLowFps || s.avgFps < 25).length;
@@ -1150,8 +1182,8 @@ function renderPerformance() {
 
 // ─── BEHAVIOR ───────────────────────────────────────────
 function renderBehavior() {
-  const snap = allData.snapshots;
-  const sess = allData.sessions;
+  const snap = filtered(allData.snapshots);
+  const sess = filtered(allData.sessions);
 
   // Zone at leave
   const zones = {};
@@ -1181,7 +1213,7 @@ function renderBehavior() {
 
   // Platform from clientJoins
   const platCounts = {};
-  allData.clientJoins.forEach(j => {
+  filtered(allData.clientJoins).forEach(j => {
     const p = j.platform || "Unknown";
     platCounts[p] = (platCounts[p]||0)+1;
   });
@@ -1189,7 +1221,7 @@ function renderBehavior() {
   const pColors2 = {PC:"accent", Mobile:"yellow", Console:"green", Unknown:"red"};
   document.getElementById("platformChart").innerHTML = Object.entries(platCounts)
     .sort((a,b)=>b[1]-a[1])
-    .map(([p,n]) => barRow(p, n, maxP, n + " joins (" + pct(n, allData.clientJoins.length) + ")", pColors2[p]||"accent")).join("")
+    .map(([p,n]) => barRow(p, n, maxP, n + " joins (" + pct(n, filtered(allData.clientJoins).length) + ")", pColors2[p]||"accent")).join("")
     || '<div class="empty-state">NO JOIN DATA YET</div>';
 }
 
@@ -1232,7 +1264,7 @@ function renderLive() {
   }
 
   // Recent events
-  const recent = [...allData.events]
+  const recent = [...filtered(allData.events)]
     .sort((a,b) => (b.time||0) - (a.time||0))
     .slice(0, 20);
 
@@ -1269,9 +1301,9 @@ function renderLive() {
 
 // ─── ERRORS ─────────────────────────────────────────────
 function renderErrors() {
-  const ce = allData.clientErrors;
-  const se = allData.serverErrors;
-  const snap = allData.snapshots;
+  const ce = filtered(allData.clientErrors);
+  const se = filtered(allData.serverErrors);
+  const snap = filtered(allData.snapshots);
 
   document.getElementById("er-client").textContent = ce.length;
   document.getElementById("er-server").textContent = se.length;
