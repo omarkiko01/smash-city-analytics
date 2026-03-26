@@ -771,6 +771,7 @@
     <select id="gameFilter" onchange="onGameChange()" style="background:var(--surface2);border:1px solid var(--border);color:var(--accent4);font-family:var(--font-mono);font-size:11px;padding:5px 10px;cursor:pointer;letter-spacing:0.05em;outline:none;">
       <option value="">LOADING...</option>
     </select>
+    <button id="studioToggleBtn" onclick="toggleStudio()" style="background:var(--surface2);border:1px solid var(--border);color:var(--muted);font-family:var(--font-mono);font-size:11px;padding:5px 12px;cursor:pointer;letter-spacing:0.05em;transition:all 0.2s">⚗ EXCL. STUDIO</button>
     <select id="buildFilter" onchange="renderAll()" style="background:var(--surface2);border:1px solid var(--border);color:var(--accent);font-family:var(--font-mono);font-size:11px;padding:5px 10px;cursor:pointer;letter-spacing:0.05em;outline:none;">
       <option value="ALL">ALL BUILDS</option>
     </select>
@@ -1342,11 +1343,28 @@ function getActiveBuild() {
   return document.getElementById("buildFilter").value || "ALL";
 }
 
+// Studio filter — excludes Studio sessions by default
+let excludeStudio = true;
+
+function toggleStudio() {
+  excludeStudio = !excludeStudio;
+  const btn = document.getElementById("studioToggleBtn");
+  btn.textContent = excludeStudio ? "⚗ EXCL. STUDIO" : "⚗ INCL. STUDIO";
+  btn.style.color = excludeStudio ? "var(--muted)" : "var(--accent4)";
+  btn.style.borderColor = excludeStudio ? "var(--border)" : "var(--accent4)";
+  renderAll();
+}
+
 function filtered(arr) {
+  if (!arr) return [];
   const b = getActiveBuild();
-  if (b === "ALL") return arr;
-  // Records with no build tag = legacy data, treat as LEGACY
-  return arr.filter(x => (x.build || "LEGACY") === b);
+  let result = arr;
+  // Exclude studio sessions by default (toggle with ⚗ button in header)
+  if (excludeStudio) {
+    result = result.filter(x => x.isStudio !== true);
+  }
+  if (b === "ALL") return result;
+  return result.filter(x => x.build === b);
 }
 
 function updateBuildDropdown() {
