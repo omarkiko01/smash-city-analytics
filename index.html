@@ -1433,34 +1433,53 @@ function renderAll() {
 
 // ─── OVERVIEW ───────────────────────────────────────────
 function renderOverview() {
-  const snap = filtered(allData.snapshots);
+  // sess = /sessions (server-side, written on every PlayerRemoving — most reliable count)
+  // snap = /exitSnapshots (client-side, written on clean leave — has FPS/verdict data)
+  // Rule: use sess for ALL counts, totals, averages, buckets
+  //       use snap ONLY for verdict/FPS data that only client has
   const sess = filtered(allData.sessions);
+  const snap = filtered(allData.snapshots);
   const joins = filtered(allData.clientJoins);
-  const total = snap.length;
+
+  // Use sessions as the source of truth for counts
+  const total = sess.length || snap.length;
   if (!total) return;
 
-  const avgMin = avg(snap, "sessionMinutes");
-  const avgDeath = avg(snap, "deathCount");
+  // Avg session from sessions (has "seconds" field)
+  // sessions stores seconds, snapshots stores sessionMinutes
+  const avgMin = sess.length
+    ? avg(sess, "seconds") / 60
+    : avg(snap, "sessionMinutes");
+
+  const avgDeath = avg(sess.length ? sess : snap, "deathCount");
+
+  // Bucket counts from sessions (server-side, complete)
+  const longSess = sess.filter(s => {
+    const m = (s.seconds||0)/60;
+    return m >= 15;
+  }).length;
+  const instantQuits = sess.filter(s => (s.seconds||0) < 60).length;
+
+  // Verdict/perf data from snapshots (only place that has it)
   const perfQuits = snap.filter(s => s.verdict === "perf").length;
-  const instantQuits = snap.filter(s => s.verdict === "instant_quit").length;
-  const longSess = snap.filter(s => s.sessionMinutes >= 15).length;
+  const snapTotal = snap.length || 1;
+
   const mobile = joins.filter(j => j.platform === "Mobile").length;
-  const errSess = filtered(allData.clientErrors).length > 0 ? Math.min(filtered(allData.clientErrors).length, total) : 0;
 
   document.getElementById("ov-totalSessions").textContent = total;
   document.getElementById("ov-avgSession").textContent = fmt(avgMin) + "m";
   document.getElementById("ov-avgDeaths").textContent = fmt(avgDeath);
-  document.getElementById("ov-perfQuit").textContent = pct(perfQuits, total);
+  document.getElementById("ov-perfQuit").textContent = pct(perfQuits, snapTotal);
   document.getElementById("ov-instantQuit").textContent = pct(instantQuits, total);
   document.getElementById("ov-longSessions").textContent = pct(longSess, total);
   document.getElementById("ov-mobile").textContent = pct(mobile, joins.length || 1);
   document.getElementById("ov-errorSessions").textContent = filtered(allData.clientErrors).length;
 
-  // Session bucket chart from sessions
+  // Bucket chart — always from sessions (server-side, never misses a player)
   const buckets = {};
   const bucketOrder = ["0-1m","1-2m","2-3m","3-5m","5-8m","8-15m","15-30m","30m+"];
   bucketOrder.forEach(b => buckets[b] = 0);
-  filtered(allData.sessions).forEach(s => { if(s.bucket) buckets[s.bucket] = (buckets[s.bucket]||0) + 1; });
+  sess.forEach(s => { if(s.bucket) buckets[s.bucket] = (buckets[s.bucket]||0) + 1; });
   const maxB = Math.max(...Object.values(buckets), 1);
   document.getElementById("sessionBucketChart").innerHTML = bucketOrder.map(b => {
     const v = buckets[b] || 0;
@@ -1468,14 +1487,20 @@ function renderOverview() {
     return barRow(b, v, maxB, v + " sessions", col);
   }).join("");
 
-  // Verdict chart
+  // Verdict chart — from snapshots (only source that has verdict)
+  // Show a note if snapshots << sessions (many players didn't fire clean exit)
+  const coveragePct = Math.round((snap.length / Math.max(sess.length,1)) * 100);
   const verdicts = {normal:0, perf:0, difficulty:0, instant_quit:0};
   snap.forEach(s => { if(s.verdict) verdicts[s.verdict] = (verdicts[s.verdict]||0)+1; });
   const maxV = Math.max(...Object.values(verdicts), 1);
   const vColors = {normal:"green", perf:"red", difficulty:"yellow", instant_quit:"accent"};
   const vLabels = {normal:"Normal", perf:"Perf / Lag", difficulty:"Difficulty", instant_quit:"Instant Quit"};
-  document.getElementById("verdictChart").innerHTML = Object.entries(verdicts).map(([k,v]) =>
-    barRow(vLabels[k], v, maxV, pct(v,total) + " (" + v + ")", vColors[k])
+  const coverageNote = coveragePct < 80
+    ? `<div style="margin-bottom:12px;font-family:var(--font-mono);font-size:10px;color:var(--accent4);padding:8px;background:rgba(255,183,0,0.08);border:1px solid rgba(255,183,0,0.2)">
+        ⚠ EXIT SNAPSHOT COVERAGE: ${coveragePct}% (${snap.length}/${sess.length} sessions) — verdicts are based on players who had a clean exit. Mobile/crash exits may not be captured.
+       </div>` : "";
+  document.getElementById("verdictChart").innerHTML = coverageNote + Object.entries(verdicts).map(([k,v]) =>
+    barRow(vLabels[k], v, maxV, pct(v, snap.length||1) + " (" + v + " of " + snap.length + " snapshots)", vColors[k])
   ).join("");
 }
 
