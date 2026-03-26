@@ -765,17 +765,17 @@
   <div class="header-right">
     <div class="live-badge">
       <div class="live-dot"></div>
-      <span id="onlineCount">— ONLINE</span>
+      <span id="onlineCount">â€” ONLINE</span>
     </div>
-    <div style="font-family:var(--font-mono);font-size:10px;color:var(--muted)" id="lastFetch">—</div>
+    <div style="font-family:var(--font-mono);font-size:10px;color:var(--muted)" id="lastFetch">â€”</div>
     <select id="gameFilter" onchange="onGameChange()" style="background:var(--surface2);border:1px solid var(--border);color:var(--accent4);font-family:var(--font-mono);font-size:11px;padding:5px 10px;cursor:pointer;letter-spacing:0.05em;outline:none;">
       <option value="">LOADING...</option>
     </select>
-    <button id="studioToggleBtn" onclick="toggleStudio()" style="background:var(--surface2);border:1px solid var(--border);color:var(--muted);font-family:var(--font-mono);font-size:11px;padding:5px 12px;cursor:pointer;letter-spacing:0.05em;transition:all 0.2s">⚗ EXCL. STUDIO</button>
+    <button id="studioToggleBtn" onclick="toggleStudio()" style="background:var(--surface2);border:1px solid var(--border);color:var(--muted);font-family:var(--font-mono);font-size:11px;padding:5px 12px;cursor:pointer;letter-spacing:0.05em;transition:all 0.2s">âš— EXCL. STUDIO</button>
     <select id="buildFilter" onchange="renderAll()" style="background:var(--surface2);border:1px solid var(--border);color:var(--accent);font-family:var(--font-mono);font-size:11px;padding:5px 10px;cursor:pointer;letter-spacing:0.05em;outline:none;">
       <option value="ALL">ALL BUILDS</option>
     </select>
-    <button class="refresh-btn" onclick="loadAll()">↺ REFRESH</button>
+    <button class="refresh-btn" onclick="loadAll()">â†º REFRESH</button>
   </div>
 </header>
 
@@ -800,17 +800,17 @@
     </div>
 
     <div class="stat-grid stat-grid-4" id="overviewStats">
-      <div class="stat-card accent"><div class="stat-label">Total Sessions</div><div class="stat-value accent" id="ov-totalSessions">—</div><div class="stat-sub">all time</div></div>
-      <div class="stat-card green"><div class="stat-label">Avg Session</div><div class="stat-value green" id="ov-avgSession">—</div><div class="stat-sub">minutes</div></div>
-      <div class="stat-card yellow"><div class="stat-label">Avg Deaths / Session</div><div class="stat-value yellow" id="ov-avgDeaths">—</div><div class="stat-sub">per player</div></div>
-      <div class="stat-card red"><div class="stat-label">Perf-Quit Rate</div><div class="stat-value red" id="ov-perfQuit">—</div><div class="stat-sub">% left due to lag</div></div>
+      <div class="stat-card accent"><div class="stat-label">Total Sessions</div><div class="stat-value accent" id="ov-totalSessions">â€”</div><div class="stat-sub">all time</div></div>
+      <div class="stat-card green"><div class="stat-label">Avg Session</div><div class="stat-value green" id="ov-avgSession">â€”</div><div class="stat-sub">minutes</div></div>
+      <div class="stat-card yellow"><div class="stat-label">Avg Deaths / Session</div><div class="stat-value yellow" id="ov-avgDeaths">â€”</div><div class="stat-sub">per player</div></div>
+      <div class="stat-card red"><div class="stat-label">Perf-Quit Rate</div><div class="stat-value red" id="ov-perfQuit">â€”</div><div class="stat-sub">% left due to lag</div></div>
     </div>
 
     <div class="stat-grid stat-grid-4">
-      <div class="stat-card accent"><div class="stat-label">Instant Quit Rate</div><div class="stat-value accent" id="ov-instantQuit">—</div><div class="stat-sub">left under 1 min</div></div>
-      <div class="stat-card green"><div class="stat-label">Long Sessions (15m+)</div><div class="stat-value green" id="ov-longSessions">—</div><div class="stat-sub">% of all sessions</div></div>
-      <div class="stat-card yellow"><div class="stat-label">Mobile Players</div><div class="stat-value yellow" id="ov-mobile">—</div><div class="stat-sub">% of joins</div></div>
-      <div class="stat-card red"><div class="stat-label">Error Sessions</div><div class="stat-value red" id="ov-errorSessions">—</div><div class="stat-sub">had client errors</div></div>
+      <div class="stat-card accent"><div class="stat-label">Instant Quit Rate</div><div class="stat-value accent" id="ov-instantQuit">â€”</div><div class="stat-sub">left under 1 min</div></div>
+      <div class="stat-card green"><div class="stat-label">Long Sessions (15m+)</div><div class="stat-value green" id="ov-longSessions">â€”</div><div class="stat-sub">% of all sessions</div></div>
+      <div class="stat-card yellow"><div class="stat-label">Mobile Players</div><div class="stat-value yellow" id="ov-mobile">â€”</div><div class="stat-sub">% of joins</div></div>
+      <div class="stat-card red"><div class="stat-label">Error Sessions</div><div class="stat-value red" id="ov-errorSessions">â€”</div><div class="stat-sub">had client errors</div></div>
     </div>
 
     <div class="panel">
@@ -857,12 +857,12 @@
 
     <div class="panel">
       <div class="panel-header">
-        <div class="panel-title">Death Timing — When Players Die and Quit</div>
+        <div class="panel-title">Death Timing â€” When Players Die and Quit</div>
         <div class="panel-tag yellow">DIFFICULTY CURVE</div>
       </div>
       <div class="panel-body">
         <div class="bar-chart" id="deathTimingChart"></div>
-        <div style="margin-top:16px;font-size:11px;color:var(--muted);font-family:var(--font-mono)">↑ Shows % of short-session players who died in each minute bucket. Spike = your difficulty wall.</div>
+        <div style="margin-top:16px;font-size:11px;color:var(--muted);font-family:var(--font-mono)">â†‘ Shows % of short-session players who died in each minute bucket. Spike = your difficulty wall.</div>
       </div>
     </div>
   </div>
@@ -875,10 +875,10 @@
     </div>
 
     <div class="stat-grid stat-grid-4">
-      <div class="stat-card red"><div class="stat-label">Sessions w/ Low FPS</div><div class="stat-value red" id="pf-lowFps">—</div><div class="stat-sub">avg FPS &lt; 25</div></div>
-      <div class="stat-card yellow"><div class="stat-label">Sessions w/ High Ping</div><div class="stat-value yellow" id="pf-highPing">—</div><div class="stat-sub">ping &gt; 300ms</div></div>
-      <div class="stat-card accent"><div class="stat-label">Avg FPS (all sessions)</div><div class="stat-value accent" id="pf-avgFps">—</div><div class="stat-sub">frames per second</div></div>
-      <div class="stat-card green"><div class="stat-label">Avg Ping (all sessions)</div><div class="stat-value green" id="pf-avgPing">—</div><div class="stat-sub">milliseconds</div></div>
+      <div class="stat-card red"><div class="stat-label">Sessions w/ Low FPS</div><div class="stat-value red" id="pf-lowFps">â€”</div><div class="stat-sub">avg FPS &lt; 25</div></div>
+      <div class="stat-card yellow"><div class="stat-label">Sessions w/ High Ping</div><div class="stat-value yellow" id="pf-highPing">â€”</div><div class="stat-sub">ping &gt; 300ms</div></div>
+      <div class="stat-card accent"><div class="stat-label">Avg FPS (all sessions)</div><div class="stat-value accent" id="pf-avgFps">â€”</div><div class="stat-sub">frames per second</div></div>
+      <div class="stat-card green"><div class="stat-label">Avg Ping (all sessions)</div><div class="stat-value green" id="pf-avgPing">â€”</div><div class="stat-sub">milliseconds</div></div>
     </div>
 
     <div class="panel">
@@ -911,7 +911,7 @@
 
     <div class="panel">
       <div class="panel-header">
-        <div class="panel-title">Zone at Leave — Where Players Quit From</div>
+        <div class="panel-title">Zone at Leave â€” Where Players Quit From</div>
         <div class="panel-tag yellow">QUIT GEOGRAPHY</div>
       </div>
       <div class="panel-body">
@@ -921,18 +921,18 @@
 
     <div class="panel">
       <div class="panel-header">
-        <div class="panel-title">Death Count at Quit — Frustration Threshold</div>
+        <div class="panel-title">Death Count at Quit â€” Frustration Threshold</div>
         <div class="panel-tag red">DIFFICULTY WALL</div>
       </div>
       <div class="panel-body">
         <div class="bar-chart" id="deathCountChart"></div>
-        <div style="margin-top:16px;font-size:11px;color:var(--muted);font-family:var(--font-mono)">↑ How many deaths did players have when they finally quit? 0 deaths = bored quit. High deaths = difficulty quit.</div>
+        <div style="margin-top:16px;font-size:11px;color:var(--muted);font-family:var(--font-mono)">â†‘ How many deaths did players have when they finally quit? 0 deaths = bored quit. High deaths = difficulty quit.</div>
       </div>
     </div>
 
     <div class="panel">
       <div class="panel-header">
-        <div class="panel-title">Platform Split — Who's Playing</div>
+        <div class="panel-title">Platform Split â€” Who's Playing</div>
         <div class="panel-tag accent">PLATFORM BREAKDOWN</div>
       </div>
       <div class="panel-body">
@@ -949,9 +949,9 @@
     </div>
 
     <div class="stat-grid stat-grid-3">
-      <div class="stat-card green"><div class="stat-label">Online Now</div><div class="stat-value green" id="lv-online">—</div><div class="stat-sub">active players</div></div>
-      <div class="stat-card red"><div class="stat-label">Lagging Players</div><div class="stat-value red" id="lv-lagging">—</div><div class="stat-sub">FPS &lt; 20 or ping &gt; 300</div></div>
-      <div class="stat-card yellow"><div class="stat-label">Avg Live FPS</div><div class="stat-value yellow" id="lv-avgFps">—</div><div class="stat-sub">across all active</div></div>
+      <div class="stat-card green"><div class="stat-label">Online Now</div><div class="stat-value green" id="lv-online">â€”</div><div class="stat-sub">active players</div></div>
+      <div class="stat-card red"><div class="stat-label">Lagging Players</div><div class="stat-value red" id="lv-lagging">â€”</div><div class="stat-sub">FPS &lt; 20 or ping &gt; 300</div></div>
+      <div class="stat-card yellow"><div class="stat-label">Avg Live FPS</div><div class="stat-value yellow" id="lv-avgFps">â€”</div><div class="stat-sub">across all active</div></div>
     </div>
 
     <div class="panel">
@@ -960,7 +960,7 @@
         <div class="panel-tag green">UPDATES EVERY 10s</div>
       </div>
       <div class="panel-body" id="livePlayerTable">
-        <div class="empty-state">NO ACTIVE PLAYERS — START A PLAYTEST</div>
+        <div class="empty-state">NO ACTIVE PLAYERS â€” START A PLAYTEST</div>
       </div>
     </div>
 
@@ -983,17 +983,17 @@
     </div>
 
     <div class="stat-grid stat-grid-4">
-      <div class="stat-card red"><div class="stat-label">Client Errors</div><div class="stat-value red" id="er-client">—</div><div class="stat-sub">total occurrences</div></div>
-      <div class="stat-card yellow"><div class="stat-label">Server Errors</div><div class="stat-value yellow" id="er-server">—</div><div class="stat-sub">total occurrences</div></div>
-      <div class="stat-card red"><div class="stat-label">Unique Error Types</div><div class="stat-value red" id="er-unique">—</div><div class="stat-sub">distinct messages</div></div>
-      <div class="stat-card accent"><div class="stat-label">Error-Quit Correlation</div><div class="stat-value accent" id="er-correlation">—</div><div class="stat-sub">% sessions had errors</div></div>
+      <div class="stat-card red"><div class="stat-label">Client Errors</div><div class="stat-value red" id="er-client">â€”</div><div class="stat-sub">total occurrences</div></div>
+      <div class="stat-card yellow"><div class="stat-label">Server Errors</div><div class="stat-value yellow" id="er-server">â€”</div><div class="stat-sub">total occurrences</div></div>
+      <div class="stat-card red"><div class="stat-label">Unique Error Types</div><div class="stat-value red" id="er-unique">â€”</div><div class="stat-sub">distinct messages</div></div>
+      <div class="stat-card accent"><div class="stat-label">Error-Quit Correlation</div><div class="stat-value accent" id="er-correlation">â€”</div><div class="stat-sub">% sessions had errors</div></div>
     </div>
 
     <div class="panel">
       <div class="panel-header" style="flex-wrap:wrap;gap:8px;">
-        <div class="panel-title">All Errors — Grouped & Ranked by Impact</div>
+        <div class="panel-title">All Errors â€” Grouped & Ranked by Impact</div>
         <div style="display:flex;gap:6px;align-items:center;flex-wrap:wrap">
-          <span class="panel-tag red" id="er-showing">—</span>
+          <span class="panel-tag red" id="er-showing">â€”</span>
           <button class="ignored-toggle" id="ignoredToggleBtn" onclick="toggleShowIgnored()">SHOW IGNORED</button>
         </div>
       </div>
@@ -1001,11 +1001,11 @@
       <div class="error-toolbar">
         <input class="error-search" id="errorSearch" type="text" placeholder="Search message, script, player..." oninput="applyErrorFilters()">
         <div class="filter-chip chip-all active-chip" onclick="setErrType('all',this)">ALL</div>
-        <div class="filter-chip chip-critical" onclick="setErrType('critical',this)">🔴 CRITICAL</div>
-        <div class="filter-chip chip-script" onclick="setErrType('script',this)">🟡 SCRIPT</div>
-        <div class="filter-chip chip-network" onclick="setErrType('network',this)">🔵 NETWORK</div>
-        <div class="filter-chip chip-new" onclick="setErrType('new',this)">🟢 NEW BUILD</div>
-        <div class="filter-chip chip-ignored" onclick="setErrType('ignored',this)">⚫ IGNORED</div>
+        <div class="filter-chip chip-critical" onclick="setErrType('critical',this)">ðŸ”´ CRITICAL</div>
+        <div class="filter-chip chip-script" onclick="setErrType('script',this)">ðŸŸ¡ SCRIPT</div>
+        <div class="filter-chip chip-network" onclick="setErrType('network',this)">ðŸ”µ NETWORK</div>
+        <div class="filter-chip chip-new" onclick="setErrType('new',this)">ðŸŸ¢ NEW BUILD</div>
+        <div class="filter-chip chip-ignored" onclick="setErrType('ignored',this)">âš« IGNORED</div>
         <select class="sort-select" id="errorSort" onchange="applyErrorFilters()">
           <option value="count">SORT: MOST FREQUENT</option>
           <option value="recent">SORT: MOST RECENT</option>
@@ -1015,11 +1015,11 @@
       </div>
 
       <div class="error-results-info">
-        <span id="errorResultsInfo">—</span>
-        <span style="color:var(--muted2)">CLICK ERROR TO EXPAND · RIGHT-CLICK TO IGNORE</span>
+        <span id="errorResultsInfo">â€”</span>
+        <span style="color:var(--muted2)">CLICK ERROR TO EXPAND Â· RIGHT-CLICK TO IGNORE</span>
       </div>
 
-      <div id="errorList"><div class="empty-state">NO ERRORS — CLEAN!</div></div>
+      <div id="errorList"><div class="empty-state">NO ERRORS â€” CLEAN!</div></div>
     </div>
   </div>
 
@@ -1031,16 +1031,16 @@
       <div class="section-heading">Game <span>Overview</span></div>
     </div>
     <div class="stat-grid stat-grid-4">
-      <div class="stat-card accent"><div class="stat-label">Total Sessions</div><div class="stat-value accent" id="bh-ov-total">—</div><div class="stat-sub">all time</div></div>
-      <div class="stat-card green"><div class="stat-label">Avg Real Game Time</div><div class="stat-value green" id="bh-ov-gametime">—</div><div class="stat-sub">in arena (not lobby)</div></div>
-      <div class="stat-card yellow"><div class="stat-label">Lobby-Only Quits</div><div class="stat-value yellow" id="bh-ov-lobbyonly">—</div><div class="stat-sub">never entered game</div></div>
-      <div class="stat-card red"><div class="stat-label">Perf Quit Rate</div><div class="stat-value red" id="bh-ov-perf">—</div><div class="stat-sub">% left due to lag</div></div>
+      <div class="stat-card accent"><div class="stat-label">Total Sessions</div><div class="stat-value accent" id="bh-ov-total">â€”</div><div class="stat-sub">all time</div></div>
+      <div class="stat-card green"><div class="stat-label">Avg Real Game Time</div><div class="stat-value green" id="bh-ov-gametime">â€”</div><div class="stat-sub">in arena (not lobby)</div></div>
+      <div class="stat-card yellow"><div class="stat-label">Lobby-Only Quits</div><div class="stat-value yellow" id="bh-ov-lobbyonly">â€”</div><div class="stat-sub">never entered game</div></div>
+      <div class="stat-card red"><div class="stat-label">Perf Quit Rate</div><div class="stat-value red" id="bh-ov-perf">â€”</div><div class="stat-sub">% left due to lag</div></div>
     </div>
     <div class="stat-grid stat-grid-4">
-      <div class="stat-card accent"><div class="stat-label">Avg Score at Leave</div><div class="stat-value accent" id="bh-ov-score">—</div><div class="stat-sub">how far they got</div></div>
-      <div class="stat-card green"><div class="stat-label">Avg Eaten Times</div><div class="stat-value green" id="bh-ov-eaten">—</div><div class="stat-sub">deaths per session</div></div>
-      <div class="stat-card yellow"><div class="stat-label">Rage Quits In-Game</div><div class="stat-value yellow" id="bh-ov-rage">—</div><div class="stat-sub">left while playing</div></div>
-      <div class="stat-card red"><div class="stat-label">Returned After Death</div><div class="stat-value red" id="bh-ov-returned">—</div><div class="stat-sub">entered gate again</div></div>
+      <div class="stat-card accent"><div class="stat-label">Avg Score at Leave</div><div class="stat-value accent" id="bh-ov-score">â€”</div><div class="stat-sub">how far they got</div></div>
+      <div class="stat-card green"><div class="stat-label">Avg Eaten Times</div><div class="stat-value green" id="bh-ov-eaten">â€”</div><div class="stat-sub">deaths per session</div></div>
+      <div class="stat-card yellow"><div class="stat-label">Rage Quits In-Game</div><div class="stat-value yellow" id="bh-ov-rage">â€”</div><div class="stat-sub">left while playing</div></div>
+      <div class="stat-card red"><div class="stat-label">Returned After Death</div><div class="stat-value red" id="bh-ov-returned">â€”</div><div class="stat-sub">entered gate again</div></div>
     </div>
     <div class="panel">
       <div class="panel-header"><div class="panel-title">Leave Type Breakdown</div><div class="panel-tag yellow">WHY THEY LEFT</div></div>
@@ -1055,15 +1055,15 @@
   <!-- BLACK HOLE: FUNNEL -->
   <div class="tab-panel" id="bh-tab-funnel">
     <div class="section-header">
-      <div class="section-title">Be a Black Hole — Funnel</div>
+      <div class="section-title">Be a Black Hole â€” Funnel</div>
       <div class="section-heading">Score Progression <span>Drop-off</span></div>
     </div>
     <div class="insight-list" id="bh-funnelInsights"></div>
     <div class="panel" style="margin-top:24px">
-      <div class="panel-header"><div class="panel-title">Score Bracket Funnel — Where Players Stop Growing</div><div class="panel-tag red">DROP-OFF ANALYSIS</div></div>
+      <div class="panel-header"><div class="panel-title">Score Bracket Funnel â€” Where Players Stop Growing</div><div class="panel-tag red">DROP-OFF ANALYSIS</div></div>
       <div class="panel-body">
         <div class="bar-chart" id="bh-scoreFunnelChart"></div>
-        <div style="margin-top:16px;font-size:11px;color:var(--muted);font-family:var(--font-mono)">↑ How many players reached each score bracket. Drop = where your progression wall is.</div>
+        <div style="margin-top:16px;font-size:11px;color:var(--muted);font-family:var(--font-mono)">â†‘ How many players reached each score bracket. Drop = where your progression wall is.</div>
       </div>
     </div>
     <div class="panel">
@@ -1075,24 +1075,24 @@
   <!-- BLACK HOLE: DEATH INTEL -->
   <div class="tab-panel" id="bh-tab-deaths">
     <div class="section-header">
-      <div class="section-title">Be a Black Hole — Death Intel</div>
+      <div class="section-title">Be a Black Hole â€” Death Intel</div>
       <div class="section-heading">When & Why <span>Players Die</span></div>
     </div>
     <div class="stat-grid stat-grid-4">
-      <div class="stat-card red"><div class="stat-label">Total Deaths Logged</div><div class="stat-value red" id="bh-d-total">—</div><div class="stat-sub">all bh_deaths events</div></div>
-      <div class="stat-card yellow"><div class="stat-label">Avg Score at Death</div><div class="stat-value yellow" id="bh-d-avgscore">—</div><div class="stat-sub">how big before dying</div></div>
-      <div class="stat-card accent"><div class="stat-label">PvP Deaths</div><div class="stat-value accent" id="bh-d-pvp">—</div><div class="stat-sub">eaten by real player</div></div>
-      <div class="stat-card green"><div class="stat-label">Avg Time In Game at Death</div><div class="stat-value green" id="bh-d-time">—</div><div class="stat-sub">minutes survived</div></div>
+      <div class="stat-card red"><div class="stat-label">Total Deaths Logged</div><div class="stat-value red" id="bh-d-total">â€”</div><div class="stat-sub">all bh_deaths events</div></div>
+      <div class="stat-card yellow"><div class="stat-label">Avg Score at Death</div><div class="stat-value yellow" id="bh-d-avgscore">â€”</div><div class="stat-sub">how big before dying</div></div>
+      <div class="stat-card accent"><div class="stat-label">PvP Deaths</div><div class="stat-value accent" id="bh-d-pvp">â€”</div><div class="stat-sub">eaten by real player</div></div>
+      <div class="stat-card green"><div class="stat-label">Avg Time In Game at Death</div><div class="stat-value green" id="bh-d-time">â€”</div><div class="stat-sub">minutes survived</div></div>
     </div>
     <div class="panel">
       <div class="panel-header"><div class="panel-title">Score at Death Distribution</div><div class="panel-tag red">WHERE THE WALL IS</div></div>
       <div class="panel-body">
         <div class="bar-chart" id="bh-scoreAtDeathChart"></div>
-        <div style="margin-top:16px;font-size:11px;color:var(--muted);font-family:var(--font-mono)">↑ Score bracket when player died. Spike at low scores = players never got started. Spike at 50k = shield removal wall.</div>
+        <div style="margin-top:16px;font-size:11px;color:var(--muted);font-family:var(--font-mono)">â†‘ Score bracket when player died. Spike at low scores = players never got started. Spike at 50k = shield removal wall.</div>
       </div>
     </div>
     <div class="panel">
-      <div class="panel-header"><div class="panel-title">PvP Death — Score Gap Analysis</div><div class="panel-tag yellow">FAIRNESS CHECK</div></div>
+      <div class="panel-header"><div class="panel-title">PvP Death â€” Score Gap Analysis</div><div class="panel-tag yellow">FAIRNESS CHECK</div></div>
       <div class="panel-body">
         <div class="insight-list" id="bh-pvpInsights"></div>
       </div>
@@ -1101,7 +1101,7 @@
       <div class="panel-header"><div class="panel-title">Deaths by EatenTimes (Which Death Number Causes Quit)</div><div class="panel-tag accent">QUIT TRIGGER</div></div>
       <div class="panel-body">
         <div class="bar-chart" id="bh-eatenTimesChart"></div>
-        <div style="margin-top:16px;font-size:11px;color:var(--muted);font-family:var(--font-mono)">↑ Most quits happen on death N. That's your retention breaking point.</div>
+        <div style="margin-top:16px;font-size:11px;color:var(--muted);font-family:var(--font-mono)">â†‘ Most quits happen on death N. That's your retention breaking point.</div>
       </div>
     </div>
   </div>
@@ -1109,14 +1109,14 @@
   <!-- BLACK HOLE: PERFORMANCE -->
   <div class="tab-panel" id="bh-tab-perf">
     <div class="section-header">
-      <div class="section-title">Be a Black Hole — Performance</div>
+      <div class="section-title">Be a Black Hole â€” Performance</div>
       <div class="section-heading">FPS, Ping & <span>Lag Impact</span></div>
     </div>
     <div class="stat-grid stat-grid-4">
-      <div class="stat-card red"><div class="stat-label">Sessions w/ Low FPS</div><div class="stat-value red" id="bh-pf-lowfps">—</div><div class="stat-sub">avg FPS &lt; 25</div></div>
-      <div class="stat-card yellow"><div class="stat-label">Sessions w/ High Ping</div><div class="stat-value yellow" id="bh-pf-highping">—</div><div class="stat-sub">ping &gt; 300ms</div></div>
-      <div class="stat-card accent"><div class="stat-label">Avg FPS (all sessions)</div><div class="stat-value accent" id="bh-pf-avgfps">—</div><div class="stat-sub">frames per second</div></div>
-      <div class="stat-card green"><div class="stat-label">Laggers vs Score</div><div class="stat-value green" id="bh-pf-lagdiff">—</div><div class="stat-sub">score diff laggers vs clean</div></div>
+      <div class="stat-card red"><div class="stat-label">Sessions w/ Low FPS</div><div class="stat-value red" id="bh-pf-lowfps">â€”</div><div class="stat-sub">avg FPS &lt; 25</div></div>
+      <div class="stat-card yellow"><div class="stat-label">Sessions w/ High Ping</div><div class="stat-value yellow" id="bh-pf-highping">â€”</div><div class="stat-sub">ping &gt; 300ms</div></div>
+      <div class="stat-card accent"><div class="stat-label">Avg FPS (all sessions)</div><div class="stat-value accent" id="bh-pf-avgfps">â€”</div><div class="stat-sub">frames per second</div></div>
+      <div class="stat-card green"><div class="stat-label">Laggers vs Score</div><div class="stat-value green" id="bh-pf-lagdiff">â€”</div><div class="stat-sub">score diff laggers vs clean</div></div>
     </div>
     <div class="panel">
       <div class="panel-header"><div class="panel-title">Performance vs Score Reached Correlation</div><div class="panel-tag red">LAG = CAN'T GROW</div></div>
@@ -1131,13 +1131,13 @@
   <!-- BLACK HOLE: LIVE -->
   <div class="tab-panel" id="bh-tab-live">
     <div class="section-header">
-      <div class="section-title">Be a Black Hole — Live</div>
+      <div class="section-title">Be a Black Hole â€” Live</div>
       <div class="section-heading">Active Players <span>Right Now</span></div>
     </div>
     <div class="stat-grid stat-grid-3">
-      <div class="stat-card green"><div class="stat-label">Online Now</div><div class="stat-value green" id="bh-lv-online">—</div><div class="stat-sub">active players</div></div>
-      <div class="stat-card red"><div class="stat-label">Lagging</div><div class="stat-value red" id="bh-lv-lagging">—</div><div class="stat-sub">FPS &lt; 20 or ping &gt; 300</div></div>
-      <div class="stat-card yellow"><div class="stat-label">In Arena</div><div class="stat-value yellow" id="bh-lv-ingame">—</div><div class="stat-sub">actually playing (not lobby)</div></div>
+      <div class="stat-card green"><div class="stat-label">Online Now</div><div class="stat-value green" id="bh-lv-online">â€”</div><div class="stat-sub">active players</div></div>
+      <div class="stat-card red"><div class="stat-label">Lagging</div><div class="stat-value red" id="bh-lv-lagging">â€”</div><div class="stat-sub">FPS &lt; 20 or ping &gt; 300</div></div>
+      <div class="stat-card yellow"><div class="stat-label">In Arena</div><div class="stat-value yellow" id="bh-lv-ingame">â€”</div><div class="stat-sub">actually playing (not lobby)</div></div>
     </div>
     <div class="panel">
       <div class="panel-header"><div class="panel-title">Active Players</div><div class="panel-tag green">LIVE</div></div>
@@ -1152,39 +1152,39 @@
   <!-- BLACK HOLE: ERRORS (reuses generic errors tab, just relabeled) -->
   <div class="tab-panel" id="bh-tab-errors">
     <div class="section-header">
-      <div class="section-title">Be a Black Hole — Errors</div>
+      <div class="section-title">Be a Black Hole â€” Errors</div>
       <div class="section-heading">Smart Error <span>Filter</span></div>
     </div>
     <div class="stat-grid stat-grid-4">
-      <div class="stat-card red"><div class="stat-label">Client Errors</div><div class="stat-value red" id="bh-er-client">—</div><div class="stat-sub">total occurrences</div></div>
-      <div class="stat-card yellow"><div class="stat-label">Server Errors</div><div class="stat-value yellow" id="bh-er-server">—</div><div class="stat-sub">total occurrences</div></div>
-      <div class="stat-card red"><div class="stat-label">Unique Types</div><div class="stat-value red" id="bh-er-unique">—</div><div class="stat-sub">distinct messages</div></div>
-      <div class="stat-card accent"><div class="stat-label">Error-Session Rate</div><div class="stat-value accent" id="bh-er-rate">—</div><div class="stat-sub">% sessions had errors</div></div>
+      <div class="stat-card red"><div class="stat-label">Client Errors</div><div class="stat-value red" id="bh-er-client">â€”</div><div class="stat-sub">total occurrences</div></div>
+      <div class="stat-card yellow"><div class="stat-label">Server Errors</div><div class="stat-value yellow" id="bh-er-server">â€”</div><div class="stat-sub">total occurrences</div></div>
+      <div class="stat-card red"><div class="stat-label">Unique Types</div><div class="stat-value red" id="bh-er-unique">â€”</div><div class="stat-sub">distinct messages</div></div>
+      <div class="stat-card accent"><div class="stat-label">Error-Session Rate</div><div class="stat-value accent" id="bh-er-rate">â€”</div><div class="stat-sub">% sessions had errors</div></div>
     </div>
     <div class="panel">
       <div class="panel-header" style="flex-wrap:wrap;gap:8px">
-        <div class="panel-title">All Errors — Grouped & Ranked</div>
+        <div class="panel-title">All Errors â€” Grouped & Ranked</div>
         <div style="display:flex;gap:6px;align-items:center;flex-wrap:wrap">
-          <span class="panel-tag red" id="bh-er-showing">—</span>
+          <span class="panel-tag red" id="bh-er-showing">â€”</span>
           <button class="ignored-toggle" id="bh-ignoredBtn" onclick="bhToggleIgnored()">SHOW IGNORED</button>
         </div>
       </div>
       <div class="error-toolbar">
         <input class="error-search" id="bh-errorSearch" type="text" placeholder="Search message, script, player..." oninput="bhApplyFilters()">
         <div class="filter-chip chip-all active-chip" onclick="bhSetType('all',this)">ALL</div>
-        <div class="filter-chip chip-critical" onclick="bhSetType('critical',this)">🔴 CRITICAL</div>
-        <div class="filter-chip chip-script" onclick="bhSetType('script',this)">🟡 SCRIPT</div>
-        <div class="filter-chip chip-network" onclick="bhSetType('network',this)">🔵 NETWORK</div>
-        <div class="filter-chip chip-new" onclick="bhSetType('new',this)">🟢 NEW BUILD</div>
-        <div class="filter-chip chip-ignored" onclick="bhSetType('ignored',this)">⚫ IGNORED</div>
+        <div class="filter-chip chip-critical" onclick="bhSetType('critical',this)">ðŸ”´ CRITICAL</div>
+        <div class="filter-chip chip-script" onclick="bhSetType('script',this)">ðŸŸ¡ SCRIPT</div>
+        <div class="filter-chip chip-network" onclick="bhSetType('network',this)">ðŸ”µ NETWORK</div>
+        <div class="filter-chip chip-new" onclick="bhSetType('new',this)">ðŸŸ¢ NEW BUILD</div>
+        <div class="filter-chip chip-ignored" onclick="bhSetType('ignored',this)">âš« IGNORED</div>
         <select class="sort-select" id="bh-errorSort" onchange="bhApplyFilters()">
           <option value="count">SORT: MOST FREQUENT</option>
           <option value="recent">SORT: MOST RECENT</option>
           <option value="impact">SORT: HIGHEST IMPACT</option>
         </select>
       </div>
-      <div class="error-results-info"><span id="bh-errorInfo">—</span></div>
-      <div id="bh-errorList"><div class="empty-state">NO ERRORS — CLEAN!</div></div>
+      <div class="error-results-info"><span id="bh-errorInfo">â€”</span></div>
+      <div id="bh-errorList"><div class="empty-state">NO ERRORS â€” CLEAN!</div></div>
     </div>
   </div>
 
@@ -1284,7 +1284,7 @@ async function loadAll() {
 
     document.getElementById("lastFetch").textContent = "UPDATED " + new Date().toLocaleTimeString();
     document.getElementById("onlineCount").textContent = (allData.stats.onlineCount || 0) + " ONLINE";
-    document.title = "GamePulse — " + g.toUpperCase();
+    document.title = "GamePulse â€” " + g.toUpperCase();
 
     renderAll();
   } catch(e) {
@@ -1326,7 +1326,7 @@ function switchTab(id) {
 }
 
 function fmt(n, decimals=1) {
-  if (n === null || n === undefined || isNaN(n)) return "—";
+  if (n === null || n === undefined || isNaN(n)) return "â€”";
   return Number(n).toFixed(decimals);
 }
 
@@ -1345,13 +1345,13 @@ function getActiveBuild() {
   return document.getElementById("buildFilter").value || "ALL";
 }
 
-// Studio filter — excludes Studio sessions by default
+// Studio filter â€” excludes Studio sessions by default
 let excludeStudio = true;
 
 function toggleStudio() {
   excludeStudio = !excludeStudio;
   const btn = document.getElementById("studioToggleBtn");
-  btn.textContent = excludeStudio ? "⚗ EXCL. STUDIO" : "⚗ INCL. STUDIO";
+  btn.textContent = excludeStudio ? "âš— EXCL. STUDIO" : "âš— INCL. STUDIO";
   btn.style.color = excludeStudio ? "var(--muted)" : "var(--accent4)";
   btn.style.borderColor = excludeStudio ? "var(--border)" : "var(--accent4)";
   renderAll();
@@ -1361,7 +1361,7 @@ function filtered(arr) {
   if (!arr) return [];
   const b = getActiveBuild();
   let result = arr;
-  // Exclude studio sessions by default (toggle with ⚗ button in header)
+  // Exclude studio sessions by default (toggle with âš— button in header)
   if (excludeStudio) {
     result = result.filter(x => x.isStudio !== true);
   }
@@ -1373,12 +1373,12 @@ function updateBuildDropdown() {
   const sel = document.getElementById("buildFilter");
   const current = sel.value; // remember what user had selected
 
-  // Build the set — respect studio filter so ghost builds don't appear
+  // Build the set â€” respect studio filter so ghost builds don't appear
   const builds = new Set();
   const allRaw = [...rawData.snapshots, ...rawData.sessions, ...rawData.events,
                   ...(rawData.bhLeaves||[]), ...(rawData.bhDeaths||[])];
   allRaw.forEach(x => {
-    // Skip studio records if studio is excluded — prevents ghost builds
+    // Skip studio records if studio is excluded â€” prevents ghost builds
     if (excludeStudio && x.isStudio === true) return;
     if (x.build) builds.add(x.build);
   });
@@ -1405,7 +1405,7 @@ function updateBuildDropdown() {
   // else leave on ALL BUILDS if no builds found at all
 
   if (allData.stats.currentBuild) {
-    document.title = "GamePulse — " + allData.stats.currentBuild;
+    document.title = "GamePulse â€” " + allData.stats.currentBuild;
   }
 }
 
@@ -1468,10 +1468,10 @@ function renderAll() {
   setTimeout(animateBars, 100);
 }
 
-// ─── OVERVIEW ───────────────────────────────────────────
+// â”€â”€â”€ OVERVIEW â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 function renderOverview() {
-  // sess = /sessions (server-side, written on every PlayerRemoving — most reliable count)
-  // snap = /exitSnapshots (client-side, written on clean leave — has FPS/verdict data)
+  // sess = /sessions (server-side, written on every PlayerRemoving â€” most reliable count)
+  // snap = /exitSnapshots (client-side, written on clean leave â€” has FPS/verdict data)
   // Rule: use sess for ALL counts, totals, averages, buckets
   //       use snap ONLY for verdict/FPS data that only client has
   const sess = filtered(allData.sessions);
@@ -1512,7 +1512,7 @@ function renderOverview() {
   document.getElementById("ov-mobile").textContent = pct(mobile, joins.length || 1);
   document.getElementById("ov-errorSessions").textContent = filtered(allData.clientErrors).length;
 
-  // Bucket chart — always from sessions (server-side, never misses a player)
+  // Bucket chart â€” always from sessions (server-side, never misses a player)
   const buckets = {};
   const bucketOrder = ["0-1m","1-2m","2-3m","3-5m","5-8m","8-15m","15-30m","30m+"];
   bucketOrder.forEach(b => buckets[b] = 0);
@@ -1524,7 +1524,7 @@ function renderOverview() {
     return barRow(b, v, maxB, v + " sessions", col);
   }).join("");
 
-  // Verdict chart — from snapshots (only source that has verdict)
+  // Verdict chart â€” from snapshots (only source that has verdict)
   // Show a note if snapshots << sessions (many players didn't fire clean exit)
   const coveragePct = Math.round((snap.length / Math.max(sess.length,1)) * 100);
   const verdicts = {normal:0, perf:0, difficulty:0, instant_quit:0};
@@ -1534,18 +1534,18 @@ function renderOverview() {
   const vLabels = {normal:"Normal", perf:"Perf / Lag", difficulty:"Difficulty", instant_quit:"Instant Quit"};
   const coverageNote = coveragePct < 80
     ? `<div style="margin-bottom:12px;font-family:var(--font-mono);font-size:10px;color:var(--accent4);padding:8px;background:rgba(255,183,0,0.08);border:1px solid rgba(255,183,0,0.2)">
-        ⚠ EXIT SNAPSHOT COVERAGE: ${coveragePct}% (${snap.length}/${sess.length} sessions) — verdicts are based on players who had a clean exit. Mobile/crash exits may not be captured.
+        âš  EXIT SNAPSHOT COVERAGE: ${coveragePct}% (${snap.length}/${sess.length} sessions) â€” verdicts are based on players who had a clean exit. Mobile/crash exits may not be captured.
        </div>` : "";
   document.getElementById("verdictChart").innerHTML = coverageNote + Object.entries(verdicts).map(([k,v]) =>
     barRow(vLabels[k], v, maxV, pct(v, snap.length||1) + " (" + v + " of " + snap.length + " snapshots)", vColors[k])
   ).join("");
 }
 
-// ─── RETENTION ──────────────────────────────────────────
+// â”€â”€â”€ RETENTION â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 function renderRetention() {
   const snap = filtered(allData.snapshots);
   const total = snap.length;
-  if (!total) { document.getElementById("retentionInsights").innerHTML = '<div class="empty-state">NOT ENOUGH DATA YET — PLAY A FEW SESSIONS</div>'; return; }
+  if (!total) { document.getElementById("retentionInsights").innerHTML = '<div class="empty-state">NOT ENOUGH DATA YET â€” PLAY A FEW SESSIONS</div>'; return; }
 
   const short = snap.filter(s => s.sessionMinutes < 3);
   const long  = snap.filter(s => s.sessionMinutes >= 15);
@@ -1570,7 +1570,7 @@ function renderRetention() {
   if (shortN > 0) {
     const pctLowFps = Math.round((shortLowFps/shortN)*100);
     if (pctLowFps > 20) insights.push({
-      type:"red", icon:"🔥",
+      type:"red", icon:"ðŸ”¥",
       headline: pctLowFps + "% of short-session players (&lt;3min) had critically low FPS",
       detail: shortLowFps + "/" + shortN + " short-session players had avg FPS below 25. Low FPS = frustrating = they leave. Fix game performance for mobile/low-end players.",
       stat: pctLowFps + "%", statType: "red"
@@ -1578,15 +1578,15 @@ function renderRetention() {
 
     const pctPerf = Math.round((shortPerf/shortN)*100);
     if (pctPerf > 15) insights.push({
-      type:"red", icon:"📉",
+      type:"red", icon:"ðŸ“‰",
       headline: pctPerf + "% of early leavers were explicitly flagged as perf-quit",
-      detail: "The system tagged " + shortPerf + " of " + shortN + " short sessions as 'perf' verdict — low FPS at exit, high ping, or lagged 40%+ of session.",
+      detail: "The system tagged " + shortPerf + " of " + shortN + " short sessions as 'perf' verdict â€” low FPS at exit, high ping, or lagged 40%+ of session.",
       stat: pctPerf + "%", statType: "red"
     });
 
     const pctDiff = Math.round((shortDifficulty/shortN)*100);
     if (pctDiff > 10) insights.push({
-      type:"yellow", icon:"💀",
+      type:"yellow", icon:"ðŸ’€",
       headline: pctDiff + "% of early leavers died 5+ times in under 3 minutes",
       detail: "Difficulty wall detected. " + shortDifficulty + " players hit the 5-death threshold before the 3-minute mark and quit. Consider reducing early-game damage or adding more health.",
       stat: pctDiff + "%", statType: "yellow"
@@ -1596,7 +1596,7 @@ function renderRetention() {
   if (longN > 0) {
     const fpsDelta = longAvgFps - shortAvgFps;
     if (fpsDelta > 5 && shortN > 0) insights.push({
-      type:"green", icon:"✅",
+      type:"green", icon:"âœ…",
       headline: "Long-session players had " + fmt(fpsDelta) + " higher avg FPS than early leavers",
       detail: "Players who stayed 15min+ averaged " + fmt(longAvgFps) + " FPS vs " + fmt(shortAvgFps) + " FPS for short sessions. Good performance = longer play. Optimize for lower-end hardware.",
       stat: "+" + fmt(fpsDelta), statType: "green"
@@ -1604,7 +1604,7 @@ function renderRetention() {
 
     const longPerfPct = Math.round((longErrors/longN)*100);
     insights.push({
-      type:"green", icon:"🏆",
+      type:"green", icon:"ðŸ†",
       headline: "Long-session players: only " + longPerfPct + "% had performance issues",
       detail: "Of " + longN + " players who stayed 15min+, only " + longErrors + " had perf-related quit reasons. Good performance is the #1 driver of long sessions.",
       stat: (100-longPerfPct)+"%", statType: "green"
@@ -1613,14 +1613,14 @@ function renderRetention() {
 
   const instantQuits = snap.filter(s => s.verdict === "instant_quit");
   if (instantQuits.length > 0) insights.push({
-    type:"blue", icon:"🚪",
-    headline: instantQuits.length + " players left under 1 minute with 0 deaths — boredom quit",
-    detail: "These players weren't dying, weren't lagging — they just weren't hooked. Consider a stronger opening 30 seconds: immediate action, visual rewards, or a dramatic spawn.",
+    type:"blue", icon:"ðŸšª",
+    headline: instantQuits.length + " players left under 1 minute with 0 deaths â€” boredom quit",
+    detail: "These players weren't dying, weren't lagging â€” they just weren't hooked. Consider a stronger opening 30 seconds: immediate action, visual rewards, or a dramatic spawn.",
     stat: pct(instantQuits.length, total), statType: "blue"
   });
 
   if (insights.length === 0) insights.push({
-    type:"green", icon:"✅",
+    type:"green", icon:"âœ…",
     headline: "Not enough data for deep insights yet",
     detail: "Play at least 10-20 sessions and come back. The system is tracking everything it needs.",
     stat: total + " sess", statType: "green"
@@ -1641,7 +1641,7 @@ function renderRetention() {
   if (shortN > 0 && longN > 0) {
     document.getElementById("cohortSplit").innerHTML = `
       <div class="cohort-box">
-        <div class="cohort-label red">SHORT SESSIONS (&lt;3 MIN) — ${shortN} players</div>
+        <div class="cohort-label red">SHORT SESSIONS (&lt;3 MIN) â€” ${shortN} players</div>
         ${cohortRow("Avg FPS", fmt(shortAvgFps), shortAvgFps < 25 ? "red" : "")}
         ${cohortRow("Avg Ping", fmt(shortAvgPing) + "ms", shortAvgPing > 300 ? "red" : "")}
         ${cohortRow("Avg Deaths", fmt(shortAvgDeaths))}
@@ -1649,7 +1649,7 @@ function renderRetention() {
         ${cohortRow("Perf Quit %", pct(shortPerf, shortN), shortPerf/shortN > 0.2 ? "red" : "")}
       </div>
       <div class="cohort-box">
-        <div class="cohort-label green">LONG SESSIONS (15+ MIN) — ${longN} players</div>
+        <div class="cohort-label green">LONG SESSIONS (15+ MIN) â€” ${longN} players</div>
         ${cohortRow("Avg FPS", fmt(longAvgFps), "", longAvgFps >= 40 ? "green" : "")}
         ${cohortRow("Avg Ping", fmt(longAvgPing) + "ms", "", longAvgPing < 150 ? "green" : "")}
         ${cohortRow("Avg Deaths", fmt(longAvgDeaths))}
@@ -1658,7 +1658,7 @@ function renderRetention() {
       </div>
     `;
   } else {
-    document.getElementById("cohortSplit").innerHTML = '<div class="empty-state" style="grid-column:span 2">NEED MORE DATA — PLAY 15+ MIN SESSIONS AND SHORT SESSIONS</div>';
+    document.getElementById("cohortSplit").innerHTML = '<div class="empty-state" style="grid-column:span 2">NEED MORE DATA â€” PLAY 15+ MIN SESSIONS AND SHORT SESSIONS</div>';
   }
 
   // Death timing
@@ -1680,7 +1680,7 @@ function cohortRow(label, val, badClass="", goodClass="") {
   return `<div class="cohort-stat"><span class="cohort-key">${label}</span><span class="cohort-val ${badClass || goodClass}">${val}</span></div>`;
 }
 
-// ─── PERFORMANCE ────────────────────────────────────────
+// â”€â”€â”€ PERFORMANCE â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 function renderPerformance() {
   const snap = filtered(allData.snapshots);
   if (!snap.length) return;
@@ -1703,7 +1703,7 @@ function renderPerformance() {
     const noLagAvgMin = avg(nonLaggers, "sessionMinutes");
     const diff = noLagAvgMin - lagAvgMin;
     perfInsights.push({
-      type: diff > 2 ? "red" : "blue", icon: "📊",
+      type: diff > 2 ? "red" : "blue", icon: "ðŸ“Š",
       headline: "Lagging players play " + fmt(diff) + " min LESS than smooth players",
       detail: "Players with low FPS: avg " + fmt(lagAvgMin) + "min session. Players without lag: avg " + fmt(noLagAvgMin) + "min. Fix performance = directly increases average session length.",
       stat: "-" + fmt(diff) + "m", statType: diff > 2 ? "red" : "blue"
@@ -1721,9 +1721,9 @@ function renderPerformance() {
     if (!v.n) return "";
     const am = v.avgMin / v.n;
     return `<div class="insight blue" style="margin-bottom:8px">
-      <div class="insight-icon" style="font-size:16px">🎮</div>
+      <div class="insight-icon" style="font-size:16px">ðŸŽ®</div>
       <div class="insight-content">
-        <div class="insight-headline">${k} FPS group — ${v.n} players</div>
+        <div class="insight-headline">${k} FPS group â€” ${v.n} players</div>
         <div class="insight-detail">Avg session length: <strong style="color:var(--accent)">${fmt(am)} minutes</strong></div>
       </div>
       <div class="insight-stat blue">${fmt(am)}m</div>
@@ -1756,7 +1756,7 @@ function renderPerformance() {
   }).join("") || '<div class="empty-state">NEED MORE DATA</div>';
 }
 
-// ─── BEHAVIOR ───────────────────────────────────────────
+// â”€â”€â”€ BEHAVIOR â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 function renderBehavior() {
   const snap = filtered(allData.snapshots);
   const sess = filtered(allData.sessions);
@@ -1801,7 +1801,7 @@ function renderBehavior() {
     || '<div class="empty-state">NO JOIN DATA YET</div>';
 }
 
-// ─── LIVE ────────────────────────────────────────────────
+// â”€â”€â”€ LIVE â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 function renderLive() {
   const players = Object.values(allData.livePlayers).filter(p => p && p.live).map(p => p.live);
   const online = players.length;
@@ -1813,7 +1813,7 @@ function renderLive() {
   document.getElementById("lv-avgFps").textContent = fmt(avgFps);
 
   if (online === 0) {
-    document.getElementById("livePlayerTable").innerHTML = '<div class="empty-state">NO ACTIVE PLAYERS — START A PLAYTEST</div>';
+    document.getElementById("livePlayerTable").innerHTML = '<div class="empty-state">NO ACTIVE PLAYERS â€” START A PLAYTEST</div>';
   } else {
     document.getElementById("livePlayerTable").innerHTML = `
       <table class="live-table">
@@ -1825,10 +1825,10 @@ function renderLive() {
         <tbody>
           ${players.map(p => `
             <tr>
-              <td>${p.name || "—"}</td>
+              <td>${p.name || "â€”"}</td>
               <td><span class="badge ${(p.platform||"").toLowerCase()}">${p.platform||"?"}</span></td>
-              <td style="color:${p.fps<20?'var(--accent2)':p.fps<40?'var(--accent4)':'var(--accent3)'}">${p.fps||"—"}</td>
-              <td style="color:${p.ping>300?'var(--accent2)':p.ping>150?'var(--accent4)':'var(--text)'}">${p.ping||"—"}ms</td>
+              <td style="color:${p.fps<20?'var(--accent2)':p.fps<40?'var(--accent4)':'var(--accent3)'}">${p.fps||"â€”"}</td>
+              <td style="color:${p.ping>300?'var(--accent2)':p.ping>150?'var(--accent4)':'var(--text)'}">${p.ping||"â€”"}ms</td>
               <td>${Math.floor((p.sessionSeconds||0)/60)}m ${(p.sessionSeconds||0)%60}s</td>
               <td>${p.deathCount||0}</td>
               <td><span class="status-dot ${p.isLagging?'bad':'ok'}"></span>${p.isLagging?'LAGGING':'OK'}</td>
@@ -1848,7 +1848,7 @@ function renderLive() {
     document.getElementById("recentEvents").innerHTML = '<div class="empty-state">NO EVENTS YET</div>';
   } else {
     const typeColors = { join:"green", leave:"red", death:"yellow", zoneChange:"accent" };
-    const typeIcons = { join:"→", leave:"←", death:"💀", zoneChange:"📍" };
+    const typeIcons = { join:"â†’", leave:"â†", death:"ðŸ’€", zoneChange:"ðŸ“" };
     document.getElementById("recentEvents").innerHTML = `
       <table class="live-table">
         <thead><tr><th>TIME</th><th>TYPE</th><th>PLAYER</th><th>DETAIL</th></tr></thead>
@@ -1859,12 +1859,12 @@ function renderLive() {
             const col = typeColors[e.type] || "accent";
             let detail = "";
             if (e.type === "death") detail = "Zone: " + (e.zone||"?") + " | Death #" + (e.deathNumber||"?") + " at " + (e.sessionMinute||0) + "min";
-            if (e.type === "zoneChange") detail = "→ " + (e.zone||"?");
+            if (e.type === "zoneChange") detail = "â†’ " + (e.zone||"?");
             if (e.type === "join") detail = e.isNew ? "NEW PLAYER" : "Returning | Age: " + (e.accountAgeDays||0) + "d";
             if (e.type === "leave") detail = "Session: " + (e.sessionMinutes||0) + "min | Deaths: " + (e.deathCount||0);
             return `<tr>
               <td style="color:var(--muted)">${timeStr}</td>
-              <td><span style="color:var(--${col==='accent'?'accent':col==='green'?'accent3':col==='red'?'accent2':'accent4'})">${typeIcons[e.type]||"•"} ${(e.type||"").toUpperCase()}</span></td>
+              <td><span style="color:var(--${col==='accent'?'accent':col==='green'?'accent3':col==='red'?'accent2':'accent4'})">${typeIcons[e.type]||"â€¢"} ${(e.type||"").toUpperCase()}</span></td>
               <td>${e.player||"?"}</td>
               <td style="color:var(--muted);font-size:10px">${detail}</td>
             </tr>`;
@@ -1875,10 +1875,10 @@ function renderLive() {
   }
 }
 
-// ─── ERRORS ─────────────────────────────────────────────
-// ─── ERROR INTELLIGENCE ─────────────────────────────────────────────────────
+// â”€â”€â”€ ERRORS â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// â”€â”€â”€ ERROR INTELLIGENCE â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
-// Patterns that are useless noise — auto-classify as ignored
+// Patterns that are useless noise â€” auto-classify as ignored
 const NOISE_PATTERNS = [
   /attempt to index nil/i,
   /players\..+\.character/i,
@@ -1889,7 +1889,7 @@ const NOISE_PATTERNS = [
   /runservice.*heartbeat/i,
 ];
 
-// Patterns that are critical — flag immediately
+// Patterns that are critical â€” flag immediately
 const CRITICAL_PATTERNS = [
   /stack overflow/i,
   /out of memory/i,
@@ -1978,7 +1978,7 @@ function groupErrors(ceArr, seArr) {
   return Object.values(groups).map(g => {
     const avgFps = g.fpsSamples.length ? Math.round(g.fpsSamples.reduce((a,b)=>a+b,0)/g.fpsSamples.length) : null;
     const avgPing = g.pingSamples.length ? Math.round(g.pingSamples.reduce((a,b)=>a+b,0)/g.pingSamples.length) : null;
-    // Impact score: frequency × severity boost
+    // Impact score: frequency Ã— severity boost
     const sevBoost = g.classification === 'critical' ? 5 : g.classification === 'network' ? 2 : g.classification === 'noise' ? 0.1 : 1;
     const fpsPenalty = (avgFps && avgFps < 20) ? 2 : 1;
     g.impactScore = g.occurrences.length * sevBoost * fpsPenalty;
@@ -2070,7 +2070,7 @@ function applyErrorFilters() {
 
   document.getElementById('errorResultsInfo').textContent =
     groups.length + ' error type' + (groups.length !== 1 ? 's' : '') +
-    ' shown · ' + groups.reduce((a,g) => a+g.count, 0) + ' total occurrences';
+    ' shown Â· ' + groups.reduce((a,g) => a+g.count, 0) + ' total occurrences';
 
   document.getElementById('er-showing').textContent = groups.length + ' TYPES';
 
@@ -2125,15 +2125,15 @@ function renderErrorCard(g, search='') {
       <div class="error-card-right">
         <div class="error-impact ${impactClass}">${g.count}</div>
         <div class="error-impact-label">OCCURRENCES</div>
-        ${g.count > 1 ? `<div class="error-count-badge">×${g.count}</div>` : ''}
+        ${g.count > 1 ? `<div class="error-count-badge">Ã—${g.count}</div>` : ''}
       </div>
     </div>
     <div class="error-grouped-note">
-      ${g.count} occurrences across ${g.builds.length} build(s) · ${g.platforms.join(', ')||'?'} · 
-      First seen: ${g.firstSeen ? new Date(g.firstSeen*1000).toLocaleString() : '?'} · 
+      ${g.count} occurrences across ${g.builds.length} build(s) Â· ${g.platforms.join(', ')||'?'} Â· 
+      First seen: ${g.firstSeen ? new Date(g.firstSeen*1000).toLocaleString() : '?'} Â· 
       Last seen: ${g.lastSeen ? new Date(g.lastSeen*1000).toLocaleString() : '?'}
-      ${g.avgFps !== null ? ` · Avg FPS when occurring: ${g.avgFps}` : ''}
-      ${g.avgPing !== null ? ` · Avg Ping: ${g.avgPing}ms` : ''}
+      ${g.avgFps !== null ? ` Â· Avg FPS when occurring: ${g.avgFps}` : ''}
+      ${g.avgPing !== null ? ` Â· Avg Ping: ${g.avgPing}ms` : ''}
       <br><span style="color:var(--muted2);font-size:9px">RIGHT-CLICK TO IGNORE/UNIGNORE THIS ERROR TYPE</span>
     </div>
   </div>`;
@@ -2167,7 +2167,7 @@ function timeAgo(ts) {
   return Math.floor(d/86400) + 'd ago';
 }
 
-// ─── HELPERS ────────────────────────────────────────────
+// â”€â”€â”€ HELPERS â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 function barRow(label, value, max, display, color="accent") {
   const width = Math.max(Math.round((value / max) * 100), value > 0 ? 2 : 0);
   return `
@@ -2198,9 +2198,9 @@ setInterval(() => {
 
 loadAll();
 
-// ════════════════════════════════════════════════════════════════════════
+// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
 // BLACK HOLE SPECIFIC RENDER FUNCTIONS
-// ════════════════════════════════════════════════════════════════════════
+// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
 
 function bhSnap() { return filtered(allData.snapshots); }
 function bhLeaves() { return filtered(allData.bhLeaves || []); }
@@ -2220,7 +2220,7 @@ function renderBH_Overview() {
   const lobbyOnly = src.filter(s => s.leaveType === "lobby_only" || s.everPlayedGame === false || s.everEnteredGame === false).length;
   const rageQuit = src.filter(s => s.leaveType === "rage_quit_ingame" || s.wasInGame === true).length;
 
-  // Game time — use gameSeconds if available, otherwise sessionSeconds
+  // Game time â€” use gameSeconds if available, otherwise sessionSeconds
   const gameTimes = src.map(s => s.gameSeconds || s.gameMinutes*60 || s.sessionSeconds || 0).filter(v => v > 0);
   const avgGameSecs = gameTimes.length ? gameTimes.reduce((a,b)=>a+b,0)/gameTimes.length : 0;
 
@@ -2281,15 +2281,15 @@ function renderBH_Funnel() {
   const insights = [];
   const total = src.length;
   if (!total) {
-    document.getElementById("bh-funnelInsights").innerHTML = '<div class="empty-state">NEED MORE DATA — RUN SOME SESSIONS</div>';
+    document.getElementById("bh-funnelInsights").innerHTML = '<div class="empty-state">NEED MORE DATA â€” RUN SOME SESSIONS</div>';
     return;
   }
 
   // Lobby-only rate
   const lobbyOnly = src.filter(s => s.everPlayedGame===false||s.everEnteredGame===false||s.leaveType==="lobby_only").length;
   if (lobbyOnly > 0) {
-    insights.push({type:"red",icon:"🚪",
-      headline: pct(lobbyOnly,total) + " of all sessions never entered the arena — lobby-only quits",
+    insights.push({type:"red",icon:"ðŸšª",
+      headline: pct(lobbyOnly,total) + " of all sessions never entered the arena â€” lobby-only quits",
       detail: lobbyOnly+" players joined, saw the lobby, and left without ever pressing Play or touching the gate. Possible causes: confusion about how to start, long wait, bad first impression.",
       stat: pct(lobbyOnly,total), statType:"red"});
   }
@@ -2302,11 +2302,11 @@ function renderBH_Funnel() {
     const avgRepeatTime = avg(repeatDeaths, "timeInGameSeconds");
     const diff = avgRepeatTime - avgFirstTime;
     if (Math.abs(diff) > 30) {
-      insights.push({type: diff > 0 ? "green":"yellow", icon:"🛡",
+      insights.push({type: diff > 0 ? "green":"yellow", icon:"ðŸ›¡",
         headline: diff > 0
-          ? "First-death forgiveness is working — repeat players survive " + fmt(diff/60) + "min longer"
-          : "Players are surviving LESS on repeat deaths (−" + fmt(Math.abs(diff)/60) + "min) — forgiveness may not be helping",
-        detail: "First death avg survival: "+fmt(avgFirstTime/60)+"min. Repeat death avg: "+fmt(avgRepeatTime/60)+"min. The 100% score retention on first death is designed to hook players — check if it's actually keeping them.",
+          ? "First-death forgiveness is working â€” repeat players survive " + fmt(diff/60) + "min longer"
+          : "Players are surviving LESS on repeat deaths (âˆ’" + fmt(Math.abs(diff)/60) + "min) â€” forgiveness may not be helping",
+        detail: "First death avg survival: "+fmt(avgFirstTime/60)+"min. Repeat death avg: "+fmt(avgRepeatTime/60)+"min. The 100% score retention on first death is designed to hook players â€” check if it's actually keeping them.",
         stat: (diff>0?"+":"")+fmt(diff/60)+"m", statType: diff>0?"green":"red"});
     }
   }
@@ -2327,13 +2327,13 @@ function renderBH_Funnel() {
   const near50k = deaths.filter(d => (d.scoreAtDeath||0) >= 40000 && (d.scoreAtDeath||0) <= 60000).length;
   const total10kTo40k = deaths.filter(d => (d.scoreAtDeath||0) >= 10000 && (d.scoreAtDeath||0) < 40000).length;
   if (near50k > total10kTo40k * 0.3 && near50k > 3) {
-    insights.push({type:"red",icon:"💥",
-      headline: "Shield removal at 50k is causing a death spike — " + near50k + " deaths in the 40k-60k range",
+    insights.push({type:"red",icon:"ðŸ’¥",
+      headline: "Shield removal at 50k is causing a death spike â€” " + near50k + " deaths in the 40k-60k range",
       detail: "When the shield is removed at 50k score, players suddenly become vulnerable. "+near50k+" deaths occurred in that score range vs "+total10kTo40k+" deaths across 10k-40k. Consider a grace period or warning before shield removal.",
       stat: near50k+" deaths", statType:"red"});
   }
 
-  if (!insights.length) insights.push({type:"green",icon:"✅",
+  if (!insights.length) insights.push({type:"green",icon:"âœ…",
     headline:"Not enough deaths data yet for deep funnel insights",
     detail:"Play more sessions. The funnel chart above shows progression data from exits.",
     stat:total+" sessions", statType:"green"});
@@ -2353,7 +2353,7 @@ function renderBH_Funnel() {
   const repeatDeathSessions = deaths.filter(d => !d.isFirstDeath && (d.eatenTimes||0) >= 2);
   if (firstDeathSessions.length && repeatDeathSessions.length) {
     const fn = (label, arr, cls) => `<div class="cohort-box">
-      <div class="cohort-label ${cls}">${label} — ${arr.length} deaths</div>
+      <div class="cohort-label ${cls}">${label} â€” ${arr.length} deaths</div>
       ${cohortRow("Avg score at death", fmtScore(avg(arr,"scoreAtDeath")))}
       ${cohortRow("Avg time survived", fmt(avg(arr,"timeInGameSeconds")/60)+"min")}
       ${cohortRow("Avg EatenTimes", fmt(avg(arr,"eatenTimes")))}
@@ -2372,8 +2372,8 @@ function renderBH_Deaths() {
 
   document.getElementById("bh-d-total").textContent = deaths.length;
   document.getElementById("bh-d-pvp").textContent = pvp.length;
-  document.getElementById("bh-d-avgscore").textContent = deaths.length ? fmtScore(avg(deaths,"scoreAtDeath")) : "—";
-  document.getElementById("bh-d-time").textContent = deaths.length ? fmt(avg(deaths,"timeInGameSeconds")/60)+"m" : "—";
+  document.getElementById("bh-d-avgscore").textContent = deaths.length ? fmtScore(avg(deaths,"scoreAtDeath")) : "â€”";
+  document.getElementById("bh-d-time").textContent = deaths.length ? fmt(avg(deaths,"timeInGameSeconds")/60)+"m" : "â€”";
 
   // Score at death chart
   const brackets = {"1-9":0,"10-99":0,"100-499":0,"500-999":0,"1k-4.9k":0,"5k-9.9k":0,"10k-19k":0,"20k-49k":0,"50k-99k":0,"100k+":0};
@@ -2402,20 +2402,20 @@ function renderBH_Deaths() {
     const avgScoreDiff = avg(pvp, "scoreDiff");
     const onesidedKills = pvp.filter(d => (d.scoreDiff||0) > 50000).length;
     if (onesidedKills > pvp.length * 0.2) {
-      pvpInsights.push({type:"red",icon:"⚔",
+      pvpInsights.push({type:"red",icon:"âš”",
         headline: pct(onesidedKills,pvp.length)+" of PvP deaths are one-sided stomps (50k+ score gap)",
-        detail: "New players are being eaten by massively bigger players. This is a frustrating death — they had no chance. Consider a protection zone or matchmaking mechanic for small players.",
+        detail: "New players are being eaten by massively bigger players. This is a frustrating death â€” they had no chance. Consider a protection zone or matchmaking mechanic for small players.",
         stat: onesidedKills+" stomps", statType:"red"});
     }
-    pvpInsights.push({type:"blue",icon:"📊",
+    pvpInsights.push({type:"blue",icon:"ðŸ“Š",
       headline: pvp.length + " total PvP deaths tracked with avg score gap of " + fmtScore(avgScoreDiff),
       detail: "Victim avg score: "+fmtScore(avg(pvp,"victimScore"))+" | Killer avg score: "+fmtScore(avg(pvp,"killerScore"))+" | Score gap: "+fmtScore(avgScoreDiff),
       stat: fmtScore(avgScoreDiff), statType:"accent"});
   } else {
-    pvpInsights.push({type:"green",icon:"ℹ",
-      headline:"No PvP death data yet — run a live session",
+    pvpInsights.push({type:"green",icon:"â„¹",
+      headline:"No PvP death data yet â€” run a live session",
       detail:"PvP deaths track who ate who with full score context. Requires players to actually eat each other in a live game.",
-      stat:"—", statType:"green"});
+      stat:"â€”", statType:"green"});
   }
   document.getElementById("bh-pvpInsights").innerHTML = pvpInsights.map(i => `
     <div class="insight ${i.type}">
@@ -2460,12 +2460,12 @@ function renderBH_Perf() {
 
   const perfIns = [];
   if (laggers.length && clean.length) {
-    perfIns.push({type:diff>1000?"red":"blue",icon:"📉",
+    perfIns.push({type:diff>1000?"red":"blue",icon:"ðŸ“‰",
       headline:"Lagging players reach score "+fmtScore(lagScore)+" vs "+fmtScore(cleanScore)+" for smooth players",
       detail:"FPS lag directly kills score growth. Laggy players can't react fast enough to eat objects or dodge. Fix performance = players grow bigger = they stay longer.",
       stat:"-"+fmtScore(diff), statType:"red"});
   }
-  if (!perfIns.length) perfIns.push({type:"green",icon:"✅",headline:"Need more sessions for perf vs score correlation",detail:"Play more sessions with varied hardware.",stat:"—",statType:"green"});
+  if (!perfIns.length) perfIns.push({type:"green",icon:"âœ…",headline:"Need more sessions for perf vs score correlation",detail:"Play more sessions with varied hardware.",stat:"â€”",statType:"green"});
   document.getElementById("bh-perfInsights").innerHTML = perfIns.map(i => `
     <div class="insight ${i.type}">
       <div class="insight-icon">${i.icon}</div>
@@ -2503,17 +2503,17 @@ function renderBH_Live() {
     document.getElementById("bh-liveTable").innerHTML = `<table class="live-table">
       <thead><tr><th>PLAYER</th><th>PLATFORM</th><th>FPS</th><th>PING</th><th>SESSION</th><th>STATUS</th></tr></thead>
       <tbody>${players.map(p=>`<tr>
-        <td>${p.name||"—"}</td>
+        <td>${p.name||"â€”"}</td>
         <td><span class="badge ${(p.platform||"").toLowerCase()}">${p.platform||"?"}</span></td>
-        <td style="color:${p.fps<20?'var(--accent2)':p.fps<40?'var(--accent4)':'var(--accent3)'}">${p.fps||"—"}</td>
-        <td style="color:${p.ping>300?'var(--accent2)':p.ping>150?'var(--accent4)':'var(--text)'}">${p.ping||"—"}ms</td>
+        <td style="color:${p.fps<20?'var(--accent2)':p.fps<40?'var(--accent4)':'var(--accent3)'}">${p.fps||"â€”"}</td>
+        <td style="color:${p.ping>300?'var(--accent2)':p.ping>150?'var(--accent4)':'var(--text)'}">${p.ping||"â€”"}ms</td>
         <td>${Math.floor((p.sessionSeconds||0)/60)}m ${(p.sessionSeconds||0)%60}s</td>
         <td><span class="status-dot ${p.isLagging?'bad':'ok'}"></span>${p.isLagging?'LAGGING':'OK'}</td>
       </tr>`).join("")}</tbody></table>`;
   }
 
   const events = [...filtered(allData.events)].sort((a,b)=>(b.time||0)-(a.time||0)).slice(0,20);
-  const typeIcons = {join:"→",leave:"←",death:"💀",zoneChange:"📍"};
+  const typeIcons = {join:"â†’",leave:"â†",death:"ðŸ’€",zoneChange:"ðŸ“"};
   const typeColors = {join:"green",leave:"red",death:"yellow",zoneChange:"accent"};
   document.getElementById("bh-recentEvents").innerHTML = events.length ? `<table class="live-table">
     <thead><tr><th>TIME</th><th>TYPE</th><th>PLAYER</th><th>DETAIL</th></tr></thead>
@@ -2522,7 +2522,7 @@ function renderBH_Live() {
       const colVar = col==="green"?"var(--accent3)":col==="red"?"var(--accent2)":col==="yellow"?"var(--accent4)":"var(--accent)";
       return `<tr>
         <td style="color:var(--muted)">${new Date((e.time||0)*1000).toLocaleTimeString()}</td>
-        <td style="color:${colVar}">${typeIcons[e.type]||"•"} ${(e.type||"").toUpperCase()}</td>
+        <td style="color:${colVar}">${typeIcons[e.type]||"â€¢"} ${(e.type||"").toUpperCase()}</td>
         <td>${e.player||"?"}</td>
         <td style="color:var(--muted);font-size:10px">${e.type==="death"?"Death #"+(e.deathNumber||"?")+" at min "+(e.sessionMinute||0):e.type==="leave"?"Session: "+(e.sessionMinutes||0)+"min":""}</td>
       </tr>`;
@@ -2578,7 +2578,7 @@ function bhApplyFilters() {
   if (sort==='count') groups.sort((a,b)=>b.count-a.count);
   else if (sort==='recent') groups.sort((a,b)=>b.lastSeen-a.lastSeen);
   else groups.sort((a,b)=>b.impactScore-a.impactScore);
-  document.getElementById('bh-errorInfo').textContent = groups.length+' types · '+groups.reduce((a,g)=>a+g.count,0)+' occurrences';
+  document.getElementById('bh-errorInfo').textContent = groups.length+' types Â· '+groups.reduce((a,g)=>a+g.count,0)+' occurrences';
   document.getElementById('bh-er-showing').textContent = groups.length+' TYPES';
   document.getElementById('bh-errorList').innerHTML = groups.length
     ? groups.map(g => renderErrorCard(g, search)).join("")
@@ -2587,12 +2587,882 @@ function bhApplyFilters() {
 
 // Helper: format score with K/M suffix
 function fmtScore(n) {
-  if (n === null || n === undefined || isNaN(n)) return "—";
+  if (n === null || n === undefined || isNaN(n)) return "â€”";
   n = Math.round(n);
   if (n >= 1000000) return (n/1000000).toFixed(1)+"M";
   if (n >= 1000) return (n/1000).toFixed(1)+"k";
   return String(n);
 }
+
+</script>
+<script>
+(function bootstrapGamePulseDashboardFixes() {
+  if (typeof window !== "undefined" && window.__gamePulseDashboardFixesInstalled) {
+    return;
+  }
+
+  if (typeof renderAll !== "function" || typeof barRow !== "function" || typeof filtered !== "function") {
+    setTimeout(bootstrapGamePulseDashboardFixes, 200);
+    return;
+  }
+
+  if (typeof window !== "undefined") {
+    window.__gamePulseDashboardFixesInstalled = true;
+  }
+
+  const LIVE_TTL_SECONDS = 45;
+  const BH_MATCH_WINDOW_SECONDS = 15;
+
+  function toNumber(value) {
+    if (value === null || value === undefined || value === "") return null;
+    const parsed = Number(value);
+    return Number.isFinite(parsed) ? parsed : null;
+  }
+
+  function minutesToSeconds(value) {
+    const parsed = toNumber(value);
+    return parsed === null ? null : parsed * 60;
+  }
+
+  function pickNumber() {
+    for (const value of arguments) {
+      const parsed = toNumber(value);
+      if (parsed !== null) return parsed;
+    }
+    return null;
+  }
+
+  function pickValue() {
+    for (const value of arguments) {
+      if (value !== null && value !== undefined) return value;
+    }
+    return null;
+  }
+
+  function averageNumbers(values) {
+    const numbers = values.map(toNumber).filter((value) => value !== null);
+    if (!numbers.length) return 0;
+    return numbers.reduce((sum, value) => sum + value, 0) / numbers.length;
+  }
+
+  function nowSeconds() {
+    return Math.floor(Date.now() / 1000);
+  }
+
+  function activeBuild() {
+    try {
+      return typeof getActiveBuild === "function" ? getActiveBuild() : "ALL";
+    } catch (error) {
+      return "ALL";
+    }
+  }
+
+  function isStudioExcluded() {
+    try {
+      return typeof excludeStudio !== "undefined" ? excludeStudio : true;
+    } catch (error) {
+      return true;
+    }
+  }
+
+  function samePlayer(left, right) {
+    if (!left || !right) return false;
+
+    const leftUserId = pickValue(left.userId, left.userid);
+    const rightUserId = pickValue(right.userId, right.userid);
+    if (leftUserId !== null && rightUserId !== null) {
+      return String(leftUserId) === String(rightUserId);
+    }
+
+    const leftName = String(pickValue(left.name, left.player, "")).toLowerCase();
+    const rightName = String(pickValue(right.name, right.player, "")).toLowerCase();
+    return Boolean(leftName) && leftName === rightName;
+  }
+
+  function getFilteredLivePlayers() {
+    const selectedBuild = activeBuild();
+    const excludeStudioNow = isStudioExcluded();
+    const currentTime = nowSeconds();
+    const liveRoots = Object.values((allData && allData.livePlayers) || {});
+
+    return liveRoots
+      .map((entry) => (entry && entry.live ? entry.live : entry))
+      .filter(Boolean)
+      .filter((player) => {
+        const seenAt = pickNumber(player.time);
+        return seenAt !== null && currentTime - seenAt <= LIVE_TTL_SECONDS;
+      })
+      .filter((player) => !excludeStudioNow || player.isStudio !== true)
+      .filter((player) => selectedBuild === "ALL" || player.build === selectedBuild)
+      .sort((left, right) => (pickNumber(right.sessionSeconds) || 0) - (pickNumber(left.sessionSeconds) || 0));
+  }
+
+  function updateHeaderOnline() {
+    const badge = document.getElementById("onlineCount");
+    if (badge) {
+      badge.textContent = getFilteredLivePlayers().length + " ONLINE";
+    }
+  }
+
+  function playerSessionStart(player) {
+    const seenAt = pickNumber(player && player.time, nowSeconds()) || nowSeconds();
+    const seconds = pickNumber(
+      player && player.sessionSeconds,
+      player ? minutesToSeconds(player.sessionMinutes) : null,
+      0
+    ) || 0;
+    return seenAt - seconds - 2;
+  }
+
+  function latestMatchingTime(records, player, extraPredicate) {
+    const sessionStart = playerSessionStart(player);
+    let latest = null;
+
+    for (const record of records || []) {
+      if (!samePlayer(record, player)) continue;
+      const recordTime = pickNumber(record.time);
+      if (recordTime === null) continue;
+      if (recordTime < sessionStart || recordTime > nowSeconds() + 5) continue;
+      if (extraPredicate && !extraPredicate(record)) continue;
+      if (latest === null || recordTime > latest) latest = recordTime;
+    }
+
+    return latest;
+  }
+
+  function latestBhEnterTime(player) {
+    return latestMatchingTime(filtered((allData && allData.bhGameEnters) || []), player);
+  }
+
+  function latestDeathEventTime(player) {
+    return latestMatchingTime(filtered((allData && allData.events) || []), player, (event) => event.type === "death");
+  }
+
+  function inferBhLiveState(player) {
+    if (typeof player.inGame === "boolean") {
+      return {
+        inGame: player.inGame,
+        mode: "exact",
+        label: player.inGame ? "ARENA" : "LOBBY",
+      };
+    }
+
+    const score = pickNumber(player.score);
+    if (score !== null && score > 1) {
+      return {
+        inGame: true,
+        mode: "score",
+        label: "ARENA",
+      };
+    }
+
+    const eatenTimes = pickNumber(player.eatenTimes);
+    if (eatenTimes !== null && eatenTimes > 0) {
+      return {
+        inGame: true,
+        mode: "score",
+        label: "ARENA",
+      };
+    }
+
+    const lastEnter = latestBhEnterTime(player);
+    const lastDeath = latestDeathEventTime(player);
+
+    if (lastEnter !== null && (lastDeath === null || lastEnter > lastDeath)) {
+      return {
+        inGame: true,
+        mode: "estimated",
+        label: "ARENA*",
+      };
+    }
+
+    if (lastEnter !== null && lastDeath !== null && lastDeath >= lastEnter) {
+      return {
+        inGame: false,
+        mode: "estimated",
+        label: "LOBBY*",
+      };
+    }
+
+    return {
+      inGame: false,
+      mode: "unknown",
+      label: "UNKNOWN",
+    };
+  }
+
+  function matchSnapshotForLeave(leave, snapshots, usedIndexes) {
+    let bestIndex = -1;
+    let bestDiff = Number.POSITIVE_INFINITY;
+
+    snapshots.forEach((snapshot, index) => {
+      if (usedIndexes.has(index)) return;
+      if (!samePlayer(leave, snapshot)) return;
+
+      const leaveTime = pickNumber(leave.time);
+      const snapshotTime = pickNumber(snapshot.time);
+      if (leaveTime === null || snapshotTime === null) return;
+
+      const diff = Math.abs(leaveTime - snapshotTime);
+      if (diff <= BH_MATCH_WINDOW_SECONDS && diff < bestDiff) {
+        bestIndex = index;
+        bestDiff = diff;
+      }
+    });
+
+    if (bestIndex === -1) return null;
+    usedIndexes.add(bestIndex);
+    return snapshots[bestIndex];
+  }
+
+  function normalizeBhSession(leave, snapshot) {
+    const enteredFlag = pickValue(
+      leave && leave.everEnteredGame,
+      leave && leave.everPlayedGame,
+      snapshot && snapshot.everEnteredGame,
+      snapshot && snapshot.everPlayedGame
+    );
+
+    const gameSeconds = pickNumber(
+      leave && leave.timeInGameSeconds,
+      leave && leave.totalGameSeconds,
+      leave && leave.gameSeconds,
+      leave ? minutesToSeconds(leave.gameMinutes) : null,
+      snapshot && snapshot.gameSeconds,
+      snapshot ? minutesToSeconds(snapshot.gameMinutes) : null,
+      enteredFlag === false ? 0 : null,
+      leave && leave.leaveType === "lobby_only" ? 0 : null
+    );
+
+    const sessionSeconds = pickNumber(
+      leave && leave.sessionSeconds,
+      leave ? minutesToSeconds(leave.sessionMinutes) : null,
+      snapshot && snapshot.sessionSeconds,
+      snapshot ? minutesToSeconds(snapshot.sessionMinutes) : null,
+      gameSeconds,
+      0
+    ) || 0;
+
+    const lobbySeconds = pickNumber(
+      leave && leave.currentLobbySeconds,
+      leave && leave.lobbySeconds,
+      snapshot && snapshot.lobbySeconds,
+      0
+    ) || 0;
+
+    const eatenTimes = pickNumber(
+      leave && leave.eatenTimes,
+      snapshot && snapshot.eatenTimes,
+      snapshot && snapshot.deathCount,
+      0
+    ) || 0;
+
+    const scoreAtLeave = pickNumber(
+      leave && leave.scoreAtLeave,
+      leave && leave.score,
+      snapshot && snapshot.scoreAtLeave,
+      snapshot && snapshot.score,
+      0
+    ) || 0;
+
+    const enteredGame = pickValue(
+      enteredFlag,
+      gameSeconds !== null ? gameSeconds > 0 : null,
+      scoreAtLeave > 1 ? true : null,
+      eatenTimes > 0 ? true : null,
+      false
+    );
+
+    const wasInGame = pickValue(leave && leave.wasInGame, snapshot && snapshot.inGame);
+
+    const leaveType = pickValue(
+      leave && leave.leaveType,
+      enteredGame === false ? "lobby_only" : null,
+      wasInGame === true ? "rage_quit_ingame" : null,
+      enteredGame === true ? "left_from_lobby_after_play" : null,
+      "unknown"
+    );
+
+    const avgFps = pickNumber(snapshot && snapshot.avgFps);
+    const last10sPing = pickNumber(snapshot && snapshot.last10sPing);
+    const hadLowFps = Boolean(pickValue(snapshot && snapshot.hadLowFps, avgFps !== null && avgFps < 25 ? true : null, false));
+    const hadHighPing = Boolean(pickValue(snapshot && snapshot.hadHighPing, last10sPing !== null && last10sPing > 300 ? true : null, false));
+    const verdict = pickValue(snapshot && snapshot.verdict, leave && leave.verdict);
+    const likelyQuitFromPerf = Boolean(pickValue(snapshot && snapshot.likelyQuitFromPerf, verdict === "perf" ? true : null, false));
+
+    return {
+      userId: pickValue(leave && leave.userId, snapshot && snapshot.userId),
+      name: pickValue(leave && leave.name, snapshot && snapshot.name),
+      time: pickNumber(leave && leave.time, snapshot && snapshot.time, 0) || 0,
+      build: pickValue(leave && leave.build, snapshot && snapshot.build),
+      isStudio: Boolean(pickValue(leave && leave.isStudio, snapshot && snapshot.isStudio, false)),
+      enteredGame,
+      wasInGame: Boolean(wasInGame),
+      leaveType,
+      gameSeconds: gameSeconds === null ? 0 : gameSeconds,
+      sessionSeconds,
+      lobbySeconds,
+      scoreAtLeave,
+      eatenTimes,
+      level: pickNumber(leave && leave.level, snapshot && snapshot.level, 0) || 0,
+      verdict,
+      likelyQuitFromPerf,
+      avgFps,
+      last10sPing,
+      hadLowFps,
+      hadHighPing,
+      platform: pickValue(snapshot && snapshot.platform, leave && leave.platform, "Unknown"),
+    };
+  }
+
+  function getBhSessions() {
+    const leaves = filtered((allData && allData.bhLeaves) || []).filter((entry) => entry && typeof entry === "object");
+    const snapshots = filtered((allData && allData.snapshots) || []).filter((entry) => entry && typeof entry === "object");
+
+    if (!leaves.length && !snapshots.length) return [];
+
+    const usedSnapshots = new Set();
+    const sessions = leaves.map((leave) => normalizeBhSession(leave, matchSnapshotForLeave(leave, snapshots, usedSnapshots)));
+
+    snapshots.forEach((snapshot, index) => {
+      if (!usedSnapshots.has(index)) {
+        sessions.push(normalizeBhSession(null, snapshot));
+      }
+    });
+
+    return sessions.sort((left, right) => right.time - left.time);
+  }
+
+  function renderRecentEvents(targetId) {
+    const recent = [...filtered((allData && allData.events) || [])]
+      .sort((left, right) => (pickNumber(right.time) || 0) - (pickNumber(left.time) || 0))
+      .slice(0, 20);
+
+    const target = document.getElementById(targetId);
+    if (!target) return;
+
+    if (!recent.length) {
+      target.innerHTML = '<div class="empty-state">NO EVENTS YET</div>';
+      return;
+    }
+
+    const typeColors = { join: "green", leave: "red", death: "yellow", zoneChange: "accent" };
+    const typeIcons = { join: "->", leave: "<-", death: "X", zoneChange: "@" };
+
+    target.innerHTML = `
+      <table class="live-table">
+        <thead><tr><th>TIME</th><th>TYPE</th><th>PLAYER</th><th>DETAIL</th></tr></thead>
+        <tbody>
+          ${recent
+            .map((event) => {
+              const color = typeColors[event.type] || "accent";
+              const colorVar =
+                color === "green"
+                  ? "var(--accent3)"
+                  : color === "red"
+                    ? "var(--accent2)"
+                    : color === "yellow"
+                      ? "var(--accent4)"
+                      : "var(--accent)";
+              let detail = "";
+              if (event.type === "death") detail = "Death #" + (event.deathNumber || "?") + " at minute " + (event.sessionMinute || 0);
+              if (event.type === "zoneChange") detail = "Zone -> " + (event.zone || "?");
+              if (event.type === "join") detail = event.isNew ? "NEW PLAYER" : "Returning";
+              if (event.type === "leave") detail = "Session " + (event.sessionMinutes || 0) + "m";
+
+              return `<tr>
+                <td style="color:var(--muted)">${new Date((pickNumber(event.time) || 0) * 1000).toLocaleTimeString()}</td>
+                <td style="color:${colorVar}">${typeIcons[event.type] || "*"} ${(event.type || "").toUpperCase()}</td>
+                <td>${event.player || event.name || "?"}</td>
+                <td style="color:var(--muted);font-size:10px">${detail}</td>
+              </tr>`;
+            })
+            .join("")}
+        </tbody>
+      </table>
+    `;
+  }
+
+  function renderLivePatched() {
+    const players = getFilteredLivePlayers();
+    const online = players.length;
+    const lagging = players.filter((player) => player.isLagging).length;
+    const avgFps = averageNumbers(players.map((player) => player.fps));
+
+    const onlineEl = document.getElementById("lv-online");
+    const laggingEl = document.getElementById("lv-lagging");
+    const fpsEl = document.getElementById("lv-avgFps");
+    if (onlineEl) onlineEl.textContent = online;
+    if (laggingEl) laggingEl.textContent = lagging;
+    if (fpsEl) fpsEl.textContent = fmt(avgFps);
+
+    const tableTarget = document.getElementById("livePlayerTable");
+    if (!tableTarget) return;
+
+    if (!online) {
+      tableTarget.innerHTML = '<div class="empty-state">NO ACTIVE PLAYERS MATCH THE CURRENT FILTER</div>';
+    } else {
+      tableTarget.innerHTML = `
+        <table class="live-table">
+          <thead>
+            <tr>
+              <th>PLAYER</th><th>PLATFORM</th><th>FPS</th><th>PING</th><th>SESSION</th><th>DEATHS</th><th>STATUS</th>
+            </tr>
+          </thead>
+          <tbody>
+            ${players
+              .map((player) => `
+                <tr>
+                  <td>${player.name || "â€”"}</td>
+                  <td><span class="badge ${String(player.platform || "").toLowerCase()}">${player.platform || "?"}</span></td>
+                  <td style="color:${(pickNumber(player.fps) || 0) < 20 ? "var(--accent2)" : (pickNumber(player.fps) || 0) < 40 ? "var(--accent4)" : "var(--accent3)"}">${player.fps || "â€”"}</td>
+                  <td style="color:${(pickNumber(player.ping) || 0) > 300 ? "var(--accent2)" : (pickNumber(player.ping) || 0) > 150 ? "var(--accent4)" : "var(--text)"}">${player.ping || "â€”"}ms</td>
+                  <td>${Math.floor((pickNumber(player.sessionSeconds) || 0) / 60)}m ${(pickNumber(player.sessionSeconds) || 0) % 60}s</td>
+                  <td>${pickNumber(player.deathCount) || 0}</td>
+                  <td><span class="status-dot ${player.isLagging ? "bad" : "ok"}"></span>${player.isLagging ? "LAGGING" : "OK"}</td>
+                </tr>
+              `)
+              .join("")}
+          </tbody>
+        </table>
+      `;
+    }
+
+    renderRecentEvents("recentEvents");
+  }
+
+  function renderBHOverviewPatched() {
+    const sessions = getBhSessions();
+    if (!sessions.length) return;
+
+    const total = sessions.length;
+    const lobbyOnly = sessions.filter((session) => session.leaveType === "lobby_only" || session.enteredGame === false).length;
+    const rageQuit = sessions.filter((session) => session.leaveType === "rage_quit_ingame").length;
+    const avgGameSecs = averageNumbers(sessions.map((session) => session.gameSeconds));
+    const avgScore = averageNumbers(sessions.map((session) => session.scoreAtLeave));
+    const avgEaten = averageNumbers(sessions.map((session) => session.eatenTimes));
+    const perfQuits = sessions.filter((session) => session.verdict === "perf" || session.likelyQuitFromPerf).length;
+    const returned = sessions.filter((session) => (session.eatenTimes || 0) > 0 && session.enteredGame !== false).length;
+
+    document.getElementById("bh-ov-total").textContent = total;
+    document.getElementById("bh-ov-gametime").textContent = fmt(avgGameSecs / 60) + "m";
+    document.getElementById("bh-ov-lobbyonly").textContent = pct(lobbyOnly, total);
+    document.getElementById("bh-ov-perf").textContent = pct(perfQuits, total);
+    document.getElementById("bh-ov-score").textContent = fmtScore(avgScore);
+    document.getElementById("bh-ov-eaten").textContent = fmt(avgEaten);
+    document.getElementById("bh-ov-rage").textContent = pct(rageQuit, total);
+    document.getElementById("bh-ov-returned").textContent = pct(returned, total);
+
+    const leaveTypes = { lobby_only: 0, rage_quit_ingame: 0, left_from_lobby_after_play: 0 };
+    sessions.forEach((session) => {
+      const key = Object.prototype.hasOwnProperty.call(leaveTypes, session.leaveType)
+        ? session.leaveType
+        : session.enteredGame
+          ? "left_from_lobby_after_play"
+          : "lobby_only";
+      leaveTypes[key] += 1;
+    });
+
+    const maxLeaveType = Math.max(...Object.values(leaveTypes), 1);
+    const leaveLabels = {
+      lobby_only: "Never entered arena",
+      rage_quit_ingame: "Left in arena",
+      left_from_lobby_after_play: "Left after returning",
+    };
+    const leaveColors = {
+      lobby_only: "accent",
+      rage_quit_ingame: "red",
+      left_from_lobby_after_play: "yellow",
+    };
+
+    document.getElementById("bh-leaveTypeChart").innerHTML = Object.entries(leaveTypes)
+      .map(([key, value]) => barRow(leaveLabels[key], value, maxLeaveType, pct(value, total) + " (" + value + ")", leaveColors[key]))
+      .join("");
+
+    const buckets = { "0-1m": 0, "1-2m": 0, "2-3m": 0, "3-5m": 0, "5-8m": 0, "8-15m": 0, "15-30m": 0, "30m+": 0 };
+    sessions.forEach((session) => {
+      const minutes = (pickNumber(session.gameSeconds) || 0) / 60;
+      if (minutes < 1) buckets["0-1m"] += 1;
+      else if (minutes < 2) buckets["1-2m"] += 1;
+      else if (minutes < 3) buckets["2-3m"] += 1;
+      else if (minutes < 5) buckets["3-5m"] += 1;
+      else if (minutes < 8) buckets["5-8m"] += 1;
+      else if (minutes < 15) buckets["8-15m"] += 1;
+      else if (minutes < 30) buckets["15-30m"] += 1;
+      else buckets["30m+"] += 1;
+    });
+
+    const maxBucket = Math.max(...Object.values(buckets), 1);
+    document.getElementById("bh-sessionBuckets").innerHTML = Object.entries(buckets)
+      .map(([label, value]) => {
+        const color = label === "0-1m" ? "red" : label === "30m+" ? "green" : "accent";
+        return barRow(label, value, maxBucket, value + " sessions", color);
+      })
+      .join("");
+  }
+
+  function renderBHFunnelPatched() {
+    const sessions = getBhSessions();
+    const target = document.getElementById("bh-funnelInsights");
+    if (!target) return;
+
+    if (!sessions.length) {
+      target.innerHTML = '<div class="empty-state">NEED MORE DATA â€” RUN SOME SESSIONS</div>';
+      return;
+    }
+
+    const insights = [];
+    const total = sessions.length;
+    const lobbyOnly = sessions.filter((session) => session.enteredGame === false || session.leaveType === "lobby_only").length;
+    if (lobbyOnly > 0) {
+      insights.push({
+        type: "red",
+        icon: "EXIT",
+        headline: pct(lobbyOnly, total) + " of sessions never made it into the arena",
+        detail: lobbyOnly + " players left before any real game time was recorded. That points to a lobby or onboarding problem, not combat balance.",
+        stat: pct(lobbyOnly, total),
+        statType: "red",
+      });
+    }
+
+    const oneDeath = sessions.filter((session) => (session.eatenTimes || 0) === 1);
+    const repeatDeaths = sessions.filter((session) => (session.eatenTimes || 0) >= 2);
+    if (oneDeath.length && repeatDeaths.length) {
+      const oneDeathGame = averageNumbers(oneDeath.map((session) => session.gameSeconds)) / 60;
+      const repeatGame = averageNumbers(repeatDeaths.map((session) => session.gameSeconds)) / 60;
+      const diff = repeatGame - oneDeathGame;
+      insights.push({
+        type: diff >= 0 ? "green" : "yellow",
+        icon: "SHIELD",
+        headline: diff >= 0
+          ? "Players who come back after the first death stay " + fmt(diff) + "m longer"
+          : "Repeat-death sessions are " + fmt(Math.abs(diff)) + "m shorter than one-death sessions",
+        detail: "This is your forgiveness check. If players who die again still keep playing, the comeback loop is working. If not, the post-death penalty is too punishing.",
+        stat: (diff >= 0 ? "+" : "-") + fmt(Math.abs(diff)) + "m",
+        statType: diff >= 0 ? "green" : "yellow",
+      });
+    }
+
+    const milestones = [1, 10, 100, 500, 1000, 2000, 5000, 10000, 20000, 50000, 100000, 200000];
+    const milestoneLabels = ["1", "10", "100", "500", "1k", "2k", "5k", "10k", "20k", "50k", "100k", "200k"];
+    const reached = milestones.map((milestone) => sessions.filter((session) => (session.scoreAtLeave || 0) >= milestone).length);
+
+    let biggestDropIndex = -1;
+    let biggestDrop = 0;
+    for (let index = 0; index < reached.length - 1; index += 1) {
+      const drop = reached[index] - reached[index + 1];
+      if (drop > biggestDrop) {
+        biggestDrop = drop;
+        biggestDropIndex = index;
+      }
+    }
+
+    if (biggestDropIndex >= 0 && reached[0] > 0) {
+      insights.push({
+        type: biggestDrop >= total * 0.2 ? "red" : "yellow",
+        icon: "DROP",
+        headline: "Biggest score wall is between " + milestoneLabels[biggestDropIndex] + " and " + milestoneLabels[biggestDropIndex + 1],
+        detail: biggestDrop + " sessions disappear at that jump. That is the clearest place to inspect growth speed, food density, or difficulty spikes.",
+        stat: "-" + biggestDrop,
+        statType: biggestDrop >= total * 0.2 ? "red" : "yellow",
+      });
+    }
+
+    target.innerHTML = insights.length
+      ? insights
+          .map((insight) => `
+            <div class="insight ${insight.type}">
+              <div class="insight-icon">${insight.icon}</div>
+              <div class="insight-content">
+                <div class="insight-headline">${insight.headline}</div>
+                <div class="insight-detail">${insight.detail}</div>
+              </div>
+              <div class="insight-stat ${insight.statType}">${insight.stat}</div>
+            </div>
+          `)
+          .join("")
+      : '<div class="empty-state">NEED MORE DATA â€” RUN SOME SESSIONS</div>';
+
+    const maxReached = Math.max(...reached, 1);
+    document.getElementById("bh-scoreFunnelChart").innerHTML = milestones
+      .map((milestone, index) => {
+        const value = reached[index];
+        const color = milestone >= 50000 ? "green" : milestone >= 5000 ? "accent" : milestone >= 500 ? "yellow" : "red";
+        const display = value + " reached" + (reached[0] > 0 ? " (" + pct(value, reached[0]) + " of starters)" : "");
+        return barRow(milestoneLabels[index] + " score", value, maxReached, display, color);
+      })
+      .join("");
+
+    const cohortTarget = document.getElementById("bh-forgivenessCohort");
+    if (!cohortTarget) return;
+
+    if (oneDeath.length && repeatDeaths.length) {
+      cohortTarget.innerHTML = `
+        <div class="cohort-box">
+          <div class="cohort-label red">SESSIONS WITH 1 DEATH â€” ${oneDeath.length}</div>
+          ${cohortRow("Avg score at leave", fmtScore(averageNumbers(oneDeath.map((session) => session.scoreAtLeave))))}
+          ${cohortRow("Avg arena time", fmt(averageNumbers(oneDeath.map((session) => session.gameSeconds)) / 60) + "min")}
+          ${cohortRow("Avg FPS", fmt(averageNumbers(oneDeath.map((session) => session.avgFps))))}
+        </div>
+        <div class="cohort-box">
+          <div class="cohort-label green">SESSIONS WITH 2+ DEATHS â€” ${repeatDeaths.length}</div>
+          ${cohortRow("Avg score at leave", fmtScore(averageNumbers(repeatDeaths.map((session) => session.scoreAtLeave))))}
+          ${cohortRow("Avg arena time", fmt(averageNumbers(repeatDeaths.map((session) => session.gameSeconds)) / 60) + "min")}
+          ${cohortRow("Avg FPS", fmt(averageNumbers(repeatDeaths.map((session) => session.avgFps))))}
+        </div>
+      `;
+    } else {
+      cohortTarget.innerHTML = '<div class="empty-state" style="grid-column:span 2">NEED MORE DEATH DATA</div>';
+    }
+  }
+
+  function renderBHDeathsPatched() {
+    const sessions = getBhSessions();
+    const detailedDeaths = filtered((allData && allData.bhDeaths) || []).filter((entry) => entry && typeof entry === "object");
+    const pvpDeaths = filtered((allData && allData.bhPvpDeaths) || []).filter((entry) => entry && typeof entry === "object");
+    const sessionsWithDeaths = sessions.filter((session) => (session.eatenTimes || 0) > 0);
+    const approximatedDeaths = Math.round(sessions.reduce((sum, session) => sum + (pickNumber(session.eatenTimes) || 0), 0));
+    const scoredDeaths = detailedDeaths.filter((death) => pickNumber(death.scoreAtDeath) !== null);
+    const timedDeaths = detailedDeaths.filter((death) => pickNumber(death.timeInGameSeconds) !== null);
+
+    document.getElementById("bh-d-total").textContent = detailedDeaths.length ? detailedDeaths.length : "~" + approximatedDeaths;
+    document.getElementById("bh-d-pvp").textContent = pvpDeaths.length;
+    document.getElementById("bh-d-avgscore").textContent = scoredDeaths.length ? fmtScore(averageNumbers(scoredDeaths.map((death) => death.scoreAtDeath))) : "â€”";
+    document.getElementById("bh-d-time").textContent = timedDeaths.length
+      ? fmt(averageNumbers(timedDeaths.map((death) => death.timeInGameSeconds)) / 60) + "m"
+      : sessionsWithDeaths.length
+        ? "~" + fmt(averageNumbers(sessionsWithDeaths.map((session) => session.gameSeconds)) / 60) + "m"
+        : "â€”";
+
+    const chartTarget = document.getElementById("bh-scoreAtDeathChart");
+    if (chartTarget) {
+      const scoreSource = scoredDeaths.length
+        ? scoredDeaths.map((death) => ({ score: pickNumber(death.scoreAtDeath) || 0 }))
+        : sessionsWithDeaths.map((session) => ({ score: pickNumber(session.scoreAtLeave) || 0 }));
+
+      if (!scoreSource.length) {
+        chartTarget.innerHTML = '<div class="empty-state">NO DEATH-SCORE DATA YET</div>';
+      } else {
+        const brackets = { "1-9": 0, "10-99": 0, "100-499": 0, "500-999": 0, "1k-4.9k": 0, "5k-9.9k": 0, "10k-19k": 0, "20k-49k": 0, "50k-99k": 0, "100k+": 0 };
+
+        scoreSource.forEach((entry) => {
+          const score = entry.score || 1;
+          if (score < 10) brackets["1-9"] += 1;
+          else if (score < 100) brackets["10-99"] += 1;
+          else if (score < 500) brackets["100-499"] += 1;
+          else if (score < 1000) brackets["500-999"] += 1;
+          else if (score < 5000) brackets["1k-4.9k"] += 1;
+          else if (score < 10000) brackets["5k-9.9k"] += 1;
+          else if (score < 20000) brackets["10k-19k"] += 1;
+          else if (score < 50000) brackets["20k-49k"] += 1;
+          else if (score < 100000) brackets["50k-99k"] += 1;
+          else brackets["100k+"] += 1;
+        });
+
+        const maxBracket = Math.max(...Object.values(brackets), 1);
+        const note = scoredDeaths.length
+          ? ""
+          : '<div style="margin-bottom:12px;font-family:var(--font-mono);font-size:10px;color:var(--accent4);padding:8px;background:rgba(255,183,0,0.08);border:1px solid rgba(255,183,0,0.2)">Detailed bh_deaths score logs are missing on older servers. Showing score at leave for sessions with 1+ deaths as the closest estimate until v1.3 replaces them.</div>';
+
+        chartTarget.innerHTML =
+          note +
+          Object.entries(brackets)
+            .map(([label, value]) => {
+              const color = label === "1-9" ? "red" : label.includes("50k") ? "yellow" : label.includes("100k") ? "green" : "accent";
+              return barRow(label, value, maxBracket, value + " sessions (" + pct(value, scoreSource.length || 1) + ")", color);
+            })
+            .join("");
+      }
+    }
+
+    const pvpTarget = document.getElementById("bh-pvpInsights");
+    if (pvpTarget) {
+      if (pvpDeaths.length) {
+        const avgGap = averageNumbers(pvpDeaths.map((death) => death.scoreDiff));
+        const oneSided = pvpDeaths.filter((death) => (pickNumber(death.scoreDiff) || 0) > 50000).length;
+        const insights = [];
+
+        if (oneSided > pvpDeaths.length * 0.2) {
+          insights.push({
+            type: "red",
+            icon: "PVP",
+            headline: pct(oneSided, pvpDeaths.length) + " of PvP deaths are huge stomps",
+            detail: "A large score gap means smaller players are getting eaten before they have a real chance to react or recover.",
+            stat: oneSided + " stomps",
+            statType: "red",
+          });
+        }
+
+        insights.push({
+          type: "blue",
+          icon: "GAP",
+          headline: pvpDeaths.length + " PvP deaths tracked with an average score gap of " + fmtScore(avgGap),
+          detail: "Use this to judge whether PvP deaths feel competitive or hopeless.",
+          stat: fmtScore(avgGap),
+          statType: "blue",
+        });
+
+        pvpTarget.innerHTML = insights
+          .map((insight) => `
+            <div class="insight ${insight.type}">
+              <div class="insight-icon">${insight.icon}</div>
+              <div class="insight-content">
+                <div class="insight-headline">${insight.headline}</div>
+                <div class="insight-detail">${insight.detail}</div>
+              </div>
+              <div class="insight-stat ${insight.statType}">${insight.stat}</div>
+            </div>
+          `)
+          .join("");
+      } else {
+        pvpTarget.innerHTML = `
+          <div class="insight green">
+            <div class="insight-icon">INFO</div>
+            <div class="insight-content">
+              <div class="insight-headline">No PvP death detail is stored in Firebase yet</div>
+              <div class="insight-detail">The dashboard now stays honest instead of inventing PvP numbers. Once v1.3 servers are live, this panel will fill in automatically.</div>
+            </div>
+            <div class="insight-stat green">-</div>
+          </div>
+        `;
+      }
+    }
+
+    const eatenTimes = {};
+    sessions.forEach((session) => {
+      const deathCount = Math.min(pickNumber(session.eatenTimes) || 0, 9);
+      const key = deathCount === 9 ? "9+" : String(deathCount);
+      eatenTimes[key] = (eatenTimes[key] || 0) + 1;
+    });
+
+    const maxEatenTimes = Math.max(...Object.values(eatenTimes), 1);
+    document.getElementById("bh-eatenTimesChart").innerHTML = Object.entries(eatenTimes)
+      .sort((left, right) => Number(left[0].replace("+", "")) - Number(right[0].replace("+", "")))
+      .map(([label, value]) => barRow("Quit on death #" + label, value, maxEatenTimes, value + " sessions", label === "0" ? "accent" : label === "1" ? "yellow" : "red"))
+      .join("") || '<div class="empty-state">NO DATA YET</div>';
+  }
+
+  function renderBHPerfPatched() {
+    const sessions = getBhSessions();
+    if (!sessions.length) return;
+
+    const perfSessions = sessions.filter((session) => session.avgFps !== null || session.last10sPing !== null);
+    if (!perfSessions.length) return;
+
+    const lowFps = perfSessions.filter((session) => session.hadLowFps || (pickNumber(session.avgFps) || 0) < 25).length;
+    const highPing = perfSessions.filter((session) => session.hadHighPing || (pickNumber(session.last10sPing) || 0) > 300).length;
+    const avgFpsAll = averageNumbers(perfSessions.map((session) => session.avgFps));
+    const laggers = perfSessions.filter((session) => session.hadLowFps || (pickNumber(session.avgFps) || 0) < 25);
+    const clean = perfSessions.filter((session) => !session.hadLowFps && (pickNumber(session.avgFps) || 60) >= 25);
+    const lagScore = averageNumbers(laggers.map((session) => session.scoreAtLeave));
+    const cleanScore = averageNumbers(clean.map((session) => session.scoreAtLeave));
+    const scoreDiff = cleanScore - lagScore;
+
+    document.getElementById("bh-pf-lowfps").textContent = pct(lowFps, perfSessions.length);
+    document.getElementById("bh-pf-highping").textContent = pct(highPing, perfSessions.length);
+    document.getElementById("bh-pf-avgfps").textContent = fmt(avgFpsAll);
+    document.getElementById("bh-pf-lagdiff").textContent = fmtScore(scoreDiff);
+
+    const insightTarget = document.getElementById("bh-perfInsights");
+    if (insightTarget) {
+      if (laggers.length && clean.length) {
+        insightTarget.innerHTML = `
+          <div class="insight ${scoreDiff > 1000 ? "red" : "blue"}">
+            <div class="insight-icon">FPS</div>
+            <div class="insight-content">
+              <div class="insight-headline">Lagging sessions average ${fmtScore(lagScore)} score vs ${fmtScore(cleanScore)} for clean sessions</div>
+              <div class="insight-detail">This is pulled from the matched Black Hole leave + exit snapshot data, so it tracks actual score growth instead of generic session length only.</div>
+            </div>
+            <div class="insight-stat ${scoreDiff > 1000 ? "red" : "blue"}">-${fmtScore(scoreDiff)}</div>
+          </div>
+        `;
+      } else {
+        insightTarget.innerHTML = '<div class="empty-state">NEED MORE PERFORMANCE DATA</div>';
+      }
+    }
+
+    const joins = filtered((allData && allData.clientJoins) || []);
+    const platformCounts = {};
+    joins.forEach((join) => {
+      const platform = join.platform || "Unknown";
+      platformCounts[platform] = (platformCounts[platform] || 0) + 1;
+    });
+
+    const maxPlatform = Math.max(...Object.values(platformCounts), 1);
+    const platformColors = { PC: "accent", Mobile: "yellow", Console: "green", Unknown: "red" };
+    document.getElementById("bh-platformChart").innerHTML = Object.entries(platformCounts)
+      .sort((left, right) => right[1] - left[1])
+      .map(([platform, value]) => barRow(platform, value, maxPlatform, value + " joins (" + pct(value, joins.length || 1) + ")", platformColors[platform] || "accent"))
+      .join("") || '<div class="empty-state">NO JOIN DATA</div>';
+  }
+
+  function renderBHLivePatched() {
+    const players = getFilteredLivePlayers();
+    const stateRows = players.map((player) => ({ player, state: inferBhLiveState(player) }));
+    const online = stateRows.length;
+    const lagging = stateRows.filter((row) => row.player.isLagging).length;
+    const inArena = stateRows.filter((row) => row.state.inGame).length;
+    const estimated = stateRows.filter((row) => row.state.mode === "estimated").length;
+    const unknown = stateRows.filter((row) => row.state.mode === "unknown").length;
+
+    document.getElementById("bh-lv-online").textContent = online;
+    document.getElementById("bh-lv-lagging").textContent = lagging;
+    document.getElementById("bh-lv-ingame").textContent = inArena;
+
+    const tableTarget = document.getElementById("bh-liveTable");
+    if (!tableTarget) return;
+
+    if (!online) {
+      tableTarget.innerHTML = '<div class="empty-state">NO ACTIVE PLAYERS MATCH THE CURRENT FILTER</div>';
+    } else {
+      const note = estimated || unknown
+        ? '<div style="margin-bottom:12px;font-family:var(--font-mono);font-size:10px;color:var(--accent4);padding:8px;background:rgba(255,183,0,0.08);border:1px solid rgba(255,183,0,0.2)">Some live Black Hole servers are still on v1.2 and do not send inGame. AREA values marked with * are estimated from bh_gameEnters and recent death events until those servers drain out.</div>'
+        : "";
+
+      tableTarget.innerHTML = `
+        ${note}
+        <table class="live-table">
+          <thead>
+            <tr><th>PLAYER</th><th>PLATFORM</th><th>FPS</th><th>PING</th><th>SESSION</th><th>AREA</th><th>STATUS</th></tr>
+          </thead>
+          <tbody>
+            ${stateRows
+              .map(({ player, state }) => `
+                <tr>
+                  <td>${player.name || "-"}</td>
+                  <td><span class="badge ${String(player.platform || "").toLowerCase()}">${player.platform || "?"}</span></td>
+                  <td style="color:${(pickNumber(player.fps) || 0) < 20 ? "var(--accent2)" : (pickNumber(player.fps) || 0) < 40 ? "var(--accent4)" : "var(--accent3)"}">${player.fps || "-"}</td>
+                  <td style="color:${(pickNumber(player.ping) || 0) > 300 ? "var(--accent2)" : (pickNumber(player.ping) || 0) > 150 ? "var(--accent4)" : "var(--text)"}">${player.ping || "-"}ms</td>
+                  <td>${Math.floor((pickNumber(player.sessionSeconds) || 0) / 60)}m ${(pickNumber(player.sessionSeconds) || 0) % 60}s</td>
+                  <td>${state.label}</td>
+                  <td><span class="status-dot ${player.isLagging ? "bad" : "ok"}"></span>${player.isLagging ? "LAGGING" : "OK"}</td>
+                </tr>
+              `)
+              .join("")}
+          </tbody>
+        </table>
+      `;
+    }
+
+    renderRecentEvents("bh-recentEvents");
+  }
+
+  const originalRenderAll = renderAll;
+
+  renderLive = renderLivePatched;
+  renderBH_Overview = renderBHOverviewPatched;
+  renderBH_Funnel = renderBHFunnelPatched;
+  renderBH_Deaths = renderBHDeathsPatched;
+  renderBH_Perf = renderBHPerfPatched;
+  renderBH_Live = renderBHLivePatched;
+
+  renderAll = function renderAllPatched() {
+    originalRenderAll();
+    updateHeaderOnline();
+  };
+
+  renderAll();
+})();
 
 </script>
 </body>
