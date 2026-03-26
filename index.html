@@ -1199,7 +1199,10 @@ let rawData = { sessions: [], snapshots: [], events: [] }; // unfiltered, used f
 
 async function fbGet(path) {
   try {
-    const r = await fetch(`${DB_URL}${path}.json?auth=${DB_SECRET}`);
+    const url = path.startsWith("?")
+      ? `${DB_URL}.json${path}&auth=${DB_SECRET}`
+      : `${DB_URL}${path}.json?auth=${DB_SECRET}`;
+    const r = await fetch(url);
     return await r.json();
   } catch(e) { return null; }
 }
@@ -1210,18 +1213,14 @@ function objToArr(obj) {
 }
 
 async function detectGames() {
-  // Fetch root to find all game namespaces
-  const root = await fbGet("");
-  if (!root) return ["smashcity"];
-  // Keys that are game namespaces have sub-keys like sessions/events
-  const knownPaths = ["sessions","exitSnapshots","events","stats","players","clientJoins","clientErrors","serverErrors"];
-  const games = [];
-  for (const [key, val] of Object.entries(root)) {
-    if (val && typeof val === "object" && Object.keys(val).some(k => knownPaths.includes(k))) {
-      games.push(key);
-    }
-  }
-  return games.length ? games.sort() : ["smashcity"];
+  const root = await fbGet("?shallow=true"); // fetch root keys only
+  if (!root) return ["blackhole", "smashcity"];
+  const IGNORE_KEYS = new Set([
+    "sessions","exitSnapshots","events","stats","players",
+    "clientJoins","clientErrors","serverErrors","bh_leaves",
+    "bh_deaths","bh_pvpDeaths","bh_gameEnters","bh_milestones"
+  ]);
+  return Object.keys(root).filter(k => !IGNORE_KEYS.has(k)).sort();
 }
 
 function getActiveGame() {
@@ -1240,11 +1239,14 @@ async function loadAll() {
     const games = await detectGames();
     const gameSel = document.getElementById("gameFilter");
     const currentGame = gameSel.value;
-    gameSel.innerHTML = games.map(g =>
+     gameSel.innerHTML = games.map(g =>
       `<option value="${g}" ${g === currentGame ? "selected" : ""}>${g.toUpperCase()}</option>`
     ).join("");
-    // Default to first game if nothing selected
-    if (!gameSel.value) gameSel.value = games[0];
+    if (currentGame && games.includes(currentGame)) {
+      gameSel.value = currentGame; // restore what user had
+    } else {
+      gameSel.value = games[0];
+    }
 
     const g = getActiveGame();
     const isBH = g === "blackhole";
@@ -2189,8 +2191,9 @@ function animateBars() {
 
 // Auto-refresh live tab every 15s
 setInterval(() => {
-  const liveActive = document.getElementById("tab-live").classList.contains("active");
-  if (liveActive) loadAll();
+  const liveActive = document.getElementById("tab-live")?.classList.contains("active");
+  const bhLiveActive = document.getElementById("bh-tab-live")?.classList.contains("active");
+  if (liveActive || bhLiveActive) loadAll();
 }, 15000);
 
 loadAll();
